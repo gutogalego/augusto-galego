@@ -15,7 +15,7 @@ export default function Home() {
 
       <main className="flex min-h-screen w-screen flex-col items-center  bg-gradient-to-b from-slate-950 to-indigo-950 py-20">
         <Link
-          className="flex w-3/5 flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
+          className="link flex w-3/5 flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
           href="https://www.roadmapinvestidor.com.br/"
           target="_blank"
         >
@@ -25,6 +25,15 @@ export default function Home() {
             to learn about investing
           </div>
         </Link>
+
+        <div className="absolute bottom-0 py-11">
+          <img
+            src="https://ghchart.rshah.org/gutogalego"
+            alt="Gutogalego's Github chart"
+            width={1000}
+            height={1000}
+          />
+        </div>
       </main>
     </>
   );
