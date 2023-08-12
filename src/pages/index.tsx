@@ -19,7 +19,7 @@ export default function Home() {
           href="https://www.roadmapinvestidor.com.br/"
           target="_blank"
         >
-          <h3 className="text-2xl font-bold">Roadmap Investidor →</h3>
+          <h3 className="text-2xl font-bold">Roadmap Investidor (2023) →</h3>
           <div className="text-lg">
             An open source Roadmap, in Portuguese, that helps people in Brazil
             to learn about investing
