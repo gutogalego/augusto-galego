@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
       <Navbar />
 
-      <main className="flex min-h-screen w-screen flex-col items-center  bg-gradient-to-b from-slate-950 to-indigo-950 py-20">
+      <main className="flex min-h-screen w-screen flex-col items-center  space-y-6 bg-gradient-to-b from-slate-950 to-indigo-950 py-20">
         <Link
           className="link flex w-3/5 flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
           href="https://www.roadmapinvestidor.com.br/"
@@ -23,6 +23,20 @@ export default function Home() {
           <div className="text-lg">
             An open source Roadmap, in Portuguese, that helps people in Brazil
             to learn about investing
+          </div>
+        </Link>
+
+        <Link
+          className="link flex w-3/5 flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
+          href="https://mycoverletter.io/"
+          target="_blank"
+        >
+          <h3 className="text-2xl font-bold">
+            MyCoverLetter (2023) [DISCONTINUED] →
+          </h3>
+          <div className="text-lg">
+            An API wrapper around GPT to generate cover letters with minimal
+            effort.
           </div>
         </Link>
 
