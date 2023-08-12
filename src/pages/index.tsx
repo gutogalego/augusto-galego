@@ -40,7 +40,7 @@ export default function Home() {
           </div>
         </Link>
 
-        <div className="absolute bottom-0 py-11">
+        <div className="pt-11">
           <img
             src="https://ghchart.rshah.org/gutogalego"
             alt="Gutogalego's Github chart"
