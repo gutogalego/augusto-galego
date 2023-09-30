@@ -22,19 +22,19 @@ const examples = [
   },
   {
     name: "Playground",
-    href: "/ui/playground",
+    href: "/ui/tasks",
   },
   {
     name: "Forms",
-    href: "/ui/forms",
+    href: "/ui/tasks",
   },
   {
     name: "Music",
-    href: "/ui/music",
+    href: "/ui/tasks",
   },
   {
     name: "Authentication",
-    href: "/ui/authentication",
+    href: "/ui/tasks",
   },
 ]
 

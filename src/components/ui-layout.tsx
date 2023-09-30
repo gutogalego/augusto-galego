@@ -24,6 +24,13 @@ interface ExamplesLayoutProps {
 export default function UILayout({ children }: ExamplesLayoutProps) {
   return (
     <>
+        <Link
+      href="/"
+      rel="nofollow"
+      className="absolute left-10 top-10 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
+    >
+      {"<-"}
+    </Link>
       <div className="container relative">
         <PageHeader className="page-header pb-8">
           <Link
