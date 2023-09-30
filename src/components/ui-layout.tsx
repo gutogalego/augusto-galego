@@ -27,7 +27,7 @@ export default function UILayout({ children }: ExamplesLayoutProps) {
       <div className="container relative">
         <PageHeader className="page-header pb-8">
           <Link
-            href="https://github.com/gutogalego/augusto-galego/blob/main/src/pages/ui/index.tsx"
+            href="https://github.com/gutogalego/augusto-galego/blob/main/src/pages/ui/dashboard/index.tsx"
             target="_blank"
             className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
           >
