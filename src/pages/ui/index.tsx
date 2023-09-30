@@ -27,13 +27,14 @@ export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
       <div className="container relative">
         <PageHeader className="page-header pb-8">
           <Link
-            href="/docs/changelog"
+            href="https://github.com/gutogalego/augusto-galego/blob/main/src/pages/ui/index.tsx"
+            target="_blank"
             className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
           >
             🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
             <span className="sm:hidden">Style, a new CLI and more.</span>
             <span className="hidden sm:inline">
-              Introducing Style, a new CLI and more.
+              Look at the code on github
             </span>
             <ArrowRightIcon className="ml-1 h-4 w-4" />
           </Link>
