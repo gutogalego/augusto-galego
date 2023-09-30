@@ -10,13 +10,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalendarDateRangePicker } from "~/pages/ui/dashboard/components/date-range-picker";
-import { MainNav } from "./components/main-nav";
-import { Overview } from "./components/overview";
-import { RecentSales } from "./components/recent-sales";
-import { Search } from "./components/search";
-import TeamSwitcher from "./components/team-switcher";
-import { UserNav } from "./components/user-nav";
+import { CalendarDateRangePicker } from "~/components/dashboard/date-range-picker";
+import { MainNav } from "../../../components/dashboard/main-nav";
+import { Overview } from "../../../components/dashboard/overview";
+import { RecentSales } from "../../../components/dashboard/recent-sales";
+import { Search } from "../../../components/dashboard/search";
+import TeamSwitcher from "../../../components/dashboard/team-switcher";
+import { UserNav } from "../../../components/dashboard/user-nav";
 
 import UILayout from "./../../../components/ui-layout";
 
