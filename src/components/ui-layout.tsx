@@ -3,12 +3,12 @@ import Link from "next/link"
 import { ArrowRightIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
-import { UINav } from "../../components/ui-nav"
+import { UINav } from "./ui-nav"
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from "../../components/page-header"
+} from "./page-header"
 import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 
@@ -21,7 +21,7 @@ interface ExamplesLayoutProps {
   children: React.ReactNode
 }
 
-export default function ExamplesLayout({ children }: ExamplesLayoutProps) {
+export default function UILayout({ children }: ExamplesLayoutProps) {
   return (
     <>
       <div className="container relative">
