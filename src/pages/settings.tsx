@@ -11,19 +11,19 @@ const sidebarNavItems = [
   },
   {
     title: "Account",
-    href: "/examples/forms/account",
+    href: "/ui/forms/account",
   },
   {
     title: "Appearance",
-    href: "/examples/forms/appearance",
+    href: "/ui/forms/appearance",
   },
   {
     title: "Notifications",
-    href: "/examples/forms/notifications",
+    href: "/ui/forms/notifications",
   },
   {
     title: "Display",
-    href: "/examples/forms/display",
+    href: "/ui/forms/display",
   },
 ];
 

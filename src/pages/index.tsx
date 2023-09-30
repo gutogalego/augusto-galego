@@ -14,13 +14,14 @@ export default function Home() {
       <Navbar />
 
       <main className="flex min-h-screen w-screen flex-col items-center  space-y-6 bg-gradient-to-b from-slate-950 to-indigo-950 py-20">
-      <Link
+        <Link
           className="link flex w-3/5 flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
           href="/ui/dashboard"
         >
           <h3 className="text-2xl font-bold">ShadCN/UI (2023) →</h3>
           <div className="text-lg">
-            Just playing aroung with the examples, understanding how the components go together 
+            Just playing aroung with the examples, understanding how the
+            components go together
           </div>
         </Link>
         <Link
