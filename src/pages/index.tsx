@@ -18,9 +18,9 @@ export default function Home() {
           className="link flex w-3/5 flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
           href="/ui"
         >
-          <h3 className="text-2xl font-bold">UI (2023) →</h3>
+          <h3 className="text-2xl font-bold">ShadCN/UI (2023) →</h3>
           <div className="text-lg">
-            A UI showcase using shadCN
+            Just playing aroung with the examples, understanding how the components go together 
           </div>
         </Link>
         <Link
