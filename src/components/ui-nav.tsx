@@ -10,38 +10,31 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 const examples = [
   {
     name: "Dashboard",
-    href: "/examples/dashboard",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/dashboard",
+    href: "/ui/dashboard",
   },
   {
     name: "Cards",
-    href: "/examples/cards",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/cards",
+    href: "/ui/cards",
   },
   {
     name: "Tasks",
-    href: "/examples/tasks",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/tasks",
+    href: "/ui/tasks",
   },
   {
     name: "Playground",
-    href: "/examples/playground",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/playground",
+    href: "/ui/playground",
   },
   {
     name: "Forms",
-    href: "/examples/forms",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/forms",
+    href: "/ui/forms",
   },
   {
     name: "Music",
-    href: "/examples/music",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/music",
+    href: "/ui/music",
   },
   {
     name: "Authentication",
-    href: "/examples/authentication",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/examples/authentication",
+    href: "/ui/authentication",
   },
 ]
 
@@ -70,33 +63,8 @@ export function UINav({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
         </div>
         <ScrollBar orientation="horizontal" className="invisible" />
       </ScrollArea>
-      <ExampleCodeLink
-        pathname={pathname === "/" ? "/examples/dashboard" : pathname}
-      />
     </div>
   )
 }
 
-interface ExampleCodeLinkProps {
-  pathname: string | null
-}
 
-export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
-  const example = examples.find((example) => pathname?.startsWith(example.href))
-
-  if (!example?.code) {
-    return null
-  }
-
-  return (
-    <Link
-      href={example?.code}
-      target="_blank"
-      rel="nofollow"
-      className="absolute right-0 top-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
-    >
-      View code
-      <ArrowRightIcon className="ml-1 h-4 w-4" />
-    </Link>
-  )
-}
