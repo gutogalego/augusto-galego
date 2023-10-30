@@ -5,16 +5,16 @@ import { posts } from "~/../data/posts";
 
 const Navbar = () => {
   return (
-    <div className="bg-neutral-100  text-neutral-900 sm:px-64 sm:py-8">
+    <div className="bg-neutral-100  text-neutral-900 sm:py-8">
       <nav className="flex items-center justify-between">
-        <div className="w-1/5" />
+        <div className="w-1/4" />
 
-        <h1 className="w-1/ flex-1 text-center text-lg font-medium">
+        <h1 className="w-1/4 flex-1 text-center text-lg font-medium">
           Augusto Galego&apos;s blog
         </h1>
 
-        <div className="w-1/5" />
-        <div className="flex w-1/5 items-center justify-center space-x-5">
+        
+        <div className="flex w-1/4 items-center justify-center space-x-5">
           <Link
             href="https://twitter.com/RealGalego"
             className="text-xl"
@@ -36,7 +36,7 @@ const Navbar = () => {
             />
           </Link>
         </div>
-        <div className="w-1/5" />
+        <div className="w-1/4" />
       </nav>
     </div>
   );
