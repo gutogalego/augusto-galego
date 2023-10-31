@@ -4,12 +4,24 @@ import path from "path";
 import fs from "fs";
 import { Navbar } from "../../components/blog/Navbar";
 import Link from "next/link";
+import { useState } from "react";
+import AppleSwitch from "~/components/blog/AppleSwitch";
 
 interface Props {
-  mdxSource: MDXRemoteSerializeResult;
+  enMdxSource: MDXRemoteSerializeResult;
+  ptMdxSource: MDXRemoteSerializeResult;
 }
 
-export default function BlogPost({ mdxSource }: Props) {
+export default function BlogPost({ enMdxSource, ptMdxSource }: Props) {
+  const [currentMdxSource, setCurrentMdxSource] =
+    useState<MDXRemoteSerializeResult>(enMdxSource);
+  const [isPortuguese, setIsPortuguese] = useState(false);
+
+  const toggleLanguage = () => {
+    setIsPortuguese(!isPortuguese);
+    setCurrentMdxSource(isPortuguese ? enMdxSource : ptMdxSource);
+  };
+
   return (
     <main className="min-h-screen bg-neutral-100">
       <Link
@@ -20,8 +32,15 @@ export default function BlogPost({ mdxSource }: Props) {
         {"<-"}
       </Link>
       <Navbar />
+      <div className="mb-4 flex justify-center">
+        <div className="mb-4 flex items-center justify-center text-2xl">
+          🇺🇸
+          <AppleSwitch isOn={isPortuguese} handleToggle={toggleLanguage} />
+          🇧🇷
+        </div>
+      </div>
       <article className="prose mx-auto w-1/2 max-w-full items-center space-x-4 bg-neutral-100 py-10 lg:prose-xl">
-        <MDXRemote {...mdxSource} />
+        <MDXRemote {...currentMdxSource} />
       </article>
     </main>
   );
@@ -46,16 +65,26 @@ export async function getStaticProps({
 }: {
   params: { "post-url": string };
 }) {
-  const postsDirectory = path.join(
+  const baseDirectory = path.join(
     process.cwd(),
     "data",
     "posts",
-    params["post-url"],
-    "en.mdx"
-  ); // assuming 'en.mdx' is the English MDX file
-  const mdxText = fs.readFileSync(postsDirectory, "utf8");
+    params["post-url"]
+  );
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  const mdxSource = (await serialize(mdxText)) as MDXRemoteSerializeResult;
-  return { props: { mdxSource } };
+  const enMdxPath = path.join(baseDirectory, "en.mdx");
+  const ptMdxPath = path.join(baseDirectory, "pt.mdx");
+
+  const enMdxText = fs.readFileSync(enMdxPath, "utf8");
+  const ptMdxText = fs.readFileSync(ptMdxPath, "utf8");
+
+  const enMdxSource = await serialize(enMdxText);
+  const ptMdxSource = await serialize(ptMdxText);
+
+  return {
+    props: {
+      enMdxSource,
+      ptMdxSource,
+    },
+  };
 }
