@@ -1,5 +1,5 @@
 import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote";
 import path from "path";
 import fs from "fs";
 import { Navbar } from "../../components/blog/Navbar";
