@@ -15,7 +15,10 @@ const Navbar = () => {
 
         <div className="flex w-1/4 items-center justify-center space-x-5">
           <Link
+
             href="https://twitter.com/RealGalego"
+
+            
             className="text-xl"
             target="_blank"
           >
