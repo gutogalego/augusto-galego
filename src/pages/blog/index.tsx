@@ -9,7 +9,7 @@ const Navbar = () => {
       <nav className="flex items-center justify-between">
         <div className="w-1/4" />
 
-        <h1 className="w-1/4 flex-1 text-center text-lg font-medium">
+        <h1 className="w-1/4 text-center text-lg font-medium">
           Augusto Galego&apos;s blog
         </h1>
 
@@ -56,12 +56,18 @@ export default function Home(props: props) {
       </Head>
       <Navbar />
 
-      <main className="flex min-h-screen w-screen flex-col items-center  space-y-6 bg-neutral-100 py-20">
-        {posts.map((post) => (
-          <Link key={post.url} href={`/blog/${post.url}`}>
-            {post.title}
-          </Link>
-        ))}
+      <main className="flex min-h-screen w-screen flex-col items-center bg-neutral-100 py-20">
+        <div className="flex w-full flex-col items-center">
+          {posts.map((post) => (
+            <div key={post.url} className="mb-4 flex w-full justify-center">
+              <div className="h-20 w-1/3" />
+              <Link className="text-center0 w-1/3" href={`/blog/${post.url}`}>
+                {post.title}
+              </Link>
+              <div className="w-1/3" />
+            </div>
+          ))}
+        </div>
       </main>
     </>
   );
