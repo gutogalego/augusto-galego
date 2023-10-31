@@ -2,6 +2,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import path from "path";
 import fs from "fs";
+import { Navbar } from "../../components/blog/Navbar";
+import Link from "next/link";
 
 interface Props {
   mdxSource: MDXRemoteSerializeResult;
@@ -9,9 +11,19 @@ interface Props {
 
 export default function BlogPost({ mdxSource }: Props) {
   return (
-    <article className="prose max-w-full lg:prose-xl">
-      <MDXRemote {...mdxSource} />
-    </article>
+    <main className="min-h-screen bg-neutral-100">
+      <Link
+        href="/blog"
+        rel="nofollow"
+        className="absolute left-10 top-10 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
+      >
+        {"<-"}
+      </Link>
+      <Navbar />
+      <article className="prose mx-auto w-1/2 max-w-full items-center space-x-4 bg-neutral-100 py-10 lg:prose-xl">
+        <MDXRemote {...mdxSource} />
+      </article>
+    </main>
   );
 }
 

@@ -1,36 +1,36 @@
-import { Metadata } from "next"
-import Link from "next/link"
-import { ArrowRightIcon } from "@radix-ui/react-icons"
+import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
-import { cn } from "@/lib/utils"
-import { UINav } from "./ui-nav"
+import { cn } from "@/lib/utils";
+import { UINav } from "./ui-nav";
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from "./page-header"
-import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+} from "./page-header";
+import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "Examples",
   description: "Check out some examples app built using the components.",
-}
+};
 
 interface ExamplesLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function UILayout({ children }: ExamplesLayoutProps) {
   return (
     <>
-        <Link
-      href="/"
-      rel="nofollow"
-      className="absolute left-10 top-10 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
-    >
-      {"<-"}
-    </Link>
+      <Link
+        href="/"
+        rel="nofollow"
+        className="absolute left-10 top-10 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
+      >
+        {"<-"}
+      </Link>
       <div className="container relative">
         <PageHeader className="page-header pb-8">
           <Link
@@ -40,9 +40,7 @@ export default function UILayout({ children }: ExamplesLayoutProps) {
           >
             🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
             <span className="sm:hidden">Style, a new CLI and more.</span>
-            <span className="hidden sm:inline">
-              Look at the code on github
-            </span>
+            <span className="hidden sm:inline">Look at the code on github</span>
             <ArrowRightIcon className="ml-1 h-4 w-4" />
           </Link>
           <PageHeaderHeading className="hidden md:block">
@@ -79,5 +77,5 @@ export default function UILayout({ children }: ExamplesLayoutProps) {
         </section>
       </div>
     </>
-  )
+  );
 }
