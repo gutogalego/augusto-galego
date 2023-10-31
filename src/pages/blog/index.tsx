@@ -13,7 +13,6 @@ const Navbar = () => {
           Augusto Galego&apos;s blog
         </h1>
 
-        
         <div className="flex w-1/4 items-center justify-center space-x-5">
           <Link
             href="https://twitter.com/RealGalego"
