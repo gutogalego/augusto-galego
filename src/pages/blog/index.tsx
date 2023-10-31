@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import { posts } from "~/../data/posts";
+import { PostMetadata, getPosts } from "~/utils/getPosts";
 
 const Navbar = () => {
   return (
@@ -41,7 +41,12 @@ const Navbar = () => {
   );
 };
 
-export default function Home() {
+type props = {
+  posts: PostMetadata[];
+};
+
+export default function Home(props: props) {
+  const posts = props.posts;
   return (
     <>
       <Head>
@@ -53,7 +58,7 @@ export default function Home() {
 
       <main className="flex min-h-screen w-screen flex-col items-center  space-y-6 bg-neutral-100 py-20">
         {posts.map((post) => (
-          <Link key={post.url} href={`/blog${post.url}`}>
+          <Link key={post.url} href={`/blog/${post.url}`}>
             {post.title}
           </Link>
         ))}
@@ -61,3 +66,13 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps = () => {
+  const posts = getPosts();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};

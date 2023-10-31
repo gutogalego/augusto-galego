@@ -1,23 +1,49 @@
-import { useRouter } from "next/router";
-import { posts } from "~/../data/posts";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import path from "path";
+import fs from "fs";
 
-const BlogPost = () => {
-  const router = useRouter();
-  const rawPostUrl = router.query["post-url"];
-  const postUrl = Array.isArray(rawPostUrl) ? rawPostUrl[0] : rawPostUrl;
+interface Props {
+  mdxSource: MDXRemoteSerializeResult;
+}
 
-  // Find the post that matches the URL
-  const post = postUrl ? posts.find((p) => p.url === `/${postUrl}`) : null;
-  console.log(postUrl);
-
-  if (!post) return <div>Post not found</div>;
-
+export default function BlogPost({ mdxSource }: Props) {
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
-    </div>
+    <article className="prose max-w-full lg:prose-xl">
+      <MDXRemote {...mdxSource} />
+    </article>
   );
-};
+}
 
-export default BlogPost;
+export function getStaticPaths() {
+  const postsDirectory = path.join(process.cwd(), "data", "posts");
+  const postFolders = fs.readdirSync(postsDirectory);
+
+  const paths = postFolders.map((folderName) => ({
+    params: { "post-url": folderName },
+  }));
+
+  return {
+    paths,
+    fallback: false, // Set this to "blocking" if you'd like to use ISR
+  };
+}
+
+export async function getStaticProps({
+  params,
+}: {
+  params: { "post-url": string };
+}) {
+  const postsDirectory = path.join(
+    process.cwd(),
+    "data",
+    "posts",
+    params["post-url"],
+    "en.mdx"
+  ); // assuming 'en.mdx' is the English MDX file
+  const mdxText = fs.readFileSync(postsDirectory, "utf8");
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  const mdxSource = (await serialize(mdxText)) as MDXRemoteSerializeResult;
+  return { props: { mdxSource } };
+}

@@ -3,10 +3,16 @@
  * for Docker builds.
  */
 await import("./src/env.mjs");
+import withMDX from '@next/mdx';
+
+const mdx = withMDX({
+  extension: /\.mdx?$/
+});
 
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 
   /**
    * If you are using `appDir` then you must comment the below `i18n` config out.
@@ -26,5 +32,4 @@ const config = {
     ],
   },
 };
-
-export default config;
+export default mdx(config)
