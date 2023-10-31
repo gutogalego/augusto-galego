@@ -59,12 +59,14 @@ export default function Home(props: props) {
       <main className="flex min-h-screen w-screen flex-col items-center bg-neutral-100 py-20">
         <div className="flex w-full flex-col items-center">
           {posts.map((post) => (
-            <div key={post.url} className="mb-4 flex w-full justify-center">
-              <div className="h-20 w-1/3" />
-              <Link className="text-center0 w-1/3" href={`/blog/${post.url}`}>
+            <div
+              key={post.url}
+              className="mx-auto my-4 flex w-1/3 items-center space-x-4"
+            >
+              <span className="text-sm text-gray-500">{post.date}</span>
+              <Link className="block" href={`/blog/${post.url}`}>
                 {post.title}
               </Link>
-              <div className="w-1/3" />
             </div>
           ))}
         </div>
