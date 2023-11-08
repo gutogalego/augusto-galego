@@ -1,39 +1,65 @@
-## Why does a DNS exist?
+## What and why?
 
-Think of a phonebook. You can't possible be expected to memorize every number you intend on calling. Similarly, every server has it's own "number", the IP address. For example **192.133.76.0**. But again, we won't really remember this number. Remembering "Twitter.com" is easier.
+In a a typical data center, we'll have to handle millions of requests a second. For which we'll need thousands of servers.
 
-The DNS is the internet's phonebook.
+A load balancer (or multiple load balancers) are the tool for the job. They purpose is to properly divide the load. Generally speaking, once your application starts getting 100s or 1000s requests a second, you'll need load balancing.
 
-## What exactly is "The DNS"?
-
-DNS stands for Domain name system. And it is a hierarchical infrastructure composed of multiple name servers. There are four types of servers in the hierarchy:
-
-1. **DNS Resolver:** The resolver is what initiates the query, and forwards the request to other DNS Name servers. Sometimes they can also cache.  
-2. **Root-level name servers:** Root name servers maintain name server based on top level domains (TLDs) such as .com .io etc. They return a list of servers that hold the IP addesses of the .io domain for example.
-3. **TLD name servers**: they hold the IP addresses of authoritative servers of the organization.
-4. **Authoritative name servers:** They provide the IP Addresses of the application servers.
+When we're talking about big applications, load balancers are key to provide scalability, availability, and performance.
 
 
-## Two types of queries:
-
-There are Iterative and Recursive queries to the DNS. Iterative is usually preferred to reduce query load
-
-1. **Iterative**: The local server requests for the root, TLD, and the authoritative servers for they IP address
-2. **Recursive**: The end user requests the local server. The local server forwards the request to other name servers.
+Usually they are placed between the user and the server. But think of your typical web app, there's a server delivering the JS frontend, and this server is probably interacting with another server via an API. Therefore, we could have a LB between server. Or even, between servers and databases.
 
 
-## Caching
+## Other functions of LBs:
 
-Caching is used in the browser, the operating systems, the local name server, and on the ISP. They are used to make the user experience faster, and reduce load.![[Screenshot 2023-11-06 at 11.12.20 PM.png]]
+- **Health Checking:** using a heartbeat protocol, the LB will stop forwarding requests to non responsive servers.
+- **TLS termination:** they can do this to alleviate the burden on the end server.
+- **Predictive Analysis**: predicting spikes in traffic can be very useful.
+- **Security:** A good LB can mitigate DDOS
+
+## Global load balancing
+
+Load balancing can be done in a global scale. DNSs, for example, will try to distribute traffic evenly among multiple datacenters. 
+
+We can also have GSLB (Global server load balancing) as a service, and have automatic zonal failover. For exemple, if aws-east-1 goes down, we could have our traffic redirected to a different zone. 
+
+## Local load balancing
+
+### Algorithms:
+
+We have a couple of algorithms for LB, we'll go quickly through them:
+
+- **Round Robin scheduling:** The most simple and naive. If there are three servers, each request is routed one by one in a circular fashion. 123 123...
+- **Weighted Round Robin:** If one server is double the capacity of the others, we might want to route more requests to it. This is what this algorithm does. Distributes based on weight. If server 2 can handle twice as much as server 1, it'd go: 221 221...
+- **Least Connections:** Maybe load is uneven between requests. This algorithm will route to the server with the least open connections.
+- **Least response time:** LB can check for the response time every once in a while, and route to the fastest responder.
+- **IP hash:** some applications can allow different users to perform different actions. We could hash their ID's, and redirect to the servers accordingly
+- **URL hash:** sometimes each URL is associated with a specific server. We can route based on that.
+
+### Dinamic VS Static:
+
+- **Static:** doesn't consider the state of the server. They are more simple algorithms
+- **Dinamic:** consider current state of the server, communicates with it, which adds overhead and complexity.
+
+### Stateful vs stateless:
+
+Stateful maintain a state of the sessions established between clients and servers. While stateless don't.
+
+
+### Layer 4 and layer 7:
+
+This refers to the OSI layers. They can balance the load on the network or the application layer
+
+- **Layer 4 load balancers:** The basis of the balancing are the TCP and UDP protocols. They maintain the connection between the client and the server.
+- **Layer 7 load balancers:** These are on the application layer protocols. They do TLS termination, rate limit, HTTP routing, header rewriting, etc.
 
 
 
-## Distribution:
-
-The DNS hierarchy ex extremely distributed. There are 13 logical root name server on the world, and they are managed by 12 different organizations.
+### Tiers:
 
 
-## Scalability
-
-There are about 1000 replications of the 13 servers. Those offer additional capacity, and reduced latency.
+- **Tier 0**: DNS, if we consider it. 
+- **Tier 1:** ECMP (equal cost multipath).
+- **Tier 2:** Layer 4 LBs
+- **Tier 3:** Layer 7 LBs
 

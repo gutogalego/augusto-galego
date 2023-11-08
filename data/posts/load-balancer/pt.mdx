@@ -1,34 +1,62 @@
-## Por que existe um DNS?
+## O quê e por quê?
 
-Pense em uma lista telefônica. Não se pode esperar que você memorize todos os números que pretende ligar. Da mesma forma, cada servidor tem seu próprio "número", o endereço IP. Por exemplo, **192.133.76.0**. Mas, novamente, não vamos realmente nos lembrar desse número. Lembrar de "Twitter.com" é mais fácil.
+Em um data center típico, teremos que lidar com milhões de solicitações por segundo. Para isso, precisaremos de milhares de servidores.
 
-O DNS é a lista telefônica da internet.
+Os balanceadores de carga (ou vários balanceadores de carga) são a ferramenta para o trabalho. Seu propósito é dividir adequadamente a carga. Falando de modo geral, uma vez que sua aplicação começa a receber centenas ou milhares de solicitações por segundo, você precisará de balanceamento de carga.
 
-## O que exatamente é "O DNS"?
-
-DNS significa Sistema de Nomes de Domínios (Domain Name System). E é uma infraestrutura hierárquica composta por vários servidores de nomes. Existem quatro tipos de servidores na hierarquia:
-
-1. **Resolver DNS:** O resolvedor é o que inicia a consulta e encaminha a solicitação para outros servidores de nomes DNS. Às vezes eles também podem armazenar em cache.
-2. **Servidores de nomes de nível raiz:** Servidores de nome de nível raiz mantêm o servidor de nomes com base em domínios de topo (TLDs) como .com, .io etc. Eles retornam uma lista de servidores que contêm os endereços IP do domínio .io, por exemplo.
-3. **Servidores de nomes TLD:** eles mantêm os endereços IP dos servidores autoritativos da organização.
-4. **Servidores de nomes autoritativos:** Eles fornecem os Endereços IP dos servidores de aplicação.
+Quando estamos falando de grandes aplicações, os balanceadores de carga são essenciais para fornecer escalabilidade, disponibilidade e desempenho.
 
 
-## Dois tipos de consultas:
+Geralmente, eles são colocados entre o usuário e o servidor. Mas pense na sua aplicação web típica, há um servidor entregando o frontend em JS, e este servidor provavelmente está interagindo com outro servidor via uma API. Portanto, poderíamos ter um balanceador de carga entre servidores. Ou até mesmo, entre servidores e bancos de dados.
 
-Existem consultas Iterativas e Recursivas ao DNS. A Iterativa é geralmente preferida para reduzir a carga de consulta.
 
-1. **Iterativa**: O servidor local solicita a raiz, TLD e os servidores autoritativos pelos endereços IP.
-2. **Recursiva**: O usuário final solicita ao servidor local. O servidor local encaminha a solicitação para outros servidores de nomes.
+## Outras funções dos balanceadores de carga:
 
-## Cache
+- **Verificação de Saúde:** usando um protocolo de heartbeat, o balanceador de carga parará de encaminhar solicitações para servidores não responsivos.
+- **Término de TLS:** eles podem fazer isso para aliviar a carga no servidor final.
+- **Análise Preditiva:** prever picos de tráfego pode ser muito útil.
+- **Segurança:** Um bom balanceador de carga pode mitigar ataques DDOS.
 
-O cache é utilizado no navegador, nos sistemas operacionais, no servidor de nomes local e no provedor de serviços de internet (ISP). Eles são usados para tornar a experiência do usuário mais rápida e reduzir a carga.![[Screenshot 2023-11-06 at 11.12.20 PM.png]]
+## Balanceamento de carga global
 
-## Distribuição:
+O balanceamento de carga pode ser feito em escala global. DNSs, por exemplo, tentarão distribuir o tráfego de maneira uniforme entre vários datacenters.
 
-A hierarquia do DNS é extremamente distribuída. Existem 13 servidores de nomes raiz lógicos no mundo, e eles são gerenciados por 12 organizações diferentes.
+Também podemos ter balanceamento de carga de servidores globais (GSLB - Global Server Load Balancing) como um serviço e ter failover zonal automático. Por exemplo, se o aws-east-1 cair, poderíamos ter nosso tráfego redirecionado para uma zona diferente.
 
-## Escalabilidade
+## Balanceamento de carga local
 
-Existem cerca de 1000 réplicas dos 13 servidores. Elas oferecem capacidade adicional e reduzem a latência.
+### Algoritmos:
+
+Temos alguns algoritmos para balanceamento de carga, vamos passar rapidamente por eles:
+
+- **Round Robin:** O mais simples e ingênuo. Se houver três servidores, cada solicitação é roteada um a um de forma circular. 123 123...
+- **Round Robin Ponderado:** Se um servidor tem o dobro da capacidade dos outros, podemos querer encaminhar mais solicitações para ele. É o que este algoritmo faz. Distribui com base no peso. Se o servidor 2 pode lidar com o dobro do servidor 1, seria algo como: 221 221...
+- **Menor Número de Conexões:** Talvez a carga seja desigual entre as solicitações. Este algoritmo encaminhará para o servidor com o menor número de conexões abertas.
+- **Menor Tempo de Resposta:** O balanceador de carga pode verificar o tempo de resposta de vez em quando e encaminhar para o respondedor mais rápido.
+- **Hash de IP:** algumas aplicações podem permitir que usuários diferentes realizem ações diferentes. Poderíamos fazer hash de seus IDs e redirecionar para os servidores de acordo.
+- **Hash de URL:** às vezes, cada URL está associada a um servidor específico. Podemos rotear com base nisso.
+
+### Estático VS Dinâmico:
+
+- **Estático:** não considera o estado do servidor. São algoritmos mais simples.
+- **Dinâmico:** considera o estado atual do servidor, se comunica com ele, o que adiciona sobrecarga e complexidade.
+
+### Stateful vs Stateless:
+
+Stateful mantém um estado das sessões estabelecidas entre clientes e servidores. Enquanto stateless não mantém.
+
+### Camada 4 e camada 7:
+
+Isso se refere às camadas do modelo OSI. Eles podem balancear a carga na camada de rede ou na camada de aplicação.
+
+- **Balanceadores de carga da camada 4:** A base do balanceamento são os protocolos TCP e UDP. Eles mantêm a conexão entre o cliente e o servidor.
+- **Balanceadores de carga da camada 7:** Estão na camada de protocolos de aplicação. Eles fazem término de TLS, limitação de taxa, roteamento HTTP, reescrita de cabeçalhos etc.
+
+### Níveis:
+
+- **Nível 0**: DNS, se o considerarmos.
+- **Nível 1:** ECMP (Equal Cost Multip
+
+ath).
+- **Nível 2:** Balanceadores de carga da camada 4.
+- **Nível 3:** Balanceadores de carga da camada 7.
