@@ -1,0 +1,150 @@
+
+Big O notation is a mathematical concept used in computer science. It can describe time complexity, and space complexity.
+
+## Time complexity
+
+This represents how the runtime of an algorithm increases with the size of the input, denoted as "n". Big O notation provides an upper limit on how much the algorithm takes to run, usually considering the worst case scenario.
+
+## Common Big O Notations "best to worst":
+
+### 0(1) - Constant Time:
+Execution time is the same regardless of the size of the input. Example: Getting the first element in an array:
+```
+def get_first_element(arr): return arr[0]
+```
+
+### O(log n) - Logarithmic time:
+Execution time increases logarithmically with the input size. A common example is a binary search. The binary search cuts the size of the problem in half with each step:
+
+```
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```
+
+### O(n) - Linear Time:
+Execution time is linearly proportional to the input size. An algorithm that evaluates every element of an array once is O(n). Below we have and example of finding the max value of an array:
+
+```
+def find_max(arr):
+    max_val = arr[0]
+    for num in arr:
+        if num > max_val:
+            max_val = num
+    return max_val
+```
+
+### O(n log n) - Linearithmic time:
+This is common in algorithms that divide a problem into smaller parts, and then processes these parts. An example is the MergeSort algorithm. Merge sort is a divide and conquer algorithm with O(n log n) complexity:
+
+```
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        merge_sort(L)
+        merge_sort(R)
+
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+```
+
+### O (n^2) - Quadratic Time:
+
+The execution time is proportional to the square of the input size. Bubble sort is a good example. It has two nested loops, each going through the array:
+
+```
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+```
+
+### O(2^n) - Exponential Time
+
+The execution time doubles with every additional input element. An example is a recursive calculation of Fibonacci numbers
+```
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+```
+
+### O(n!) - Factorial Time
+Execution time grows factorially with the input size. An example would be an algorithm that generates all permutations of a dataset.
+
+```
+def permute(arr, start, end):
+    if start == end:
+        print(arr)
+    else:
+        for i in range(start, end + 1):
+            arr[start], arr[i] = arr[i], arr[start]
+            permute(arr, start + 1, end)
+            arr[start], arr[i] = arr[i], arr[start]  # backtrack
+```
+
+
+## Simplification
+In Big O, we generally focus on the dominant term (the term that grows fastest) as the others become less significant for larger inputs
+
+
+## Time vs Space complexity:
+
+Time complexity refers to the time it takes, execution time. Space complexity refers to the amount of memory that has to be allocated.
+
+```
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+```
+
+- **Time Complexity:** O(n) - Goes through all elements in the array once
+- **Space Complexity:** O(1) - Constant space. It uses a fixed amount of memory
+
+
+
+```
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+```
+
+- **Time Complexity:** O(n) - Linear time, function calls itself n recursive times
+- **Space Complexity:** O(n) - Linear space. Each recursive call adds a new layer to the call stack.
+

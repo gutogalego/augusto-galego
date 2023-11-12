@@ -1,0 +1,147 @@
+## O que é e por quê?
+
+Notação Big O é um conceito matemático usado em ciência da computação. Pode descrever complexidade de tempo e complexidade de espaço.
+
+## Complexidade de Tempo
+
+Isso representa como o tempo de execução de um algoritmo aumenta com o tamanho da entrada, denotado como "n". A notação Big O fornece um limite superior sobre quanto tempo o algoritmo leva para ser executado, geralmente considerando o pior cenário.
+
+## Notações Comuns de Big O "do melhor para o pior":
+
+### O(1) - Tempo Constante:
+O tempo de execução é o mesmo, independentemente do tamanho da entrada. Exemplo: Obtendo o primeiro elemento de um array:
+```
+def get_first_element(arr): return arr[0]
+```
+
+### O(log n) - Tempo Logarítmico:
+O tempo de execução aumenta logaritmicamente com o tamanho da entrada. Um exemplo comum é a busca binária. A busca binária reduz o tamanho do problema pela metade a cada etapa:
+
+```
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+```
+
+### O(n) - Tempo Linear:
+O tempo de execução é proporcionalmente linear ao tamanho da entrada. Um algoritmo que avalia cada elemento de um array uma vez é O(n). Abaixo temos um exemplo de encontrar o valor máximo de um array:
+
+```
+def find_max(arr):
+    max_val = arr[0]
+    for num in arr:
+        if num > max_val:
+            max_val = num
+    return max_val
+```
+
+### O(n log n) - Tempo Linearítmico:
+Comum em algoritmos que dividem um problema em partes menores e depois processam essas partes. Um exemplo é o algoritmo MergeSort. Merge sort é um algoritmo de dividir para conquistar com complexidade O(n log n):
+
+```
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
+
+        merge_sort(L)
+        merge_sort(R)
+
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+```
+
+### O(n^2) - Tempo Quadrático:
+
+O tempo de execução é proporcional ao quadrado do tamanho da entrada. Bubble sort é um bom exemplo. Ele tem dois loops aninhados, cada um passando pelo array:
+
+```
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+```
+
+### O(2^n) - Tempo Exponencial
+
+O tempo de execução dobra com cada elemento adicional de entrada. Um exemplo é o cálculo recursivo dos números de Fibonacci:
+```
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+```
+
+### O(n!) - Tempo Fatorial
+O tempo de execução cresce fatorialmente com o tamanho da entrada. Um exemplo seria um algoritmo que gera todas as permutações de um conjunto de dados.
+
+```
+def permute(arr, start, end):
+    if start == end:
+        print(arr)
+    else:
+        for i in range(start, end + 1):
+            arr[start], arr[i] = arr[i], arr[start]
+            permute(arr, start + 1, end)
+            arr[start], arr[i] = arr[i], arr[start]  # backtrack
+```
+
+## Simplificação
+No Big O, geralmente focamos no termo dominante (o termo que cresce mais rápido), pois os outros se tornam menos
+
+ significativos para entradas maiores.
+
+## Complexidade de Tempo vs Espaço:
+
+Complexidade de tempo refere-se ao tempo que leva, tempo de execução. Complexidade de espaço refere-se à quantidade de memória que precisa ser alocada.
+
+```
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
+```
+
+- **Complexidade de Tempo:** O(n) - Passa por todos os elementos do array uma vez.
+- **Complexidade de Espaço:** O(1) - Espaço constante. Usa uma quantidade fixa de memória.
+
+```
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+```
+
+- **Complexidade de Tempo:** O(n) - Tempo linear, a função se chama n vezes de forma recursiva.
+- **Complexidade de Espaço:** O(n) - Espaço linear. Cada chamada recursiva adiciona uma nova camada à pilha de chamadas.
