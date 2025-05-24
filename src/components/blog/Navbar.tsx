@@ -19,19 +19,6 @@ export const Navbar = () => {
           >
             𝕏
           </Link>
-          <Link
-            href="https://github.com/gutogalego"
-            className=""
-            target="_blank"
-          >
-            <Image
-              src={"/github-dark.svg"}
-              alt="Github"
-              className="h-5 w-5"
-              width={0}
-              height={0}
-            />
-          </Link>
         </div>
         <div className="w-1/4" />
       </nav>
