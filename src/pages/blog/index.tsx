@@ -47,6 +47,8 @@ export default function Home(props: props) {
 export const getStaticProps = () => {
   const posts = getPosts();
 
+  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   return {
     props: {
       posts,
