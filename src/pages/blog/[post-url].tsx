@@ -39,7 +39,7 @@ export default function BlogPost({ enMdxSource, ptMdxSource }: Props) {
           🇧🇷
         </div>
       </div>
-      <article className="prose mx-auto w-1/2 max-w-full items-center space-x-4 bg-neutral-100 py-10 lg:prose-xl">
+      <article className="prose mx-auto w-full bg-neutral-100 px-4 py-10 lg:prose-xl sm:w-5/6 md:w-2/3 lg:w-1/2">
         <MDXRemote {...currentMdxSource} />
       </article>
     </main>
