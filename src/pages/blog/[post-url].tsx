@@ -14,12 +14,12 @@ interface Props {
 
 export default function BlogPost({ enMdxSource, ptMdxSource }: Props) {
   const [currentMdxSource, setCurrentMdxSource] =
-    useState<MDXRemoteSerializeResult>(enMdxSource);
-  const [isPortuguese, setIsPortuguese] = useState(false);
+    useState<MDXRemoteSerializeResult>(ptMdxSource);
+  const [isPortuguese, setIsPortuguese] = useState(true);
 
   const toggleLanguage = () => {
     setIsPortuguese(!isPortuguese);
-    setCurrentMdxSource(isPortuguese ? enMdxSource : ptMdxSource);
+    setCurrentMdxSource(!isPortuguese ? enMdxSource : ptMdxSource);
   };
 
   return (
