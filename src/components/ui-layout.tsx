@@ -1,24 +1,24 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon } from '@radix-ui/react-icons'
+import type { Metadata } from 'next'
+import Link from 'next/link'
 
-import { cn } from "@/lib/utils";
-import { UINav } from "./ui-nav";
+import { buttonVariants } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
+import { cn } from '@/lib/utils'
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from "./page-header";
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+} from './page-header'
+import { UINav } from './ui-nav'
 
 export const metadata: Metadata = {
-  title: "Examples",
-  description: "Check out some examples app built using the components.",
-};
+  title: 'Examples',
+  description: 'Check out some examples app built using the components.',
+}
 
 interface ExamplesLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function UILayout({ children }: ExamplesLayoutProps) {
@@ -29,7 +29,7 @@ export default function UILayout({ children }: ExamplesLayoutProps) {
         rel="nofollow"
         className="absolute left-10 top-10 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
       >
-        {"<-"}
+        {'<-'}
       </Link>
       <div className="container relative">
         <PageHeader className="page-header pb-8">
@@ -44,15 +44,15 @@ export default function UILayout({ children }: ExamplesLayoutProps) {
           <section className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
             <Link
               href="/docs"
-              className={cn(buttonVariants(), "rounded-[6px]")}
+              className={cn(buttonVariants(), 'rounded-[6px]')}
             >
               Get Started
             </Link>
             <Link
               href="/components"
               className={cn(
-                buttonVariants({ variant: "outline" }),
-                "rounded-[6px]"
+                buttonVariants({ variant: 'outline' }),
+                'rounded-[6px]'
               )}
             >
               Components
@@ -67,5 +67,5 @@ export default function UILayout({ children }: ExamplesLayoutProps) {
         </section>
       </div>
     </>
-  );
+  )
 }

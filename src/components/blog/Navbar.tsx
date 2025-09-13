@@ -1,5 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
 
 export const Navbar = () => {
   return (
@@ -23,5 +23,5 @@ export const Navbar = () => {
         <div className="w-1/4" />
       </nav>
     </div>
-  );
-};
+  )
+}

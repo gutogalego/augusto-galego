@@ -3,16 +3,16 @@ import {
   CircleIcon,
   PlusIcon,
   StarIcon,
-} from "@radix-ui/react-icons"
+} from '@radix-ui/react-icons'
 
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from '@/components/ui/card'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -21,8 +21,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Separator } from "@/components/ui/separator"
+} from '@/components/ui/dropdown-menu'
+import { Separator } from '@/components/ui/separator'
 
 export function DemoGithub() {
   return (
@@ -42,7 +42,7 @@ export function DemoGithub() {
           </Button>
           <Separator orientation="vertical" className="h-[20px]" />
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger asChild={true}>
               <Button variant="secondary" className="px-2 shadow-none">
                 <ChevronDownIcon className="h-4 w-4 text-secondary-foreground" />
               </Button>
@@ -51,11 +51,11 @@ export function DemoGithub() {
               align="end"
               alignOffset={-5}
               className="w-[200px]"
-              forceMount
+              forceMount={true}
             >
               <DropdownMenuLabel>Suggested Lists</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuCheckboxItem checked>
+              <DropdownMenuCheckboxItem checked={true}>
                 Future Ideas
               </DropdownMenuCheckboxItem>
               <DropdownMenuCheckboxItem>My Stack</DropdownMenuCheckboxItem>

@@ -1,4 +1,4 @@
-import { BellIcon, EyeNoneIcon, PersonIcon } from "@radix-ui/react-icons"
+import { BellIcon, EyeNoneIcon, PersonIcon } from '@radix-ui/react-icons'
 
 import {
   Card,
@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from '@/components/ui/card'
 
 export function DemoNotifications() {
   return (

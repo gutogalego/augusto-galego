@@ -1,14 +1,14 @@
-import Head from "next/head";
-import Link from "next/link";
-import { type PostMetadata, getPosts } from "~/utils/getPosts";
-import { Navbar } from "../../components/blog/Navbar";
+import Head from 'next/head'
+import Link from 'next/link'
+import { type PostMetadata, getPosts } from '~/utils/getPosts'
+import { Navbar } from '../../components/blog/Navbar'
 
-type props = {
-  posts: PostMetadata[];
-};
+type Props = {
+  posts: PostMetadata[]
+}
 
-export default function Home(props: props) {
-  const posts = props.posts;
+export default function Home(props: Props) {
+  const posts = props.posts
   return (
     <>
       <Head>
@@ -22,7 +22,7 @@ export default function Home(props: props) {
         rel="nofollow"
         className="absolute left-10 top-10 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
       >
-        {"<-"}
+        {'<-'}
       </Link>
 
       <main className="flex min-h-screen w-screen flex-col items-center bg-neutral-100 py-10 md:py-16 lg:py-20">
@@ -46,17 +46,17 @@ export default function Home(props: props) {
         </div>
       </main>
     </>
-  );
+  )
 }
 
 export const getStaticProps = () => {
-  const posts = getPosts();
+  const posts = getPosts()
 
-  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return {
     props: {
       posts,
     },
-  };
-};
+  }
+}

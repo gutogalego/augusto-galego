@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Link from "next/link";
-import { Navbar } from "~/components/Navigation";
+import Head from 'next/head'
+import Link from 'next/link'
+import { Navbar } from '~/components/Navigation'
 
 export default function Home() {
   return (
@@ -24,5 +24,5 @@ export default function Home() {
         </Link>
       </main>
     </>
-  );
+  )
 }
