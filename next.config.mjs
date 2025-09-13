@@ -3,26 +3,10 @@
  * for Docker builds.
  */
 await import('./src/env.mjs')
-import withMDX from '@next/mdx'
-
-const mdx = withMDX({
-  extension: /\.mdx?$/,
-})
 
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-
-  /**
-   * If you are using `appDir` then you must comment the below `i18n` config out.
-   *
-   * @see https://github.com/vercel/next.js/issues/41980
-   */
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
   images: {
     remotePatterns: [
       {
@@ -32,4 +16,4 @@ const config = {
     ],
   },
 }
-export default mdx(config)
+export default config

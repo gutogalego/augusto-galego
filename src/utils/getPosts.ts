@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 // types.ts
 export interface PostMetadata {
@@ -7,6 +7,10 @@ export interface PostMetadata {
   description: string
   date: string
   url?: string
+  category?: string
+  readTime?: string
+  tags?: string[]
+  featured?: boolean
 }
 
 const postsDirectory = path.join(process.cwd(), 'data', 'posts')
