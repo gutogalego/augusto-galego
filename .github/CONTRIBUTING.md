@@ -32,6 +32,7 @@ This project and everyone participating in it is governed by our [Code of Conduc
 
 - Node.js (v20 or higher)
 - pnpm (recommended) or npm
+- Biome (for linting and formatting)
 
 ### Installation
 
@@ -52,7 +53,9 @@ pnpm dev
 - `pnpm dev` - Start development server
 - `pnpm build` - Build for production
 - `pnpm start` - Start production server
-- `pnpm lint` - Run ESLint
+- `pnpm lint` - Run Biome linter
+- `pnpm format` - Run Biome formatter
+- `pnpm check` - Run Biome linter and formatter
 - `pnpm type-check` - Run TypeScript type checking
 
 ## Making Changes
@@ -70,24 +73,30 @@ pnpm dev
 - Add comments for complex logic
 - Update documentation when necessary
 - Write tests for new features and bug fixes
+- Use Biome for consistent code formatting and linting
+- Ensure accessibility standards are met for all UI components
 
 ## Pull Request Process
 
 1. **Create a descriptive branch name**
+
    - `feature/add-new-component`
    - `fix/resolve-navigation-bug`
    - `docs/update-readme`
 
 2. **Make your changes**
+
    - Follow the coding standards
    - Test your changes thoroughly
    - Update documentation if needed
 
 3. **Commit your changes**
+
    - Use conventional commit messages
    - Keep commits focused and atomic
 
 4. **Push and create PR**
+
    - Push to your fork
    - Create a pull request with a clear title and description
    - Fill out the PR template completely
