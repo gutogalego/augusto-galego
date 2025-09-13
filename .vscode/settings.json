@@ -1,0 +1,41 @@
+{
+  "search.exclude": {
+    "package-lock.json": true,
+    "pnpm-lock.json": true,
+    "yarn.lock": true
+  },
+  // Tailwind
+  "css.lint.unknownAtRules": "ignore",
+  // VSCode
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.addMissingImports": "explicit",
+    "source.fixAll": "explicit"
+  },
+  // Others
+  "scss.lint.unknownAtRules": "ignore",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "prettier.ignorePath": ".gitignore",
+  // Formatter
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
