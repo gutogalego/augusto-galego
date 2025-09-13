@@ -1,9 +1,32 @@
 import { Footer, Navigation } from '@/components/layout'
+import { CanvasOverlay } from '@/components/ui/canvas-overlay'
+import { DockNavbar } from '@/components/ui/dock-navbar'
+import { PageTransition } from '@/components/ui/page-transition'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Crimson_Text, JetBrains_Mono, Nunito } from 'next/font/google'
 import '@/styles/globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+// Sans-serif para UI e navegação
+const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+// Serif para títulos e conteúdo editorial
+const crimsonText = Crimson_Text({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-serif',
+  display: 'swap',
+})
+
+// Monospace para código e detalhes técnicos
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -118,11 +141,17 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
-        <div className="flex min-h-screen flex-col">
+      <body
+        className={`${nunito.variable} ${crimsonText.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+      >
+        <CanvasOverlay />
+        <div className="flex min-h-screen flex-col relative z-10">
           <Navigation />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
+          <DockNavbar />
         </div>
       </body>
     </html>

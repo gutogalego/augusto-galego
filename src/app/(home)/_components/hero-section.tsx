@@ -50,15 +50,16 @@ export function HeroSection() {
             </div>
 
             {/* Main Heading */}
-            <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tight lg:text-6xl">
+            <div className="space-y-6">
+              <div className="text-subtitle">Desenvolvedor & Educador</div>
+              <h1 className="text-display">
                 Augusto <span className="gradient-text">Galego</span>
               </h1>
-              <div className="text-xl text-muted-foreground lg:text-2xl">
+              <div className="text-headline text-muted-foreground">
                 Papai do{' '}
                 <span className="font-semibold text-primary">LeetCode</span>
               </div>
-              <p className="text-lg text-muted-foreground max-w-2xl">
+              <p className="text-body-large text-muted-foreground max-w-2xl">
                 CTO, Backend Engineer e Educador. Especialista em algoritmos,
                 estruturas de dados e carreira em tech.{' '}
                 <strong>De júnior no Brasil a CTO nos EUA</strong> em 9+ anos.

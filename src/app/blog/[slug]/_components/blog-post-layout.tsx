@@ -1,18 +1,8 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
+import { TableOfContents } from '@/components/ui/table-of-contents'
 import type { PostMetadata } from '@/utils/getPosts'
-import {
-  ArrowLeft,
-  BookOpen,
-  Calendar,
-  Clock,
-  Copy,
-  Linkedin,
-  Share2,
-  Twitter,
-} from 'lucide-react'
+import { ArrowLeft, Calendar, Clock, Linkedin, Twitter } from 'lucide-react'
 import Link from 'next/link'
 
 interface BlogPostLayoutProps {
@@ -64,13 +54,6 @@ const categorizePost = (post: PostMetadata): string => {
   return 'Reflexões'
 }
 
-// Função para estimar tempo de leitura
-const estimateReadTime = (post: PostMetadata): string => {
-  const wordCount = `${post.title} ${post.description}`.split(' ').length
-  const readTime = Math.max(5, Math.ceil((wordCount / 200) * 15)) // Estimativa mais generosa para posts completos
-  return `${readTime} min`
-}
-
 // Função para formatar data
 const formatDate = (dateString: string): string => {
   const date = new Date(dateString)
@@ -83,190 +66,134 @@ const formatDate = (dateString: string): string => {
 
 export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
   const category = categorizePost(metadata)
-  const readTime = estimateReadTime(metadata)
   const formattedDate = formatDate(metadata.date)
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b bg-muted/30">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto">
+      {/* Header minimalista - Estilo NaN */}
+      <div className="border-b border-border/40 content-area mx-4 mt-4 mb-8">
+        <div className="container mx-auto px-6 py-6">
+          <div className="max-w-6xl mx-auto">
             {/* Back Button */}
             <div className="mb-8">
-              <Button variant="ghost" size="sm" asChild={true}>
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild={true}
+                className="text-muted-foreground hover:text-foreground -ml-2"
+              >
                 <Link href="/blog">
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  Voltar ao Blog
+                  Blog
                 </Link>
               </Button>
             </div>
 
-            {/* Post Header */}
-            <div className="space-y-6">
-              {/* Category and Meta */}
+            {/* Post Header - Estilo NaN */}
+            <div className="space-y-6 max-w-4xl">
+              {/* Meta info */}
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                <Badge variant="outline">{category}</Badge>
-                <div className="flex items-center space-x-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>{formattedDate}</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Clock className="h-4 w-4" />
-                  <span>{readTime} de leitura</span>
-                </div>
+                <span className="text-subtitle">{category}</span>
+                <span>•</span>
+                <span>{formattedDate}</span>
               </div>
 
-              {/* Title and Description */}
-              <div className="space-y-4">
-                <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-                  {metadata.title}
-                </h1>
-                <p className="text-xl text-muted-foreground">
-                  {metadata.description}
-                </p>
-              </div>
+              {/* Title */}
+              <h1 className="text-display">{metadata.title}</h1>
 
-              {/* Author and Share */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                    G
-                  </div>
-                  <div>
-                    <div className="font-medium">Augusto Galego</div>
-                    <div className="text-sm text-muted-foreground">
-                      Papai do LeetCode
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <Button variant="outline" size="sm">
-                    <Share2 className="mr-2 h-4 w-4" />
-                    Compartilhar
-                  </Button>
-                </div>
-              </div>
+              {/* Description */}
+              <p className="text-body-large text-muted-foreground max-w-3xl">
+                {metadata.description}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-3">
-              <article className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-primary prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-muted prose-pre:border">
-                {children}
-              </article>
+      {/* Layout de duas colunas - Estilo NaN */}
+      <div className="container mx-auto px-6 py-12">
+        <div className="max-w-6xl mx-auto content-area p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-16">
+            {/* Sidebar - Posicionada à esquerda como no NaN */}
+            <div className="order-2 lg:order-1">
+              <div className="sticky top-8 space-y-8">
+                {/* Table of Contents */}
+                <TableOfContents />
 
-              {/* Post Footer */}
-              <div className="mt-12 pt-8 border-t">
-                <div className="space-y-6">
-                  {/* Share Buttons */}
-                  <div className="space-y-4">
-                    <h3 className="font-semibold">Compartilhe este artigo</h3>
-                    <div className="flex space-x-3">
-                      <Button variant="outline" size="sm">
-                        <Twitter className="mr-2 h-4 w-4" />
-                        Twitter
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Linkedin className="mr-2 h-4 w-4" />
-                        LinkedIn
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Copy className="mr-2 h-4 w-4" />
-                        Copiar Link
-                      </Button>
+                {/* Author info minimalista */}
+                <div className="space-y-4 pt-8 border-t border-border/40">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-sm">
+                      G
+                    </div>
+                    <div>
+                      <div className="font-medium text-sm">Augusto Galego</div>
+                      <div className="text-xs text-muted-foreground">
+                        Papai do LeetCode
+                      </div>
                     </div>
                   </div>
-
-                  <Separator />
-
-                  {/* Author Bio */}
-                  <Card className="tech-card">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-xl flex-shrink-0">
-                          G
-                        </div>
-                        <div className="space-y-2">
-                          <h4 className="font-bold text-lg">Augusto Galego</h4>
-                          <p className="text-muted-foreground text-sm">
-                            CTO, Backend Engineer e Educador. Conhecido como
-                            "Papai do LeetCode", ajudo desenvolvedores a
-                            crescerem em suas carreiras através de conteúdo
-                            sobre algoritmos, estruturas de dados e carreira
-                            internacional.
-                          </p>
-                          <div className="flex space-x-2">
-                            <Button variant="outline" size="sm" asChild={true}>
-                              <Link href="/about">Sobre mim</Link>
-                            </Button>
-                            <Button variant="outline" size="sm" asChild={true}>
-                              <Link href="/courses">Meus Cursos</Link>
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
                 </div>
               </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-8 space-y-6">
-                {/* Table of Contents */}
-                <Card className="tech-card">
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold mb-3 flex items-center">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Neste artigo
-                    </h4>
-                    <div className="text-sm text-muted-foreground">
-                      <p>
-                        Índice será gerado automaticamente baseado nos
-                        cabeçalhos do artigo.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
+            {/* Main Content */}
+            <div className="order-1 lg:order-2">
+              <article className="prose-elegant max-w-none">{children}</article>
 
-                {/* Related Posts */}
-                <Card className="tech-card">
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold mb-3">Artigos Relacionados</h4>
-                    <div className="space-y-3">
-                      <div className="text-sm">
-                        <Link
-                          href="/blog"
-                          className="text-primary hover:underline"
-                        >
-                          Ver todos os artigos →
-                        </Link>
+              {/* Post Footer minimalista */}
+              <div className="mt-16 pt-8 border-t border-border/40">
+                <div className="space-y-8">
+                  {/* Share */}
+                  <div className="space-y-4">
+                    <div className="text-subtitle">Compartilhar</div>
+                    <div className="flex space-x-4">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-muted-foreground hover:text-foreground -ml-2"
+                      >
+                        <Twitter className="mr-2 h-4 w-4" />
+                        Twitter
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-muted-foreground hover:text-foreground"
+                      >
+                        <Linkedin className="mr-2 h-4 w-4" />
+                        LinkedIn
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Author Bio expandida */}
+                  <div className="space-y-4 pt-8 border-t border-border/40">
+                    <div className="flex items-start space-x-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
+                        G
+                      </div>
+                      <div className="space-y-3">
+                        <div className="font-semibold">Augusto Galego</div>
+                        <p className="text-body text-muted-foreground">
+                          CTO, Backend Engineer e Educador. Conhecido como
+                          "Papai do LeetCode", ajudo desenvolvedores a crescerem
+                          em suas carreiras através de conteúdo sobre
+                          algoritmos, estruturas de dados e carreira
+                          internacional.
+                        </p>
+                        <div className="flex space-x-3">
+                          <Button variant="outline" size="sm" asChild={true}>
+                            <Link href="/about">Sobre mim</Link>
+                          </Button>
+                          <Button variant="outline" size="sm" asChild={true}>
+                            <Link href="/courses">Meus Cursos</Link>
+                          </Button>
+                        </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-
-                {/* Newsletter CTA */}
-                <Card className="tech-card">
-                  <CardContent className="p-4 text-center space-y-3">
-                    <h4 className="font-semibold">Não perca nenhum artigo</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Receba os novos posts direto no seu email
-                    </p>
-                    <Button size="sm" className="w-full">
-                      Inscrever-se
-                    </Button>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

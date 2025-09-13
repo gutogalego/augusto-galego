@@ -74,6 +74,49 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--muted-foreground) / 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+    background-position: 0 0;
+  }
+
+  .text-display {
+    @apply font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1];
+  }
+
+  .text-headline {
+    @apply font-serif text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight;
+  }
+
+  .text-title {
+    @apply font-serif text-xl md:text-2xl font-semibold tracking-tight;
+  }
+
+  .text-subtitle {
+    @apply font-sans text-sm font-medium tracking-wider uppercase text-muted-foreground;
+    letter-spacing: 0.1em;
+  }
+
+  .text-body {
+    @apply font-serif text-base leading-relaxed;
+  }
+
+  .text-body-large {
+    @apply font-serif text-lg leading-relaxed;
+  }
+
+  .text-caption {
+    @apply font-sans text-sm text-muted-foreground;
+  }
+
+  .text-code {
+    @apply font-mono text-sm;
   }
 
   h1,
@@ -82,7 +125,7 @@
   h4,
   h5,
   h6 {
-    @apply font-semibold tracking-tight;
+    @apply font-serif font-semibold tracking-tight;
   }
 
   h1 {
@@ -116,11 +159,100 @@
   }
 
   .tech-card {
-    @apply rounded-xl border bg-card p-6 shadow-sm transition-all hover:shadow-md;
+    @apply rounded-2xl border bg-card transition-all duration-300 ease-out p-8;
   }
 
   .hero-section {
-    @apply relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-secondary/50;
+    @apply relative overflow-hidden bg-gradient-to-br from-background via-muted/20 to-secondary/30;
+  }
+
+  .canvas-bg {
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--muted-foreground) / 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+    background-position: 0 0;
+  }
+
+  .content-area {
+    @apply bg-background backdrop-blur-sm rounded-2xl border border-border/30 p-8;
+    background-color: hsl(var(--background) / 0.98);
+  }
+
+  .ui-surface {
+    @apply bg-background backdrop-blur-xl border border-border/20;
+    background-color: hsl(var(--background) / 0.95);
+  }
+
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .transition-smooth-slow {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .prose-elegant {
+    @apply prose prose-lg max-w-none;
+    @apply prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground;
+    @apply prose-p:font-serif prose-p:leading-relaxed prose-p:text-foreground prose-p:text-base;
+    @apply prose-a:font-serif prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:underline-offset-2;
+    @apply prose-strong:font-semibold prose-strong:text-foreground;
+    @apply prose-em:font-serif prose-em:italic;
+    @apply prose-code:font-mono prose-code:text-primary prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-medium;
+    @apply prose-pre:bg-muted prose-pre:border prose-pre:font-mono prose-pre:text-sm prose-pre:rounded-lg;
+    @apply prose-blockquote:border-l-primary prose-blockquote:font-serif prose-blockquote:italic prose-blockquote:text-muted-foreground;
+    @apply prose-ul:font-serif prose-ol:font-serif;
+    @apply prose-li:text-foreground prose-li:leading-relaxed;
+    @apply prose-hr:border-border;
+    line-height: 1.7;
+  }
+
+  .prose-elegant h1 {
+    @apply text-3xl font-bold mt-12 mb-6 first:mt-0;
+  }
+
+  .prose-elegant h2 {
+    @apply text-2xl font-semibold mt-10 mb-4;
+  }
+
+  .prose-elegant h3 {
+    @apply text-xl font-medium mt-8 mb-3;
+  }
+
+  .prose-elegant h4 {
+    @apply text-lg font-medium mt-6 mb-2;
+  }
+
+  .prose-elegant p {
+    @apply mb-6;
+  }
+
+  .prose-elegant ul {
+    @apply list-none pl-0;
+  }
+
+  .prose-elegant ul li {
+    @apply relative pl-6;
+  }
+
+  .prose-elegant ul li::before {
+    content: "—";
+    @apply absolute left-0 text-muted-foreground font-sans;
+  }
+
+  .prose-elegant blockquote {
+    @apply border-l-2 border-primary/20 pl-6 italic font-serif text-lg;
+  }
+
+  .prose-elegant table {
+    @apply font-sans text-sm;
+  }
+
+  .prose-elegant th {
+    @apply font-medium text-foreground;
   }
 }
 

@@ -124,8 +124,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <BlogPostLayout metadata={metadata}>
-      <div
-        className="prose prose-lg max-w-none"
+      <article
+        className="prose-elegant"
         dangerouslySetInnerHTML={{ __html: htmlContent }}
       />
     </BlogPostLayout>

@@ -249,6 +249,16 @@
           }
         }
       }
+    },
+    {
+      "include": ["tailwind.config.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useNamingConvention": "off"
+          }
+        }
+      }
     }
   ],
   "files": {

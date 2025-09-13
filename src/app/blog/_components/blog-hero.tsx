@@ -41,12 +41,13 @@ export function BlogHero() {
           </Badge>
 
           {/* Main Heading */}
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight lg:text-6xl">
+          <div className="space-y-6">
+            <div className="text-subtitle">Blog</div>
+            <h1 className="text-display">
               Insights sobre{' '}
               <span className="gradient-text">tech e carreira</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body-large text-muted-foreground max-w-3xl mx-auto">
               Artigos práticos sobre algoritmos, estruturas de dados, carreira
               internacional e tudo que aprendi em 9+ anos como desenvolvedor.
               <strong> Conteúdo real, sem enrolação.</strong>
