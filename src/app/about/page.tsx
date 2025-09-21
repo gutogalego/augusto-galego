@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { AboutHero, Philosophy, TechStack, Timeline } from './_components'
+import { AboutHero, Philosophy } from './_components'
 
 export const metadata: Metadata = {
   title: 'Sobre',
@@ -11,8 +11,6 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
-      <Timeline />
-      <TechStack />
       <Philosophy />
     </>
   )
