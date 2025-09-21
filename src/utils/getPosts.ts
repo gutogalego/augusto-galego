@@ -7,6 +7,7 @@ export interface PostMetadata {
   description: string
   date: string
   url?: string
+  slug?: string
   category?: string
   readTime?: string
   tags?: string[]
@@ -26,6 +27,7 @@ export const getPosts = (): PostMetadata[] => {
     return {
       ...metadata,
       url: folder, // using the folder name as the URL
+      slug: folder, // also set slug for consistency
     }
   })
 }
