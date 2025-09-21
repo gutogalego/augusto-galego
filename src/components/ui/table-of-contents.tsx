@@ -18,7 +18,6 @@ export function TableOfContents({ className }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>('')
 
   useEffect(() => {
-    // Gerar TOC baseado nos headings do artigo
     const headings = document.querySelectorAll(
       'article h1, article h2, article h3, article h4'
     )
