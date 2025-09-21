@@ -2,7 +2,7 @@
 
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/shadcn'
-import type { PostMetadata } from '@/utils/getPosts'
+import type { PostMetadata } from '@/utils/get-posts'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'

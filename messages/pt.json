@@ -1,0 +1,83 @@
+{
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "blog": "Blog",
+    "courses": "Cursos",
+    "setup": "Setup",
+    "contact": "Contato",
+    "socialMedia": "Redes Sociais"
+  },
+  "common": {
+    "readMore": "Ler mais",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "notFound": "Não encontrado",
+    "backToHome": "Voltar ao início",
+    "language": "Idioma",
+    "portuguese": "Português",
+    "english": "Inglês"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "Ops! A página que você está procurando não existe ou foi movida.",
+    "suggestions": "Que tal tentar uma dessas opções?",
+    "home": "Página Inicial",
+    "blog": "Blog",
+    "about": "Sobre",
+    "backToHome": "Voltar ao Início",
+    "contactText": "Se você acredita que isso é um erro, entre em contato comigo em",
+    "contactEmail": "algoritmos.galego@gmail.com"
+  },
+  "hero": {
+    "title": "Augusto Galego",
+    "subtitle": "Desenvolvedor & Educador",
+    "description": "CTO, Backend Engineer e Educador. Especialista em algoritmos, estruturas de dados e carreira em tech. De júnior no Brasil a CTO nos EUA em 9+ anos.",
+    "location": "Pádua, Itália",
+    "role": "CTO",
+    "highlights": {
+      "cto": "CTO em startup americana",
+      "leetcode": "Especialista em LeetCode",
+      "educator": "Educador com 103K+ seguidores",
+      "journey": "Trajetória Brasil → Itália → EUA"
+    },
+    "stats": {
+      "subscribers": "Inscritos YouTube",
+      "experience": "Anos de Experiência",
+      "lessons": "Aulas no Curso Principal",
+      "countries": "Países Trabalhados"
+    },
+    "cta": {
+      "courses": "Ver Cursos",
+      "blog": "Ler Blog",
+      "channels": "Canais no YouTube:",
+      "available": "Disponível para mentorias",
+      "new": "Novo"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Artigos sobre desenvolvimento, tecnologia e carreira",
+    "searchPlaceholder": "Pesquisar artigos...",
+    "noResults": "Nenhum artigo encontrado",
+    "readTime": "min de leitura",
+    "publishedOn": "Publicado em",
+    "lastUpdated": "Última atualização"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Desenvolvedor apaixonado por tecnologia e educação"
+  },
+  "contact": {
+    "title": "Contato",
+    "subtitle": "Vamos conversar sobre seus projetos"
+  },
+  "courses": {
+    "title": "Cursos",
+    "subtitle": "Aprenda desenvolvimento web com conteúdo prático"
+  },
+  "setup": {
+    "title": "Meu Setup",
+    "subtitle": "Ferramentas e equipamentos que uso no dia a dia"
+  }
+}

@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/shadcn'
-import type { PostMetadata } from '@/utils/getPosts'
+import type { PostMetadata } from '@/utils/get-posts'
 import { useMemo } from 'react'
 
 interface BlogSidebarProps {

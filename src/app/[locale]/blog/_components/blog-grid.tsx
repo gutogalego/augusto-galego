@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import type { PostMetadata } from '@/utils/getPosts'
+import type { MultilingualText, PostMetadata } from '@/utils/get-posts'
 import {
   ArrowRight,
   BookOpen,
@@ -21,8 +21,20 @@ import {
   Star,
   TrendingUp,
 } from 'lucide-react'
+
 import Link from 'next/link'
 import { useState } from 'react'
+
+// Helper function to get text in the correct language
+function getLocalizedText(
+  text: MultilingualText | string,
+  language: 'en' | 'pt' = 'pt'
+): string {
+  if (typeof text === 'string') {
+    return text
+  }
+  return text[language] || text.en || text.pt
+}
 
 interface BlogGridProps {
   posts: PostMetadata[]
@@ -30,7 +42,7 @@ interface BlogGridProps {
 
 // Função para categorizar posts baseado no título/conteúdo
 const categorizePost = (post: PostMetadata): string => {
-  const title = post.title.toLowerCase()
+  const title = getLocalizedText(post.title, 'pt').toLowerCase()
   // const description = post.description.toLowerCase()
 
   if (
@@ -74,10 +86,11 @@ const categorizePost = (post: PostMetadata): string => {
 }
 
 // Função para estimar tempo de leitura baseado no título/descrição
-const estimateReadTime = (post: PostMetadata): string => {
-  const wordCount = `${post.title} ${post.description}`.split(' ').length
-  const readTime = Math.max(3, Math.ceil((wordCount / 200) * 10)) // Estimativa baseada em 200 palavras por minuto
-  return `${readTime} min`
+const estimateReadTime = (post: PostMetadata): number => {
+  const title = getLocalizedText(post.title, 'pt')
+  const description = getLocalizedText(post.description, 'pt')
+  const wordCount = `${title} ${description}`.split(' ').length
+  return Math.max(3, Math.ceil(wordCount / 200)) // Estimativa baseada em 200 palavras por minuto
 }
 
 // Função para formatar data
@@ -99,7 +112,9 @@ const featuredPostTitles = [
 
 const isFeaturedPost = (post: PostMetadata): boolean => {
   return featuredPostTitles.some((title) =>
-    post.title.toLowerCase().includes(title.toLowerCase().split(' ')[0] ?? '')
+    getLocalizedText(post.title, 'pt')
+      .toLowerCase()
+      .includes(title.toLowerCase().split(' ')[0] ?? '')
   )
 }
 
@@ -118,8 +133,12 @@ export function BlogGrid({ posts }: BlogGridProps) {
   // Filtrar posts
   const filteredPosts = enrichedPosts.filter((post) => {
     const matchesSearch =
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchTerm.toLowerCase())
+      getLocalizedText(post.title, 'pt')
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      getLocalizedText(post.description, 'pt')
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
     const matchesCategory =
       selectedCategory === 'all' || post.category === selectedCategory
     return matchesSearch && matchesCategory
@@ -194,14 +213,16 @@ export function BlogGrid({ posts }: BlogGridProps) {
                             Destaque
                           </Badge>
                           <Badge variant="outline" className="text-xs">
-                            {post.category}
+                            {typeof post.category === 'string'
+                              ? post.category
+                              : getLocalizedText(post.category, 'pt')}
                           </Badge>
                         </div>
                         <CardTitle className="text-xl lg:text-2xl group-hover:text-primary transition-colors">
-                          {post.title}
+                          {getLocalizedText(post.title, 'pt')}
                         </CardTitle>
                         <CardDescription className="text-base">
-                          {post.description}
+                          {getLocalizedText(post.description, 'pt')}
                         </CardDescription>
                       </div>
                     </div>
@@ -216,7 +237,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
                         </div>
                         <div className="flex items-center space-x-1">
                           <Clock className="h-4 w-4" />
-                          <span>{post.readTime} de leitura</span>
+                          <span>{post.readTime} min de leitura</span>
                         </div>
                       </div>
                       <Button
@@ -286,13 +307,15 @@ export function BlogGrid({ posts }: BlogGridProps) {
                   <CardHeader>
                     <div className="space-y-2">
                       <Badge variant="outline" className="text-xs w-fit">
-                        {post.category}
+                        {typeof post.category === 'string'
+                          ? post.category
+                          : getLocalizedText(post.category, 'pt')}
                       </Badge>
                       <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
-                        {post.title}
+                        {getLocalizedText(post.title, 'pt')}
                       </CardTitle>
                       <CardDescription className="line-clamp-3">
-                        {post.description}
+                        {getLocalizedText(post.description, 'pt')}
                       </CardDescription>
                     </div>
                   </CardHeader>

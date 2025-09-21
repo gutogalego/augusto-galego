@@ -1,13 +1,11 @@
-import { getPosts } from '@/utils/getPosts'
+import { getPosts } from '@/utils/get-posts'
 import type { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://augustogalego.com'
 
-  // Get all blog posts
   const posts = await getPosts()
 
-  // Static pages with proper SEO priorities and frequencies
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,

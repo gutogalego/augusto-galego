@@ -1,3 +1,5 @@
+'use client'
+
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -14,24 +16,26 @@ import {
   Users,
   Youtube,
 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const stats = [
-  { label: 'Inscritos YouTube', value: '103K+', icon: Users },
-  { label: 'Anos de Experiência', value: '9+', icon: Briefcase },
-  { label: 'Aulas no Curso Principal', value: '68', icon: GraduationCap },
-  { label: 'Países Trabalhados', value: '3', icon: Globe },
-]
-
-const highlights = [
-  'CTO em startup americana',
-  'Especialista em LeetCode',
-  'Educador com 103K+ seguidores',
-  'Trajetória Brasil → Itália → EUA',
-]
-
 export function HeroSection() {
+  const t = useTranslations('hero')
+
+  const stats = [
+    { label: t('stats.subscribers'), value: '103K+', icon: Users },
+    { label: t('stats.experience'), value: '9+', icon: Briefcase },
+    { label: t('stats.lessons'), value: '68', icon: GraduationCap },
+    { label: t('stats.countries'), value: '3', icon: Globe },
+  ]
+
+  const highlights = [
+    t('highlights.cto'),
+    t('highlights.leetcode'),
+    t('highlights.educator'),
+    t('highlights.journey'),
+  ]
   return (
     <section className="hero-section">
       <div className="max-w-6xl mx-auto px-8 py-16 lg:py-24 border-x-2 border-dotted border-border/40">
@@ -42,24 +46,22 @@ export function HeroSection() {
             <div className="flex items-center space-x-2">
               <Badge variant="secondary" className="px-3 py-1">
                 <MapPin className="mr-1 h-3 w-3" />
-                Pádua, Itália
+                {t('location')}
               </Badge>
               <Badge variant="outline" className="px-3 py-1">
                 <Briefcase className="mr-1 h-3 w-3" />
-                CTO
+                {t('role')}
               </Badge>
             </div>
 
             {/* Main Heading */}
             <div className="space-y-6">
-              <div className="text-subtitle">Desenvolvedor & Educador</div>
+              <div className="text-subtitle">{t('subtitle')}</div>
               <h1 className="text-display">
                 Augusto <span className="gradient-text">Galego</span>
               </h1>
               <p className="text-body-large text-muted-foreground max-w-2xl">
-                CTO, Backend Engineer e Educador. Especialista em algoritmos,
-                estruturas de dados e carreira em tech.{' '}
-                <strong>De júnior no Brasil a CTO nos EUA</strong> em 9+ anos.
+                {t('description')}
               </p>
             </div>
 
@@ -78,7 +80,7 @@ export function HeroSection() {
               <FancyButton.Root size="lg" asChild={true} className="group">
                 <Link href="/courses">
                   <FancyButton.Icon as={GraduationCap} className="mr-2" />
-                  Ver Cursos
+                  {t('cta.courses')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </FancyButton.Root>
@@ -91,7 +93,7 @@ export function HeroSection() {
               >
                 <Link href="/blog">
                   <Code className="mr-2 h-4 w-4" />
-                  Ler Blog
+                  {t('cta.blog')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
@@ -100,7 +102,7 @@ export function HeroSection() {
             {/* YouTube Channels */}
             <div className="space-y-3">
               <p className="text-sm font-medium text-muted-foreground">
-                Canais no YouTube:
+                {t('cta.channels')}
               </p>
               <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0">
                 <Button
@@ -133,7 +135,7 @@ export function HeroSection() {
                     <Youtube className="mr-2 h-4 w-4 text-foreground" />
                     @GutoMonólogos
                     <Badge variant="secondary" className="ml-2 text-xs">
-                      Novo
+                      {t('cta.new')}
                     </Badge>
                   </Link>
                 </Button>
@@ -163,7 +165,7 @@ export function HeroSection() {
                     <div className="flex items-center space-x-2">
                       <div className="h-2 w-2 rounded-full bg-foreground animate-pulse" />
                       <span className="text-xs font-medium">
-                        Disponível para mentorias
+                        {t('cta.available')}
                       </span>
                     </div>
                   </CardContent>

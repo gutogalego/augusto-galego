@@ -1,6 +1,6 @@
 'use client'
 
-import type { PostMetadata } from '@/utils/getPosts'
+import type { PostMetadata } from '@/utils/get-posts'
 import { SimpleBlogLayout } from './_components'
 
 interface BlogClientProps {

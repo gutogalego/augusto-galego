@@ -1,9 +1,11 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { LanguageSelector } from '@/components/ui/language-selector'
 import { NavigationCard } from '@/components/ui/navigation-card'
 import { NavigationDock } from '@/components/ui/navigation-dock'
 import { SocialButton } from '@/components/ui/social-button'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -20,13 +22,13 @@ import {
 } from 'react-icons/ri'
 import { LogoHorizontal } from '../common'
 
-const navigationItems = [
-  { name: 'Início', href: '/', icon: RiHomeLine },
-  { name: 'Sobre', href: '/about', icon: RiUserLine },
-  { name: 'Blog', href: '/blog', icon: RiArticleLine },
-  { name: 'Cursos', href: '/courses', icon: RiBookLine },
-  { name: 'Setup', href: '/setup', icon: RiComputerLine },
-  { name: 'Contato', href: '/contact', icon: RiMailLine },
+const getNavigationItems = (t: (key: string) => string) => [
+  { name: t('navigation.home'), href: '/', icon: RiHomeLine },
+  { name: t('navigation.about'), href: '/about', icon: RiUserLine },
+  { name: t('navigation.blog'), href: '/blog', icon: RiArticleLine },
+  { name: t('navigation.courses'), href: '/courses', icon: RiBookLine },
+  { name: t('navigation.setup'), href: '/setup', icon: RiComputerLine },
+  { name: t('navigation.contact'), href: '/contact', icon: RiMailLine },
 ]
 
 const socialLinks = [
@@ -46,6 +48,9 @@ const socialLinks = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const t = useTranslations()
+
+  const navigationItems = getNavigationItems(t)
 
   const isActive = (href: string) => {
     if (href === '/') {
@@ -73,20 +78,12 @@ export function Navigation() {
         <nav className="hidden md:flex items-center">
           <NavigationDock items={navigationData} />
         </nav>
-        {/* Desktop Social Links */}
+        {/* Desktop Language Selector */}
         <div className="hidden md:flex items-center">
           <div className="flex items-center gap-3 ml-6">
             {/* Vertical divider */}
             <div className="w-px h-8 bg-border/40 mr-2" />
-
-            {socialLinks.map((link) => (
-              <SocialButton
-                key={link.href}
-                href={link.href}
-                icon={link.icon}
-                label={link.name}
-              />
-            ))}
+            <LanguageSelector />
           </div>
         </div>
         {/* Mobile Menu Button */}
@@ -122,10 +119,20 @@ export function Navigation() {
               ))}
             </nav>
 
-            {/* Mobile Social Links */}
+            {/* Mobile Language Selector */}
             <div className="mt-8 pt-6 border-t border-border/30">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-4">
-                Redes Sociais
+                {t('common.language')}
+              </p>
+              <div className="flex items-center justify-center">
+                <LanguageSelector />
+              </div>
+            </div>
+
+            {/* Mobile Social Links */}
+            <div className="mt-6 pt-6 border-t border-border/30">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-4">
+                {t('navigation.socialMedia')}
               </p>
               <div className="flex items-center justify-center gap-4">
                 {socialLinks.map((link) => (

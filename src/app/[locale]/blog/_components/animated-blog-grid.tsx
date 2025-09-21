@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { useCardStackAnimation } from '@/hooks/use-card-stack-animation'
-import type { PostMetadata } from '@/utils/getPosts'
+import type { MultilingualText, PostMetadata } from '@/utils/get-posts'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   ArrowRight,
@@ -23,6 +23,17 @@ import {
 import Link from 'next/link'
 import { useCallback, useMemo, useState } from 'react'
 
+// Helper function to get text in the correct language
+function getLocalizedText(
+  text: MultilingualText | string,
+  language: 'en' | 'pt' = 'pt'
+): string {
+  if (typeof text === 'string') {
+    return text
+  }
+  return text[language] || text.en || text.pt
+}
+
 interface AnimatedBlogGridProps {
   posts: PostMetadata[]
   searchQuery?: string
@@ -31,7 +42,7 @@ interface AnimatedBlogGridProps {
 
 // Função para categorizar posts baseado no título/conteúdo
 const categorizePost = (post: PostMetadata): string => {
-  const title = post.title.toLowerCase()
+  const title = getLocalizedText(post.title, 'pt').toLowerCase()
 
   if (
     title.includes('leetcode') ||
@@ -77,10 +88,11 @@ const categorizePost = (post: PostMetadata): string => {
 }
 
 // Função para estimar tempo de leitura
-const estimateReadTime = (post: PostMetadata): string => {
-  const wordCount = `${post.title} ${post.description}`.split(' ').length
-  const readTime = Math.max(3, Math.ceil((wordCount / 200) * 10))
-  return `${readTime} min`
+const estimateReadTime = (post: PostMetadata): number => {
+  const title = getLocalizedText(post.title, 'pt')
+  const description = getLocalizedText(post.description, 'pt')
+  const wordCount = `${title} ${description}`.split(' ').length
+  return Math.max(3, Math.ceil(wordCount / 200)) // Estimativa baseada em 200 palavras por minuto
 }
 
 // Função para formatar data
@@ -102,7 +114,9 @@ const featuredPostTitles = [
 
 const isFeaturedPost = (post: PostMetadata): boolean => {
   return featuredPostTitles.some((title) =>
-    post.title.toLowerCase().includes(title.toLowerCase().split(' ')[0] ?? '')
+    getLocalizedText(post.title, 'pt')
+      .toLowerCase()
+      .includes(title.toLowerCase().split(' ')[0] ?? '')
   )
 }
 
@@ -160,10 +174,21 @@ export function AnimatedBlogGrid({
       const query = searchQuery.toLowerCase().trim()
       filtered = filtered.filter((post) => {
         return (
-          post.title.toLowerCase().includes(query) ||
-          post.description.toLowerCase().includes(query) ||
-          post.category.toLowerCase().includes(query) ||
-          post.tags?.some((tag) => tag.toLowerCase().includes(query))
+          getLocalizedText(post.title, 'pt').toLowerCase().includes(query) ||
+          getLocalizedText(post.description, 'pt')
+            .toLowerCase()
+            .includes(query) ||
+          (typeof post.category === 'string'
+            ? post.category
+            : getLocalizedText(post.category, 'pt')
+          )
+            .toLowerCase()
+            .includes(query) ||
+          post.tags?.some((tag) =>
+            (typeof tag === 'string' ? tag : getLocalizedText(tag, 'pt'))
+              .toLowerCase()
+              .includes(query)
+          )
         )
       })
     }
@@ -173,10 +198,21 @@ export function AnimatedBlogGrid({
       const topic = selectedTopic.toLowerCase().trim()
       filtered = filtered.filter((post) => {
         return (
-          post.title.toLowerCase().includes(topic) ||
-          post.description.toLowerCase().includes(topic) ||
-          post.category.toLowerCase().includes(topic) ||
-          post.tags?.some((tag) => tag.toLowerCase().includes(topic))
+          getLocalizedText(post.title, 'pt').toLowerCase().includes(topic) ||
+          getLocalizedText(post.description, 'pt')
+            .toLowerCase()
+            .includes(topic) ||
+          (typeof post.category === 'string'
+            ? post.category
+            : getLocalizedText(post.category, 'pt')
+          )
+            .toLowerCase()
+            .includes(topic) ||
+          post.tags?.some((tag) =>
+            (typeof tag === 'string' ? tag : getLocalizedText(tag, 'pt'))
+              .toLowerCase()
+              .includes(topic)
+          )
         )
       })
     }
@@ -368,7 +404,9 @@ export function AnimatedBlogGrid({
                                   : ''
                               }`}
                             >
-                              {post.category}
+                              {typeof post.category === 'string'
+                                ? post.category
+                                : getLocalizedText(post.category, 'pt')}
                             </Badge>
                             {post.featured && (
                               <Badge variant="default" className="text-xs">
@@ -379,11 +417,11 @@ export function AnimatedBlogGrid({
                           </div>
 
                           <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
-                            {post.title}
+                            {getLocalizedText(post.title, 'pt')}
                           </CardTitle>
 
                           <CardDescription className="line-clamp-3">
-                            {post.description}
+                            {getLocalizedText(post.description, 'pt')}
                           </CardDescription>
                         </div>
                       </CardHeader>
@@ -396,7 +434,7 @@ export function AnimatedBlogGrid({
                           </div>
                           <div className="flex items-center space-x-1">
                             <Clock className="h-3 w-3" />
-                            <span>{post.readTime}</span>
+                            <span>{post.readTime} min</span>
                           </div>
                         </div>
 

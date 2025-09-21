@@ -1,0 +1,83 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "courses": "Courses",
+    "setup": "Setup",
+    "contact": "Contact",
+    "socialMedia": "Social Media"
+  },
+  "common": {
+    "readMore": "Read more",
+    "loading": "Loading...",
+    "error": "Error",
+    "notFound": "Not found",
+    "backToHome": "Back to home",
+    "language": "Language",
+    "portuguese": "Portuguese",
+    "english": "English"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Oops! The page you're looking for doesn't exist or has been moved.",
+    "suggestions": "How about trying one of these options?",
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About",
+    "backToHome": "Back to Home",
+    "contactText": "If you believe this is an error, please contact me at",
+    "contactEmail": "algoritmos.galego@gmail.com"
+  },
+  "hero": {
+    "title": "Augusto Galego",
+    "subtitle": "Developer & Educator",
+    "description": "CTO, Backend Engineer and Educator. Expert in algorithms, data structures and tech career. From junior in Brazil to CTO in the USA in 9+ years.",
+    "location": "Padua, Italy",
+    "role": "CTO",
+    "highlights": {
+      "cto": "CTO at American startup",
+      "leetcode": "LeetCode specialist",
+      "educator": "Educator with 103K+ followers",
+      "journey": "Journey Brazil → Italy → USA"
+    },
+    "stats": {
+      "subscribers": "YouTube Subscribers",
+      "experience": "Years of Experience",
+      "lessons": "Main Course Lessons",
+      "countries": "Countries Worked"
+    },
+    "cta": {
+      "courses": "View Courses",
+      "blog": "Read Blog",
+      "channels": "YouTube Channels:",
+      "available": "Available for mentoring",
+      "new": "New"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Articles about development, technology and career",
+    "searchPlaceholder": "Search articles...",
+    "noResults": "No articles found",
+    "readTime": "min read",
+    "publishedOn": "Published on",
+    "lastUpdated": "Last updated"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Developer passionate about technology and education"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's talk about your projects"
+  },
+  "courses": {
+    "title": "Courses",
+    "subtitle": "Learn web development with practical content"
+  },
+  "setup": {
+    "title": "My Setup",
+    "subtitle": "Tools and equipment I use daily"
+  }
+}

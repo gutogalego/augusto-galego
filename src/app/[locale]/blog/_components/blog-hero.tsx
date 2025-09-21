@@ -1,50 +1,52 @@
-'use client'
-
-import type { PostMetadata } from '@/utils/getPosts'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import type { PostMetadata } from '@/utils/get-posts'
+import { BookOpen, Tag, TrendingUp, Users } from 'lucide-react'
 import { BlogSearch } from './blog-search'
 
-interface SimpleBlogHeaderProps {
+interface BlogHeroProps {
   posts: PostMetadata[]
   onSearch?: (query: string) => void
-  className?: string
+  onTopicClick?: (topic: string) => void
 }
 
-export function SimpleBlogHeader({ posts, onSearch }: SimpleBlogHeaderProps) {
+export function BlogHero({ posts, onSearch }: BlogHeroProps) {
   return (
     <section className="hero-section">
       <div className="max-w-6xl mx-auto px-8 py-16 lg:py-24 border-x-2 border-dotted border-border/40">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="max-w-3xl mx-auto text-center space-y-8">
           {/* Badge */}
-          <div className="flex justify-center">
-            <div className="text-sm font-mono text-muted-foreground/60 tracking-wider px-4 py-2 rounded-full border border-border/40">
-              AUGUSTO GALEGO ENGINEERING BLOG
-            </div>
-          </div>
+          <Badge variant="outline" className="px-3 py-1">
+            <BookOpen className="mr-1 h-3 w-3" />
+            Blog do Galego
+          </Badge>
 
           {/* Main Heading */}
           <div className="space-y-6">
-            <div className="text-subtitle">Blog & Insights</div>
             <h1 className="text-display">
-              Últimos <span className="gradient-text">artigos</span>
+              Insights sobre{' '}
+              <span className="gradient-text">tech e carreira</span>
             </h1>
             <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
-              Insights sobre tech, carreira e desenvolvimento.
+              Artigos práticos sobre algoritmos, estruturas de dados, carreira
+              internacional e tudo que aprendi em +9 anos como desenvolvedor.
               <strong> Conteúdo real, sem enrolação.</strong>
             </p>
           </div>
 
           {/* Search Bar */}
-          <div className="max-w-2xl mx-auto pt-4">
+          <div className="max-w-xl mx-auto">
             <BlogSearch
               posts={posts}
               onSearch={(query) => {
                 onSearch?.(query)
+                // Você pode adicionar analytics aqui se necessário
               }}
               onResultSelect={() => {
-                // Navigation handled by the component
+                // O componente já navega automaticamente
+                // Adicione analytics se necessário
               }}
-              className="w-full"
-              triggerClassName="h-14 text-lg px-6 bg-background/50 backdrop-blur-sm border-2 border-border/60 hover:border-primary/50 focus-visible:border-primary"
             />
           </div>
         </div>

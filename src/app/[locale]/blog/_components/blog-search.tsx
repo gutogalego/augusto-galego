@@ -2,7 +2,7 @@
 
 import { AdaptiveSearch } from '@/components/ui/adaptive-search'
 import type { SearchResult } from '@/components/ui/search'
-import type { PostMetadata } from '@/utils/getPosts'
+import type { PostMetadata } from '@/utils/get-posts'
 import {
   RiBookOpenLine,
   RiBriefcaseLine,

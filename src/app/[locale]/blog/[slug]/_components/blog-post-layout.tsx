@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { TableOfContents } from '@/components/ui/table-of-contents'
-import type { PostMetadata } from '@/utils/getPosts'
+import type { PostMetadata } from '@/utils/get-posts'
 import {
   ArrowLeft,
   ArrowRight,

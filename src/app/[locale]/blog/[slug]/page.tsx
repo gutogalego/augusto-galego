@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import type { MultilingualText, PostMetadata } from '@/utils/getPosts'
+import type { MultilingualText, PostMetadata } from '@/utils/get-posts'
 import { marked } from 'marked'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -164,6 +164,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <BlogPostLayout metadata={metadata}>
       <article
         className="prose-elegant"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe MDX content processed by marked
         dangerouslySetInnerHTML={{ __html: htmlContent }}
       />
     </BlogPostLayout>

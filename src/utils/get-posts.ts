@@ -26,7 +26,7 @@ export interface PostMetadata {
 
 const postsDirectory = path.join(process.cwd(), 'data', 'posts')
 
-export const getPosts = (): PostMetadata[] => {
+export const getPosts = (locale?: 'en' | 'pt'): PostMetadata[] => {
   const postFolders: string[] = fs.readdirSync(postsDirectory)
 
   return postFolders.map((folder) => {
@@ -38,6 +38,25 @@ export const getPosts = (): PostMetadata[] => {
       ...metadata,
       url: folder, // using the folder name as the URL
       slug: folder, // also set slug for consistency
+      language: locale, // set the current locale
     }
   })
+}
+
+export const getPostContent = (
+  slug: string,
+  locale: 'en' | 'pt' = 'pt'
+): string => {
+  const postPath = path.join(postsDirectory, slug, `${locale}.mdx`)
+
+  if (!fs.existsSync(postPath)) {
+    // Fallback to Portuguese if English doesn't exist
+    const fallbackPath = path.join(postsDirectory, slug, 'pt.mdx')
+    if (fs.existsSync(fallbackPath)) {
+      return fs.readFileSync(fallbackPath, 'utf8')
+    }
+    throw new Error(`Post not found: ${slug}`)
+  }
+
+  return fs.readFileSync(postPath, 'utf8')
 }

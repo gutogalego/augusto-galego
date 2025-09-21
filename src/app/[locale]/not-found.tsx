@@ -1,9 +1,11 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ArrowLeft, BookOpen, Home, Search } from 'lucide-react'
+import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 
-export default function NotFound() {
+export default async function NotFound() {
+  const t = await getTranslations('notFound')
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted/30">
       <div className="container mx-auto px-4">
@@ -12,16 +14,16 @@ export default function NotFound() {
             {/* 404 Illustration */}
             <div className="space-y-4">
               <div className="text-8xl font-bold text-primary/20">404</div>
-              <h1 className="text-3xl font-bold">Página não encontrada</h1>
+              <h1 className="text-3xl font-bold">{t('title')}</h1>
               <p className="text-lg text-muted-foreground">
-                Ops! A página que você está procurando não existe ou foi movida.
+                {t('description')}
               </p>
             </div>
 
             {/* Suggestions */}
             <div className="space-y-4">
               <p className="text-sm text-muted-foreground">
-                Que tal tentar uma dessas opções?
+                {t('suggestions')}
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -32,7 +34,7 @@ export default function NotFound() {
                 >
                   <Link href="/">
                     <Home className="h-6 w-6" />
-                    <span className="text-sm">Página Inicial</span>
+                    <span className="text-sm">{t('home')}</span>
                   </Link>
                 </Button>
 
@@ -43,7 +45,7 @@ export default function NotFound() {
                 >
                   <Link href="/blog">
                     <BookOpen className="h-6 w-6" />
-                    <span className="text-sm">Blog</span>
+                    <span className="text-sm">{t('blog')}</span>
                   </Link>
                 </Button>
 
@@ -54,7 +56,7 @@ export default function NotFound() {
                 >
                   <Link href="/about">
                     <Search className="h-6 w-6" />
-                    <span className="text-sm">Sobre</span>
+                    <span className="text-sm">{t('about')}</span>
                   </Link>
                 </Button>
               </div>
@@ -65,7 +67,7 @@ export default function NotFound() {
               <Button asChild={true} className="group">
                 <Link href="/">
                   <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-                  Voltar ao Início
+                  {t('backToHome')}
                 </Link>
               </Button>
             </div>
@@ -73,12 +75,12 @@ export default function NotFound() {
             {/* Contact Info */}
             <div className="pt-8 border-t text-sm text-muted-foreground">
               <p>
-                Se você acredita que isso é um erro, entre em contato comigo em{' '}
+                {t('contactText')}{' '}
                 <a
-                  href="mailto:algoritmos.galego@gmail.com"
+                  href={`mailto:${t('contactEmail')}`}
                   className="text-primary hover:underline"
                 >
-                  algoritmos.galego@gmail.com
+                  {t('contactEmail')}
                 </a>
               </p>
             </div>

@@ -1,4 +1,4 @@
-import { getPosts } from '@/utils/getPosts'
+import { getPosts } from '@/utils/get-posts'
 import { BlogClient } from './blog-client'
 
 export default function BlogPage() {
