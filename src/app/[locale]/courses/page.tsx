@@ -1,12 +1,16 @@
+import { generateLocalizedMetadata } from '@/lib/metadata'
 import type { Metadata } from 'next'
 import { CoursesCatalog } from './_components/courses-catalog'
 import { CoursesHero } from './_components/courses-hero'
 import { CoursesTestimonials } from './_components/courses-testimonials'
 
-export const metadata: Metadata = {
-  title: 'Cursos',
-  description:
-    'Cursos práticos sobre algoritmos, estruturas de dados e carreira em tech. Aprenda com quem saiu do Brasil e chegou ao topo na Europa e EUA.',
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return await generateLocalizedMetadata(locale, 'courses')
 }
 
 export default function CoursesPage() {

@@ -79,5 +79,103 @@
   "setup": {
     "title": "My Setup",
     "subtitle": "Tools and equipment I use daily"
+  },
+  "metadata": {
+    "home": {
+      "title": "Augusto Galego - CTO, Backend Engineer & Educator",
+      "description": "CTO, Backend Engineer and Educator. Expert in algorithms, data structures and tech career. From junior in Brazil to CTO in the USA in 9+ years.",
+      "keywords": [
+        "algorithms",
+        "data structures",
+        "leetcode",
+        "programming",
+        "tech career",
+        "backend",
+        "python",
+        "javascript",
+        "remote work",
+        "augusto galego",
+        "system design",
+        "technical interview",
+        "coding interview",
+        "brazilian programmer",
+        "tech lead",
+        "cto",
+        "startup",
+        "europe",
+        "tech immigration"
+      ]
+    },
+    "about": {
+      "title": "About",
+      "description": "Learn about Augusto Galego's journey: from junior developer in Brazil to CTO in the USA. Expert in algorithms, data structures and tech education.",
+      "keywords": [
+        "augusto galego",
+        "journey",
+        "tech career",
+        "brazil",
+        "usa",
+        "europe",
+        "cto",
+        "developer",
+        "algorithms",
+        "education"
+      ]
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Articles about algorithms, data structures, tech career and international remote work. Insights from someone who went from Brazil to the top in Europe.",
+      "keywords": [
+        "blog",
+        "articles",
+        "algorithms",
+        "data structures",
+        "tech career",
+        "remote work",
+        "international",
+        "insights",
+        "programming"
+      ]
+    },
+    "courses": {
+      "title": "Courses",
+      "description": "Practical courses on algorithms, data structures and tech career. Learn from someone who went from Brazil to the top in Europe and USA.",
+      "keywords": [
+        "courses",
+        "algorithms",
+        "data structures",
+        "tech career",
+        "practical",
+        "education",
+        "programming",
+        "leetcode"
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch with Augusto Galego for mentoring, partnerships or questions about tech career and algorithms.",
+      "keywords": [
+        "contact",
+        "mentoring",
+        "partnerships",
+        "tech career",
+        "algorithms",
+        "consulting",
+        "augusto galego"
+      ]
+    },
+    "setup": {
+      "title": "Setup & Productivity",
+      "description": "Discover Augusto Galego's work setup and productivity tips. Tools, configurations and methodologies to be more efficient.",
+      "keywords": [
+        "setup",
+        "productivity",
+        "tools",
+        "configurations",
+        "methodologies",
+        "efficiency",
+        "remote work"
+      ]
+    }
   }
 }

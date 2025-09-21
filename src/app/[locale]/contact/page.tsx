@@ -1,12 +1,16 @@
+import { generateLocalizedMetadata } from '@/lib/metadata'
 import type { Metadata } from 'next'
 import { ContactForm } from './_components/contact-form'
 import { ContactHero } from './_components/contact-hero'
 import { ContactInfo } from './_components/contact-info'
 
-export const metadata: Metadata = {
-  title: 'Contato',
-  description:
-    'Entre em contato com Augusto Galego para mentorias, parcerias ou dúvidas sobre carreira em tech e algoritmos.',
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return await generateLocalizedMetadata(locale, 'contact')
 }
 
 export default function ContactPage() {

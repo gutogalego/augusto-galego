@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/private/', '/admin/'],
+        disallow: ['/private/', '/admin/', '/api/', '/_next/', '/static/'],
       },
       {
         userAgent: 'Googlebot',
@@ -26,24 +26,42 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'facebookexternalhit',
         allow: '/',
+        crawlDelay: 0,
       },
       {
         userAgent: 'Twitterbot',
         allow: '/',
+        crawlDelay: 0,
       },
       {
         userAgent: 'LinkedInBot',
         allow: '/',
+        crawlDelay: 1,
       },
       {
         userAgent: 'Googlebot-Image',
         allow: '/',
+        crawlDelay: 0,
       },
       {
         userAgent: 'Googlebot-Video',
         allow: '/',
+        crawlDelay: 0,
       },
-      // Uncomment below to block AI training crawlers if desired
+      {
+        userAgent: 'Applebot',
+        allow: '/',
+        crawlDelay: 1,
+      },
+      {
+        userAgent: 'WhatsApp',
+        allow: '/',
+      },
+      {
+        userAgent: 'Telegrambot',
+        allow: '/',
+      },
+      // Block AI training crawlers (uncomment if desired)
       // {
       //   userAgent: 'GPTBot',
       //   disallow: '/',
@@ -62,6 +80,10 @@ export default function robots(): MetadataRoute.Robots {
       // },
       // {
       //   userAgent: 'Claude-Web',
+      //   disallow: '/',
+      // },
+      // {
+      //   userAgent: 'Bytespider',
       //   disallow: '/',
       // },
     ],

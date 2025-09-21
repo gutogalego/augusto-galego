@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { TableOfContents } from '@/components/ui/table-of-contents'
+import { generateStructuredData } from '@/lib/metadata'
 import type { PostMetadata } from '@/utils/get-posts'
 import {
   ArrowLeft,
@@ -13,11 +14,13 @@ import {
   Twitter,
   User,
 } from 'lucide-react'
+import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 
 interface BlogPostLayoutProps {
   metadata: PostMetadata
   children: React.ReactNode
+  slug: string
 }
 
 const categorizePost = (post: PostMetadata): string => {
@@ -73,12 +76,38 @@ const formatDate = (dateString: string): string => {
   })
 }
 
-export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
+export function BlogPostLayout({
+  metadata,
+  children,
+  slug,
+}: BlogPostLayoutProps) {
+  const locale = useLocale()
   const category = categorizePost(metadata)
   const formattedDate = formatDate(metadata.date)
 
+  // Generate article structured data
+  const articleStructuredData = generateStructuredData('Article', {
+    headline: metadata.title,
+    description: metadata.description,
+    datePublished: metadata.date,
+    dateModified: metadata.lastModified || metadata.date,
+    url: `https://augustogalego.com/${locale === 'pt' ? '' : 'en/'}blog/${slug}`,
+    image: metadata.image || 'https://augustogalego.com/og-image.jpg',
+    articleSection: category,
+    wordCount: metadata.readTime ? metadata.readTime * 250 : undefined, // Estimate 250 words per minute
+    inLanguage: locale === 'pt' ? 'pt-BR' : 'en-US',
+  })
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe static JSON-LD structured data
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleStructuredData),
+        }}
+      />
       <ScrollProgress />
       {/* Header with connected borders */}
       <div className="max-w-6xl mx-auto border-x-2 border-dotted border-border/40">

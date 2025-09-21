@@ -1,10 +1,14 @@
+import { generateLocalizedMetadata } from '@/lib/metadata'
 import type { Metadata } from 'next'
 import { AboutHero, Philosophy } from './_components'
 
-export const metadata: Metadata = {
-  title: 'Sobre',
-  description:
-    'Conheça a trajetória de Augusto Galego: de desenvolvedor júnior no Brasil a CTO nos EUA. Especialista em algoritmos, estruturas de dados e educação em tech.',
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return await generateLocalizedMetadata(locale, 'about')
 }
 
 export default function AboutPage() {

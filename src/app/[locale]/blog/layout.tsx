@@ -1,9 +1,13 @@
+import { generateLocalizedMetadata } from '@/lib/metadata'
 import type { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'Blog',
-  description:
-    'Artigos sobre algoritmos, estruturas de dados, carreira em tech e trabalho remoto internacional. Insights de quem saiu do Brasil e chegou ao topo na Europa.',
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  return await generateLocalizedMetadata(locale, 'blog')
 }
 
 export default function BlogLayout({
