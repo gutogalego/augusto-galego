@@ -23,14 +23,26 @@ export function LanguageSelector() {
   const pathname = usePathname()
 
   const handleLanguageChange = (newLocale: string) => {
-    // Remove the current locale from the pathname
-    const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/'
+    // Skip if already on the same locale
+    if (newLocale === locale) {
+      return
+    }
 
-    // Navigate to the new locale
-    const newPath =
-      newLocale === 'pt'
-        ? pathWithoutLocale
-        : `/${newLocale}${pathWithoutLocale}`
+    // Extract the path without the current locale prefix
+    let pathWithoutLocale = pathname
+
+    // Remove the current locale from the beginning of the path
+    if (pathname.startsWith(`/${locale}`)) {
+      pathWithoutLocale = pathname.slice(`/${locale}`.length) || '/'
+    }
+
+    // Ensure path starts with '/'
+    if (!pathWithoutLocale.startsWith('/')) {
+      pathWithoutLocale = `/${pathWithoutLocale}`
+    }
+
+    // Navigate to the new locale (always with prefix since localePrefix is 'always')
+    const newPath = `/${newLocale}${pathWithoutLocale}`
     router.push(newPath)
   }
 
