@@ -1,10 +1,19 @@
 import { getPosts } from '@/utils/get-posts'
-import { BlogClient } from './blog-client'
+import { BlogLayout } from './_components'
 
-export default function BlogPage() {
-  const posts = getPosts()
+interface BlogPageProps {
+  params: Promise<{
+    locale: string
+  }>
+}
 
+export default async function BlogPage({ params }: BlogPageProps) {
+  const { locale } = await params
+  const currentLang = (locale as 'en' | 'pt') || 'pt'
+  const posts = getPosts(currentLang)
+
+  // Sort posts by date (newest first)
   posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
-  return <BlogClient posts={posts} />
+  return <BlogLayout posts={posts} locale={currentLang} />
 }

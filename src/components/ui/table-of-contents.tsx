@@ -67,13 +67,13 @@ function getIndicatorTop(toc: TocItem[], activeId: string): string {
   }
 
   const activeIndex = toc.findIndex((item) => item.id === activeId)
-  const firstH3Index = toc.findIndex((item) => item.level === 3)
+  const firstH2Index = toc.findIndex((item) => item.level === 2)
 
   // Calcula altura real baseada nos elementos DOM a partir do primeiro H3
   const tocButtons = document.querySelectorAll('[data-toc-item]')
   let totalHeight = 0
 
-  for (let i = firstH3Index; i < activeIndex && i < tocButtons.length; i++) {
+  for (let i = firstH2Index; i < activeIndex && i < tocButtons.length; i++) {
     const button = tocButtons[i] as HTMLElement
     totalHeight += button.offsetHeight
   }
@@ -229,7 +229,6 @@ export function TableOfContents({ className }: TableOfContentsProps) {
       </h3>
 
       <div className="space-y-0 relative">
-        {/* Linha de fundo cinza claro para todos os H3+ */}
         <div
           className="absolute left-0 w-0.5 bg-muted-foreground/10"
           style={{
@@ -238,7 +237,6 @@ export function TableOfContents({ className }: TableOfContentsProps) {
           }}
         />
 
-        {/* Indicador ativo que aparece apenas quando na seção H3+ */}
         <div
           className="absolute left-0 w-0.5 bg-foreground transition-all duration-500 ease-out"
           style={{
@@ -264,8 +262,8 @@ export function TableOfContents({ className }: TableOfContentsProps) {
                 className={cn(
                   'block w-full text-left py-1 font-medium transition-colors duration-300 hover:text-foreground relative z-10',
                   isH1 && 'text-sm',
-                  isH2 && 'text-xs',
-                  isH3 && 'text-xs pl-4',
+                  isH2 && 'text-xs pl-4',
+                  isH3 && 'text-xs pl-6',
                   item.level >= 4 && 'text-xs pl-8',
                   isActive ? 'text-foreground' : 'text-muted-foreground'
                 )}

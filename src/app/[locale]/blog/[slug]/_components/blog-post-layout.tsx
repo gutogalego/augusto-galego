@@ -4,6 +4,11 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { TableOfContents } from '@/components/ui/table-of-contents'
+import {
+  categorizePost,
+  formatPostDate,
+  getLocalizedText,
+} from '@/lib/blog-utils'
 import { generateStructuredData } from '@/lib/metadata'
 import type { PostMetadata } from '@/utils/get-posts'
 import {
@@ -12,83 +17,36 @@ import {
   BookOpen,
   Linkedin,
   Twitter,
-  User,
 } from 'lucide-react'
-import { useLocale, useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import Link from 'next/link'
 
 interface BlogPostLayoutProps {
   metadata: PostMetadata
   children: React.ReactNode
   slug: string
-}
-
-const categorizePost = (post: PostMetadata): string => {
-  const title = post.title.toLowerCase()
-
-  if (
-    title.includes('leetcode') ||
-    title.includes('algorithm') ||
-    title.includes('big o')
-  ) {
-    return 'Algoritmos'
-  }
-  if (
-    title.includes('career') ||
-    title.includes('job') ||
-    title.includes('emprego') ||
-    title.includes('carreira')
-  ) {
-    return 'Carreira'
-  }
-  if (
-    title.includes('system') ||
-    title.includes('design') ||
-    title.includes('architecture')
-  ) {
-    return 'System Design'
-  }
-  if (
-    title.includes('remote') ||
-    title.includes('europa') ||
-    title.includes('italy') ||
-    title.includes('internacional')
-  ) {
-    return 'Trabalho Remoto'
-  }
-  if (
-    title.includes('produtividade') ||
-    title.includes('setup') ||
-    title.includes('productivity')
-  ) {
-    return 'Produtividade'
-  }
-  return 'Reflexões'
-}
-
-// Função para formatar data
-const formatDate = (dateString: string): string => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('pt-BR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
+  locale?: 'en' | 'pt'
 }
 
 export function BlogPostLayout({
   metadata,
   children,
   slug,
+  locale: propLocale,
 }: BlogPostLayoutProps) {
-  const locale = useLocale()
-  const category = categorizePost(metadata)
-  const formattedDate = formatDate(metadata.date)
+  const hookLocale = useLocale() as 'en' | 'pt'
+  const locale = propLocale || hookLocale
+  const category = categorizePost(metadata, locale)
+  const formattedDate = formatPostDate(metadata.date, locale)
+
+  // Get localized content
+  const title = getLocalizedText(metadata.title, locale)
+  const description = getLocalizedText(metadata.description, locale)
 
   // Generate article structured data
   const articleStructuredData = generateStructuredData('Article', {
-    headline: metadata.title,
-    description: metadata.description,
+    headline: title,
+    description: description,
     datePublished: metadata.date,
     dateModified: metadata.lastModified || metadata.date,
     url: `https://augustogalego.com/${locale === 'pt' ? '' : 'en/'}blog/${slug}`,
@@ -121,7 +79,7 @@ export function BlogPostLayout({
           >
             <Link href="/blog">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Voltar para o blog
+              {locale === 'pt' ? 'Voltar para o blog' : 'Back to blog'}
             </Link>
           </Button>
         </div>
@@ -136,18 +94,21 @@ export function BlogPostLayout({
               </Badge>
               <span className="text-muted-foreground">{formattedDate}</span>
               <span className="text-muted-foreground">•</span>
-              <span className="text-muted-foreground">9 min de leitura</span>
+              <span className="text-muted-foreground">
+                {metadata.readTime || 5}{' '}
+                {locale === 'pt' ? 'min de leitura' : 'min read'}
+              </span>
             </div>
 
             <div>
               {/* Title */}
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
-                {metadata.title}
+                {title}
               </h1>
 
               {/* Description */}
               <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
-                {metadata.description}
+                {description}
               </p>
             </div>
 
@@ -159,7 +120,7 @@ export function BlogPostLayout({
                   Augusto Galego
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Engineering Lead
+                  {locale === 'pt' ? 'CTO & Educador' : 'CTO & Educator'}
                 </div>
               </div>
             </div>
@@ -180,7 +141,9 @@ export function BlogPostLayout({
                 {/* Share */}
                 <div className="space-y-4">
                   <h3 className="font-semibold text-foreground">
-                    Compartilhar este artigo
+                    {locale === 'pt'
+                      ? 'Compartilhar este artigo'
+                      : 'Share this article'}
                   </h3>
                   <div className="flex gap-3">
                     <Button
@@ -220,12 +183,14 @@ export function BlogPostLayout({
               <div className="max-w-2xl mx-auto space-y-6">
                 <div className="space-y-3">
                   <h2 className="text-2xl font-bold text-foreground">
-                    Pronto para acelerar sua carreira em tech?
+                    {locale === 'pt'
+                      ? 'Pronto para acelerar sua carreira em tech?'
+                      : 'Ready to accelerate your tech career?'}
                   </h2>
                   <p className="text-muted-foreground">
-                    Junte-se a mais de 103K+ desenvolvedores que acompanham meu
-                    conteúdo sobre algoritmos, estruturas de dados e carreira
-                    internacional.
+                    {locale === 'pt'
+                      ? 'Junte-se a mais de 103K+ desenvolvedores que acompanham meu conteúdo sobre algoritmos, estruturas de dados e carreira internacional.'
+                      : 'Join 103K+ developers who follow my content about algorithms, data structures and international tech career.'}
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -236,12 +201,14 @@ export function BlogPostLayout({
                   >
                     <Link href="/courses">
                       <BookOpen className="h-4 w-4" />
-                      Ver meus cursos
+                      {locale === 'pt' ? 'Ver meus cursos' : 'View my courses'}
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Button>
                   <Button variant="outline" size="lg" asChild={true}>
-                    <Link href="/blog">Mais artigos</Link>
+                    <Link href="/blog">
+                      {locale === 'pt' ? 'Mais artigos' : 'More articles'}
+                    </Link>
                   </Button>
                 </div>
               </div>

@@ -1,8 +1,10 @@
-export { BlogHero } from './blog-hero'
-export { BlogGrid } from './blog-grid'
-export { AnimatedBlogGrid } from './animated-blog-grid'
+export { BlogLayout } from './blog-layout'
+export { ArticleList } from './article-list'
+export { ArticleCard } from './article-card'
+
 export { BlogSearch } from './blog-search'
 export { BlogSidebar } from './blog-sidebar'
-export { SimpleArticleList } from './simple-article-list'
-export { SimpleBlogLayout } from './simple-blog-layout'
-export { SimpleBlogHeader } from './simple-blog-header'
+export { CategoryIcon } from './category-icon'
+
+export { BlogHero } from './blog-hero'
+export { BlogGrid } from './blog-grid'

@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .border-dashed-wide {
+    position: relative;
+    border: none;
+  }
+
+  .border-dashed-wide::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-image: repeating-linear-gradient(
+      to right,
+      hsl(var(--border) / 0.4) 0px,
+      hsl(var(--border) / 0.4) 16px,
+      transparent 16px,
+      transparent 32px
+    );
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

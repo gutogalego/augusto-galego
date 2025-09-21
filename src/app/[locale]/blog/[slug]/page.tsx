@@ -30,6 +30,7 @@ function getLocalizedArray(
 interface BlogPostPageProps {
   params: Promise<{
     slug: string
+    locale: string
   }>
 }
 
@@ -82,7 +83,7 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug, locale } = await params
-  const postData = await getPostContent(slug)
+  const postData = getPostContent(slug)
 
   if (!postData) {
     return {
@@ -95,7 +96,7 @@ export async function generateMetadata({
   }
 
   const { metadata } = postData
-  const currentLang = metadata.language || locale || 'pt'
+  const currentLang = (locale as 'en' | 'pt') || 'pt'
 
   const title = getLocalizedText(metadata.title, currentLang)
   const description = getLocalizedText(metadata.description, currentLang)
@@ -105,7 +106,6 @@ export async function generateMetadata({
   const tags = getLocalizedArray(metadata.tags, currentLang)
   const keywords = getLocalizedArray(metadata.keywords, currentLang)
 
-  // Use our enhanced blog post metadata generator
   return await generateBlogPostMetadata(currentLang, {
     title,
     description,
@@ -139,21 +139,23 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params
-  const postData = await getPostContent(slug)
+  const { slug, locale } = await params
+  const postData = getPostContent(slug)
 
   if (!postData) {
     notFound()
   }
 
   const { metadata, enContent, ptContent } = postData
+  const currentLang = (locale as 'en' | 'pt') || 'pt'
 
-  // Process markdown content
-  const content = ptContent || enContent
+  // Process markdown content - select content based on locale
+  const content =
+    currentLang === 'en' ? enContent || ptContent : ptContent || enContent
   const htmlContent = marked(content)
 
   return (
-    <BlogPostLayout metadata={metadata} slug={slug}>
+    <BlogPostLayout metadata={metadata} slug={slug} locale={currentLang}>
       <article
         className="prose-elegant"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe MDX content processed by marked
