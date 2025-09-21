@@ -16,20 +16,20 @@
     --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 96%;
+    --secondary: 0 0% 94%;
     --secondary-foreground: 0 0% 9%;
 
-    --muted: 0 0% 96%;
+    --muted: 0 0% 94%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 0 0% 96%;
+    --accent: 0 0% 94%;
     --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
     --ring: 0 0% 9%;
 
     --radius: 0.75rem;
@@ -77,13 +77,6 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: radial-gradient(
-      circle,
-      hsl(var(--muted-foreground) / 0.08) 1px,
-      transparent 1px
-    );
-    background-size: 24px 24px;
-    background-position: 0 0;
   }
 
   .text-display {
@@ -160,6 +153,12 @@
 
   .tech-card {
     @apply rounded-2xl border bg-card transition-all duration-300 ease-out p-8;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .tech-card:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px
+      rgb(0 0 0 / 0.1);
   }
 
   .hero-section {
@@ -177,13 +176,46 @@
   }
 
   .content-area {
-    @apply bg-background backdrop-blur-sm rounded-2xl border border-border/30 p-8;
-    background-color: hsl(var(--background) / 0.98);
+    @apply bg-card backdrop-blur-sm rounded-2xl border border-border/30 p-8;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 
   .ui-surface {
-    @apply bg-background backdrop-blur-xl border border-border/20;
-    background-color: hsl(var(--background) / 0.95);
+    @apply bg-card backdrop-blur-xl border-dotted border border-border/40;
+  }
+
+  .card-modern {
+    @apply bg-card rounded-xl border border-border/40 p-6;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    transition: all 0.2s ease-out;
+  }
+
+  .card-modern:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px
+      rgb(0 0 0 / 0.1);
+    transform: translateY(-1px);
+  }
+
+  .surface-elevated {
+    @apply bg-card rounded-lg border border-border/30;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .surface-floating {
+    @apply bg-card rounded-xl border border-border/20;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px
+      rgb(0 0 0 / 0.1);
+  }
+
+  .link-card {
+    @apply bg-card rounded-lg border border-border/30 p-4;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    transition: all 0.2s ease-out;
+  }
+
+  .link-card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transform: translateY(-1px);
   }
 
   .transition-smooth {
