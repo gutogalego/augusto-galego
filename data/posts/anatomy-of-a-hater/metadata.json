@@ -1,5 +1,71 @@
 {
-  "title": "Anatomy of a Hater",
-  "description": "Dissecting the psychology of a hater",
-  "date": "2025-05-27"
+  "title": {
+    "en": "Anatomy of a Hater",
+    "pt": "Anatomia de um Hater"
+  },
+  "description": {
+    "en": "Dissecting the psychology and behavior patterns of online haters and how to deal with them",
+    "pt": "Dissecando a psicologia e padrões de comportamento de haters online e como lidar com eles"
+  },
+  "excerpt": {
+    "en": "An exploration of the mindset behind online hate, examining the psychology of those who spend their time trying to bring others down and why they do it.",
+    "pt": "Uma exploração da mentalidade por trás do ódio online, examinando a psicologia daqueles que gastam seu tempo tentando derrubar outros e por que fazem isso."
+  },
+  "date": "2025-05-27",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Psychology",
+    "pt": "Psicologia"
+  },
+  "tags": [
+    {
+      "en": "psychology",
+      "pt": "psicologia"
+    },
+    {
+      "en": "online behavior",
+      "pt": "comportamento online"
+    },
+    {
+      "en": "social media",
+      "pt": "redes sociais"
+    },
+    {
+      "en": "mental health",
+      "pt": "saúde mental"
+    },
+    {
+      "en": "personal growth",
+      "pt": "crescimento pessoal"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "hater psychology",
+      "pt": "psicologia do hater"
+    },
+    {
+      "en": "online hate",
+      "pt": "ódio online"
+    },
+    {
+      "en": "internet trolls",
+      "pt": "trolls da internet"
+    },
+    {
+      "en": "social media toxicity",
+      "pt": "toxicidade nas redes sociais"
+    },
+    {
+      "en": "dealing with criticism",
+      "pt": "lidando com críticas"
+    },
+    {
+      "en": "fixed mindset",
+      "pt": "mentalidade fixa"
+    }
+  ],
+  "readTime": 5,
+  "featured": true
 }

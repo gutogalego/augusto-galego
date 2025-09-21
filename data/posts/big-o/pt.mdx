@@ -1,21 +1,23 @@
-## O que é e por quê?
+# Notação Big O
 
-Notação Big O é um conceito matemático usado em ciência da computação. Pode descrever complexidade de tempo e complexidade de espaço.
+## Introdução
+
+A notação Big O é um conceito matemático usado na ciência da computação. Ela pode descrever complexidade de tempo e complexidade de espaço.
 
 ## Complexidade de Tempo
 
-Isso representa como o tempo de execução de um algoritmo aumenta com o tamanho da entrada, denotado como "n". A notação Big O fornece um limite superior sobre quanto tempo o algoritmo leva para ser executado, geralmente considerando o pior cenário.
+Isso representa como o tempo de execução de um algoritmo aumenta com o tamanho da entrada, denotado como "n". A notação Big O fornece um limite superior de quanto o algoritmo leva para executar, geralmente considerando o cenário do pior caso.
 
-## Notações Comuns de Big O "do melhor para o pior":
+## Notações Big O Comuns "do melhor ao pior":
 
 ### O(1) - Tempo Constante:
-O tempo de execução é o mesmo, independentemente do tamanho da entrada. Exemplo: Obtendo o primeiro elemento de um array:
+O tempo de execução é o mesmo independentemente do tamanho da entrada. Exemplo: Obter o primeiro elemento de um array:
 ```
 def get_first_element(arr): return arr[0]
 ```
 
 ### O(log n) - Tempo Logarítmico:
-O tempo de execução aumenta logaritmicamente com o tamanho da entrada. Um exemplo comum é a busca binária. A busca binária reduz o tamanho do problema pela metade a cada etapa:
+O tempo de execução aumenta logaritmicamente com o tamanho da entrada. Um exemplo comum é a busca binária. A busca binária corta o tamanho do problema pela metade a cada passo:
 
 ```
 def binary_search(arr, target):
@@ -32,7 +34,7 @@ def binary_search(arr, target):
 ```
 
 ### O(n) - Tempo Linear:
-O tempo de execução é proporcionalmente linear ao tamanho da entrada. Um algoritmo que avalia cada elemento de um array uma vez é O(n). Abaixo temos um exemplo de encontrar o valor máximo de um array:
+O tempo de execução é linearmente proporcional ao tamanho da entrada. Um algoritmo que avalia cada elemento de um array uma vez é O(n). Abaixo temos um exemplo de encontrar o valor máximo de um array:
 
 ```
 def find_max(arr):
@@ -44,7 +46,7 @@ def find_max(arr):
 ```
 
 ### O(n log n) - Tempo Linearítmico:
-Comum em algoritmos que dividem um problema em partes menores e depois processam essas partes. Um exemplo é o algoritmo MergeSort. Merge sort é um algoritmo de dividir para conquistar com complexidade O(n log n):
+Isso é comum em algoritmos que dividem um problema em partes menores e depois processam essas partes. Um exemplo é o algoritmo MergeSort. Merge sort é um algoritmo de divisão e conquista com complexidade O(n log n):
 
 ```
 def merge_sort(arr):
@@ -79,7 +81,7 @@ def merge_sort(arr):
 
 ### O(n^2) - Tempo Quadrático:
 
-O tempo de execução é proporcional ao quadrado do tamanho da entrada. Bubble sort é um bom exemplo. Ele tem dois loops aninhados, cada um passando pelo array:
+O tempo de execução é proporcional ao quadrado do tamanho da entrada. Bubble sort é um bom exemplo. Ele tem dois loops aninhados, cada um percorrendo o array:
 
 ```
 def bubble_sort(arr):
@@ -92,13 +94,14 @@ def bubble_sort(arr):
 
 ### O(2^n) - Tempo Exponencial
 
-O tempo de execução dobra com cada elemento adicional de entrada. Um exemplo é o cálculo recursivo dos números de Fibonacci:
+O tempo de execução dobra com cada elemento adicional de entrada. Um exemplo é um cálculo recursivo de números de Fibonacci:
 ```
 def fibonacci(n):
     if n <= 1:
         return n
     else:
         return fibonacci(n-1) + fibonacci(n-2)
+
 ```
 
 ### O(n!) - Tempo Fatorial
@@ -116,13 +119,11 @@ def permute(arr, start, end):
 ```
 
 ## Simplificação
-No Big O, geralmente focamos no termo dominante (o termo que cresce mais rápido), pois os outros se tornam menos
+No Big O, geralmente focamos no termo dominante (o termo que cresce mais rápido) pois os outros se tornam menos significativos para entradas maiores.
 
- significativos para entradas maiores.
+## Complexidade de Tempo vs. Complexidade de Espaço:
 
-## Complexidade de Tempo vs Espaço:
-
-Complexidade de tempo refere-se ao tempo que leva, tempo de execução. Complexidade de espaço refere-se à quantidade de memória que precisa ser alocada.
+Complexidade de tempo refere-se ao tempo que leva, tempo de execução. Complexidade de espaço refere-se à quantidade de memória que deve ser alocada.
 
 ```
 def linear_search(arr, target):
@@ -132,8 +133,8 @@ def linear_search(arr, target):
     return -1
 ```
 
-- **Complexidade de Tempo:** O(n) - Passa por todos os elementos do array uma vez.
-- **Complexidade de Espaço:** O(1) - Espaço constante. Usa uma quantidade fixa de memória.
+- **Complexidade de Tempo:** O(n) - Percorre todos os elementos do array uma vez
+- **Complexidade de Espaço:** O(1) - Espaço constante. Usa uma quantidade fixa de memória
 
 ```
 def factorial(n):
@@ -143,5 +144,5 @@ def factorial(n):
         return n * factorial(n-1)
 ```
 
-- **Complexidade de Tempo:** O(n) - Tempo linear, a função se chama n vezes de forma recursiva.
+- **Complexidade de Tempo:** O(n) - Tempo linear, a função chama a si mesma n vezes recursivamente
 - **Complexidade de Espaço:** O(n) - Espaço linear. Cada chamada recursiva adiciona uma nova camada à pilha de chamadas.

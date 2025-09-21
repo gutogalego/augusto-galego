@@ -1,5 +1,71 @@
 {
-  "title": "To New Creators",
-  "description": "A letter to new creators",
-  "date": "2025-06-03"
+  "title": {
+    "en": "To New Creators",
+    "pt": "Para Novos Criadores"
+  },
+  "description": {
+    "en": "Essential advice for new content creators: from making content you'd watch to handling audience feedback and staying authentic",
+    "pt": "Conselhos essenciais para novos criadores de conteúdo: desde fazer conteúdo que você assistiria até lidar com feedback da audiência e manter-se autêntico"
+  },
+  "excerpt": {
+    "en": "A comprehensive guide with 11 key principles for new content creators, covering everything from content quality and audience management to authenticity and long-term success.",
+    "pt": "Um guia completo com 11 princípios fundamentais para novos criadores de conteúdo, cobrindo tudo desde qualidade de conteúdo e gestão de audiência até autenticidade e sucesso a longo prazo."
+  },
+  "date": "2025-06-03",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Content Creation",
+    "pt": "Criação de Conteúdo"
+  },
+  "tags": [
+    {
+      "en": "content creation",
+      "pt": "criação de conteúdo"
+    },
+    {
+      "en": "youtube",
+      "pt": "youtube"
+    },
+    {
+      "en": "creator advice",
+      "pt": "conselhos para criadores"
+    },
+    {
+      "en": "audience building",
+      "pt": "construção de audiência"
+    },
+    {
+      "en": "authenticity",
+      "pt": "autenticidade"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "new content creators",
+      "pt": "novos criadores de conteúdo"
+    },
+    {
+      "en": "youtube advice",
+      "pt": "conselhos youtube"
+    },
+    {
+      "en": "content creator tips",
+      "pt": "dicas para criadores"
+    },
+    {
+      "en": "audience management",
+      "pt": "gestão de audiência"
+    },
+    {
+      "en": "creator authenticity",
+      "pt": "autenticidade do criador"
+    },
+    {
+      "en": "content quality",
+      "pt": "qualidade de conteúdo"
+    }
+  ],
+  "readTime": 6,
+  "featured": true
 }

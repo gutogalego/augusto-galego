@@ -1,65 +1,61 @@
-## What and why?
+# Load Balancers
 
-In a a typical data center, we'll have to handle millions of requests a second. For which we'll need thousands of servers.
+## What and Why?
 
-A load balancer (or multiple load balancers) are the tool for the job. They purpose is to properly divide the load. Generally speaking, once your application starts getting 100s or 1000s requests a second, you'll need load balancing.
+In a typical data center, we'll have to handle millions of requests a second. For which we'll need thousands of servers.
+
+A load balancer (or multiple load balancers) are the tool for the job. Their purpose is to properly divide the load. Generally speaking, once your application starts getting 100s or 1000s requests a second, you'll need load balancing.
 
 When we're talking about big applications, load balancers are key to provide scalability, availability, and performance.
 
+Usually they are placed between the user and the server. But think of your typical web app, there's a server delivering the JS frontend, and this server is probably interacting with another server via an API. Therefore, we could have a LB between servers. Or even, between servers and databases.
 
-Usually they are placed between the user and the server. But think of your typical web app, there's a server delivering the JS frontend, and this server is probably interacting with another server via an API. Therefore, we could have a LB between server. Or even, between servers and databases.
 
+## Additional Functions of Load Balancers
 
-## Other functions of LBs:
+- **Health Checking:** Using a heartbeat protocol, the LB will stop forwarding requests to non-responsive servers.
+- **TLS termination:** They can do this to alleviate the burden on the end server.
+- **Predictive Analysis**: Predicting spikes in traffic can be very useful.
+- **Security:** A good LB can mitigate DDoS attacks.
 
-- **Health Checking:** using a heartbeat protocol, the LB will stop forwarding requests to non responsive servers.
-- **TLS termination:** they can do this to alleviate the burden on the end server.
-- **Predictive Analysis**: predicting spikes in traffic can be very useful.
-- **Security:** A good LB can mitigate DDOS
+## Global Load Balancing
 
-## Global load balancing
+Load balancing can be done on a global scale. DNSs, for example, will try to distribute traffic evenly among multiple datacenters.
 
-Load balancing can be done in a global scale. DNSs, for example, will try to distribute traffic evenly among multiple datacenters. 
+We can also have GSLB (Global Server Load Balancing) as a service, and have automatic zonal failover. For example, if aws-east-1 goes down, we could have our traffic redirected to a different zone.
 
-We can also have GSLB (Global server load balancing) as a service, and have automatic zonal failover. For exemple, if aws-east-1 goes down, we could have our traffic redirected to a different zone. 
+## Local Load Balancing
 
-## Local load balancing
-
-### Algorithms:
+### Load Balancing Algorithms
 
 We have a couple of algorithms for LB, we'll go quickly through them:
 
-- **Round Robin scheduling:** The most simple and naive. If there are three servers, each request is routed one by one in a circular fashion. 123 123...
-- **Weighted Round Robin:** If one server is double the capacity of the others, we might want to route more requests to it. This is what this algorithm does. Distributes based on weight. If server 2 can handle twice as much as server 1, it'd go: 221 221...
+- **Round Robin Scheduling:** The most simple and naive. If there are three servers, each request is routed one by one in a circular fashion. 123 123...
+- **Weighted Round Robin:** If one server is double the capacity of the others, we might want to route more requests to it. This algorithm distributes based on weight. If server 2 can handle twice as much as server 1, it'd go: 221 221...
 - **Least Connections:** Maybe load is uneven between requests. This algorithm will route to the server with the least open connections.
-- **Least response time:** LB can check for the response time every once in a while, and route to the fastest responder.
-- **IP hash:** some applications can allow different users to perform different actions. We could hash their ID's, and redirect to the servers accordingly
-- **URL hash:** sometimes each URL is associated with a specific server. We can route based on that.
+- **Least Response Time:** LB can check for the response time every once in a while, and route to the fastest responder.
+- **IP Hash:** Some applications can allow different users to perform different actions. We could hash their IDs, and redirect to the servers accordingly.
+- **URL Hash:** Sometimes each URL is associated with a specific server. We can route based on that.
 
-### Dinamic VS Static:
+### Dynamic vs Static
 
-- **Static:** doesn't consider the state of the server. They are more simple algorithms
-- **Dinamic:** consider current state of the server, communicates with it, which adds overhead and complexity.
+- **Static:** Doesn't consider the state of the server. They are simpler algorithms.
+- **Dynamic:** Consider current state of the server, communicates with it, which adds overhead and complexity.
 
-### Stateful vs stateless:
+### Stateful vs Stateless
 
 Stateful maintain a state of the sessions established between clients and servers. While stateless don't.
 
+### Layer 4 and Layer 7
 
-### Layer 4 and layer 7:
+This refers to the OSI layers. They can balance the load on the network or the application layer:
 
-This refers to the OSI layers. They can balance the load on the network or the application layer
+- **Layer 4 Load Balancers:** The basis of the balancing are the TCP and UDP protocols. They maintain the connection between the client and the server.
+- **Layer 7 Load Balancers:** These are on the application layer protocols. They do TLS termination, rate limiting, HTTP routing, header rewriting, etc.
 
-- **Layer 4 load balancers:** The basis of the balancing are the TCP and UDP protocols. They maintain the connection between the client and the server.
-- **Layer 7 load balancers:** These are on the application layer protocols. They do TLS termination, rate limit, HTTP routing, header rewriting, etc.
+### Load Balancer Tiers
 
-
-
-### Tiers:
-
-
-- **Tier 0**: DNS, if we consider it. 
-- **Tier 1:** ECMP (equal cost multipath).
+- **Tier 0**: DNS, if we consider it.
+- **Tier 1:** ECMP (Equal Cost Multipath).
 - **Tier 2:** Layer 4 LBs
 - **Tier 3:** Layer 7 LBs
-

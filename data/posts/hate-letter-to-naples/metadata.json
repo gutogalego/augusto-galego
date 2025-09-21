@@ -1,5 +1,71 @@
 {
-  "title": "Hate Letter to Naples",
-  "description": "Naples deserver qualified hate.",
-  "date": "2025-06-11"
+  "title": {
+    "en": "Hate Letter to Naples",
+    "pt": "Carta de Ódio para Nápoles"
+  },
+  "description": {
+    "en": "A brutally honest critique of Naples, Italy - why this city deserves qualified hate and what makes it so frustrating to visit",
+    "pt": "Uma crítica brutalmente honesta de Nápoles, Itália - por que esta cidade merece ódio qualificado e o que a torna tão frustrante de visitar"
+  },
+  "excerpt": {
+    "en": "An unfiltered rant about the disappointing reality of visiting Naples, exploring the gap between expectations and the chaotic, frustrating experience of this Italian city.",
+    "pt": "Um desabafo sem filtros sobre a realidade decepcionante de visitar Nápoles, explorando a lacuna entre expectativas e a experiência caótica e frustrante desta cidade italiana."
+  },
+  "date": "2025-06-11",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Travel",
+    "pt": "Viagem"
+  },
+  "tags": [
+    {
+      "en": "travel",
+      "pt": "viagem"
+    },
+    {
+      "en": "Italy",
+      "pt": "Itália"
+    },
+    {
+      "en": "Naples",
+      "pt": "Nápoles"
+    },
+    {
+      "en": "travel critique",
+      "pt": "crítica de viagem"
+    },
+    {
+      "en": "honest review",
+      "pt": "avaliação honesta"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "Naples Italy review",
+      "pt": "avaliação Nápoles Itália"
+    },
+    {
+      "en": "travel disappointment",
+      "pt": "decepção de viagem"
+    },
+    {
+      "en": "honest travel review",
+      "pt": "avaliação honesta de viagem"
+    },
+    {
+      "en": "Naples problems",
+      "pt": "problemas de Nápoles"
+    },
+    {
+      "en": "Italian cities",
+      "pt": "cidades italianas"
+    },
+    {
+      "en": "travel expectations",
+      "pt": "expectativas de viagem"
+    }
+  ],
+  "readTime": 3,
+  "featured": false
 }

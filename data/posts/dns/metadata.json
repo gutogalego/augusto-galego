@@ -1,5 +1,71 @@
 {
-  "title": "DNS",
-  "description": "Little writeup on what a DNS is",
-  "date": "2023-11-08"
+  "title": {
+    "en": "DNS - Domain Name System",
+    "pt": "DNS - Domain Name System"
+  },
+  "description": {
+    "en": "A comprehensive guide to understanding DNS, the internet's phonebook, and how domain name resolution works",
+    "pt": "Um guia completo para entender DNS, a lista telefônica da internet, e como funciona a resolução de nomes de domínio"
+  },
+  "excerpt": {
+    "en": "Learn about DNS (Domain Name System), the hierarchical infrastructure that translates human-readable domain names into IP addresses, making the internet accessible.",
+    "pt": "Aprenda sobre DNS (Domain Name System), a infraestrutura hierárquica que traduz nomes de domínio legíveis por humanos em endereços IP, tornando a internet acessível."
+  },
+  "date": "2023-11-08",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Computer Science",
+    "pt": "Ciência da Computação"
+  },
+  "tags": [
+    {
+      "en": "DNS",
+      "pt": "DNS"
+    },
+    {
+      "en": "networking",
+      "pt": "redes"
+    },
+    {
+      "en": "internet infrastructure",
+      "pt": "infraestrutura da internet"
+    },
+    {
+      "en": "domain names",
+      "pt": "nomes de domínio"
+    },
+    {
+      "en": "system design",
+      "pt": "design de sistemas"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "DNS system",
+      "pt": "sistema DNS"
+    },
+    {
+      "en": "domain name resolution",
+      "pt": "resolução de nomes de domínio"
+    },
+    {
+      "en": "name servers",
+      "pt": "servidores de nomes"
+    },
+    {
+      "en": "IP addresses",
+      "pt": "endereços IP"
+    },
+    {
+      "en": "internet phonebook",
+      "pt": "lista telefônica da internet"
+    },
+    {
+      "en": "DNS hierarchy",
+      "pt": "hierarquia DNS"
+    }
+  ],
+  "readTime": 6,
+  "featured": true
 }

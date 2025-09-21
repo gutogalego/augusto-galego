@@ -1,5 +1,71 @@
 {
-  "title": "Big O Notation",
-  "description": "Little writeup on Big O",
-  "date": "2023-11-12"
+  "title": {
+    "en": "Big O Notation",
+    "pt": "Notação Big O"
+  },
+  "description": {
+    "en": "A comprehensive guide to understanding Big O notation, time complexity, and space complexity in algorithms",
+    "pt": "Um guia completo para entender a notação Big O, complexidade de tempo e complexidade de espaço em algoritmos"
+  },
+  "excerpt": {
+    "en": "Learn about Big O notation, a mathematical concept used in computer science to describe time and space complexity of algorithms with practical examples.",
+    "pt": "Aprenda sobre a notação Big O, um conceito matemático usado na ciência da computação para descrever a complexidade de tempo e espaço de algoritmos com exemplos práticos."
+  },
+  "date": "2023-11-12",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Computer Science",
+    "pt": "Ciência da Computação"
+  },
+  "tags": [
+    {
+      "en": "algorithms",
+      "pt": "algoritmos"
+    },
+    {
+      "en": "computer science",
+      "pt": "ciência da computação"
+    },
+    {
+      "en": "programming",
+      "pt": "programação"
+    },
+    {
+      "en": "performance",
+      "pt": "performance"
+    },
+    {
+      "en": "complexity analysis",
+      "pt": "análise de complexidade"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "Big O notation",
+      "pt": "notação Big O"
+    },
+    {
+      "en": "time complexity",
+      "pt": "complexidade de tempo"
+    },
+    {
+      "en": "space complexity",
+      "pt": "complexidade de espaço"
+    },
+    {
+      "en": "algorithm analysis",
+      "pt": "análise de algoritmos"
+    },
+    {
+      "en": "performance optimization",
+      "pt": "otimização de performance"
+    },
+    {
+      "en": "computational complexity",
+      "pt": "complexidade computacional"
+    }
+  ],
+  "readTime": 8,
+  "featured": true
 }

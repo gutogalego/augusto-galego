@@ -1,5 +1,71 @@
 {
-  "title": "Solving life's problems",
-  "description": "Solving life's problems",
-  "date": "2025-08-13"
+  "title": {
+    "en": "Solving Life's Problems",
+    "pt": "Resolvendo os Problemas da Vida"
+  },
+  "description": {
+    "en": "Reflections on prioritizing financial freedom and what comes after escaping the traditional 9-5 work cycle",
+    "pt": "Reflexões sobre priorizar a liberdade financeira e o que vem depois de escapar do ciclo tradicional de trabalho 9-5"
+  },
+  "excerpt": {
+    "en": "A personal reflection on spending your entire adult life focused on solving the single problem of money, and what happens when you finally achieve financial freedom.",
+    "pt": "Uma reflexão pessoal sobre gastar toda sua vida adulta focado em resolver o único problema do dinheiro, e o que acontece quando você finalmente alcança a liberdade financeira."
+  },
+  "date": "2025-08-13",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Personal Growth",
+    "pt": "Crescimento Pessoal"
+  },
+  "tags": [
+    {
+      "en": "life philosophy",
+      "pt": "filosofia de vida"
+    },
+    {
+      "en": "financial freedom",
+      "pt": "liberdade financeira"
+    },
+    {
+      "en": "personal development",
+      "pt": "desenvolvimento pessoal"
+    },
+    {
+      "en": "career",
+      "pt": "carreira"
+    },
+    {
+      "en": "self-reflection",
+      "pt": "autorreflexão"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "financial freedom",
+      "pt": "liberdade financeira"
+    },
+    {
+      "en": "life problems",
+      "pt": "problemas da vida"
+    },
+    {
+      "en": "career escape",
+      "pt": "escape da carreira"
+    },
+    {
+      "en": "personal growth",
+      "pt": "crescimento pessoal"
+    },
+    {
+      "en": "life philosophy",
+      "pt": "filosofia de vida"
+    },
+    {
+      "en": "quarter-life crisis",
+      "pt": "crise dos 25 anos"
+    }
+  ],
+  "readTime": 4,
+  "featured": false
 }

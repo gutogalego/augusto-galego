@@ -1,5 +1,71 @@
 {
-  "title": "Sequencer",
-  "description": "All the choices that go into building a sequencer for a large service",
-  "date": "2023-11-02"
+  "title": {
+    "en": "Building a Sequencer for Distributed Systems",
+    "pt": "Construindo um Sequenciador para Sistemas Distribuídos"
+  },
+  "description": {
+    "en": "A comprehensive guide to designing unique ID generators and sequencers for large-scale distributed systems, covering UUID, database solutions, and causality",
+    "pt": "Um guia completo para projetar geradores de ID únicos e sequenciadores para sistemas distribuídos de grande escala, cobrindo UUID, soluções de banco de dados e causalidade"
+  },
+  "excerpt": {
+    "en": "Learn about the challenges and solutions for generating unique IDs in distributed systems, from simple UUIDs to complex causality-aware solutions like Twitter Snowflake and Google's TrueTime.",
+    "pt": "Aprenda sobre os desafios e soluções para gerar IDs únicos em sistemas distribuídos, desde UUIDs simples até soluções complexas com consciência de causalidade como Twitter Snowflake e TrueTime do Google."
+  },
+  "date": "2023-11-02",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "System Design",
+    "pt": "Design de Sistemas"
+  },
+  "tags": [
+    {
+      "en": "distributed systems",
+      "pt": "sistemas distribuídos"
+    },
+    {
+      "en": "unique ID generation",
+      "pt": "geração de ID único"
+    },
+    {
+      "en": "system design",
+      "pt": "design de sistemas"
+    },
+    {
+      "en": "scalability",
+      "pt": "escalabilidade"
+    },
+    {
+      "en": "causality",
+      "pt": "causalidade"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "sequencer design",
+      "pt": "design de sequenciador"
+    },
+    {
+      "en": "unique ID generator",
+      "pt": "gerador de ID único"
+    },
+    {
+      "en": "Twitter Snowflake",
+      "pt": "Twitter Snowflake"
+    },
+    {
+      "en": "distributed ID generation",
+      "pt": "geração de ID distribuído"
+    },
+    {
+      "en": "lamport clocks",
+      "pt": "relógios de lamport"
+    },
+    {
+      "en": "vector clocks",
+      "pt": "relógios vetoriais"
+    }
+  ],
+  "readTime": 10,
+  "featured": true
 }
