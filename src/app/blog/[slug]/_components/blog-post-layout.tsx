@@ -140,7 +140,7 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
         {/* Main Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] min-h-screen">
           {/* Main Content */}
-          <div className="px-8 pt-4 pb-12 border-r border-dotted border-border/40">
+          <div className="px-8 py-12 border-r border-dotted border-border/40">
             <div className="max-w-3xl">
               <article className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-sm prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-muted prose-pre:border prose-pre:border-border/40">
                 {children}
