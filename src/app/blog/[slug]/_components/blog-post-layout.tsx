@@ -1,8 +1,21 @@
+import { ProfileAvatar } from '@/components/common'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { TableOfContents } from '@/components/ui/table-of-contents'
 import type { PostMetadata } from '@/utils/getPosts'
-import { ArrowLeft, Calendar, Clock, Linkedin, Twitter } from 'lucide-react'
+import {
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+  Calendar,
+  Clock,
+  Linkedin,
+  MessageCircle,
+  Twitter,
+  User,
+} from 'lucide-react'
 import Link from 'next/link'
 
 interface BlogPostLayoutProps {
@@ -70,129 +83,219 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header minimalista - Estilo NaN */}
-      <div className="border-b border-border/40 content-area mx-4 mt-4 mb-8">
-        <div className="container mx-auto px-6 py-6">
-          <div className="max-w-6xl mx-auto">
-            {/* Back Button */}
-            <div className="mb-8">
-              <Button
-                variant="ghost"
-                size="sm"
-                asChild={true}
-                className="text-muted-foreground hover:text-foreground -ml-2"
-              >
-                <Link href="/blog">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Blog
-                </Link>
-              </Button>
-            </div>
-
-            {/* Post Header - Estilo NaN */}
-            <div className="space-y-6 max-w-4xl">
-              {/* Meta info */}
-              <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                <span className="text-subtitle">{category}</span>
-                <span>•</span>
-                <span>{formattedDate}</span>
-              </div>
-
-              {/* Title */}
-              <h1 className="text-display">{metadata.title}</h1>
-
-              {/* Description */}
-              <p className="text-body-large text-muted-foreground max-w-3xl">
-                {metadata.description}
-              </p>
-            </div>
-          </div>
+      <ScrollProgress />
+      {/* Header with connected borders */}
+      <div className="max-w-6xl mx-auto border-x-2 border-dotted border-border/40">
+        <div className="px-8 py-6 border-b border-dotted border-border/40">
+          {/* Back Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            asChild={true}
+            className="text-muted-foreground hover:text-foreground -ml-2"
+          >
+            <Link href="/blog">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Voltar para o blog
+            </Link>
+          </Button>
         </div>
-      </div>
 
-      {/* Layout de duas colunas - Estilo NaN */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="max-w-6xl mx-auto content-area p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-16">
-            {/* Sidebar - Posicionada à esquerda como no NaN */}
-            <div className="order-2 lg:order-1">
-              <div className="sticky top-8 space-y-8">
-                {/* Table of Contents */}
-                <TableOfContents />
+        {/* Post Header */}
+        <div className="px-8 py-16 border-b border-dotted border-border/40">
+          <div className="max-w-4xl space-y-8">
+            {/* Meta info */}
+            <div className="flex items-center gap-4 text-sm">
+              <Badge variant="secondary" className="font-medium">
+                {category}
+              </Badge>
+              <span className="text-muted-foreground">{formattedDate}</span>
+              <span className="text-muted-foreground">•</span>
+              <span className="text-muted-foreground">9 min de leitura</span>
+            </div>
 
-                {/* Author info minimalista */}
-                <div className="space-y-4 pt-8 border-t border-border/40">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold text-sm">
-                      G
-                    </div>
-                    <div>
-                      <div className="font-medium text-sm">Augusto Galego</div>
-                    </div>
-                  </div>
+            {/* Title */}
+            <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+              {metadata.title}
+            </h1>
+
+            {/* Description */}
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
+              {metadata.description}
+            </p>
+
+            {/* Author */}
+            <div className="flex items-center gap-3 pt-4">
+              <ProfileAvatar size="md" />
+              <div>
+                <div className="font-semibold text-foreground">
+                  Augusto Galego
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Engineering Lead
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Main Content */}
-            <div className="order-1 lg:order-2">
-              <article className="prose-elegant max-w-none">{children}</article>
+        {/* Main Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] min-h-screen">
+          {/* Main Content */}
+          <div className="px-8 py-12 border-r border-dotted border-border/40">
+            <div className="max-w-3xl">
+              <article className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-sm prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-muted prose-pre:border prose-pre:border-border/40">
+                {children}
+              </article>
 
-              {/* Post Footer minimalista */}
-              <div className="mt-16 pt-8 border-t border-border/40">
-                <div className="space-y-8">
-                  {/* Share */}
-                  <div className="space-y-4">
-                    <div className="text-subtitle">Compartilhar</div>
-                    <div className="flex space-x-4">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-muted-foreground hover:text-foreground -ml-2"
-                      >
-                        <Twitter className="mr-2 h-4 w-4" />
-                        Twitter
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-muted-foreground hover:text-foreground"
-                      >
-                        <Linkedin className="mr-2 h-4 w-4" />
-                        LinkedIn
-                      </Button>
-                    </div>
+              {/* Post Footer */}
+              <div className="mt-16 pt-8 border-t border-dotted border-border/40 space-y-8">
+                {/* Share */}
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-foreground">
+                    Compartilhar este artigo
+                  </h3>
+                  <div className="flex gap-3">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2"
+                    >
+                      <Twitter className="h-4 w-4" />
+                      Twitter
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                      LinkedIn
+                    </Button>
                   </div>
+                </div>
 
-                  {/* Author Bio expandida */}
-                  <div className="space-y-4 pt-8 border-t border-border/40">
-                    <div className="flex items-start space-x-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
-                        G
-                      </div>
-                      <div className="space-y-3">
-                        <div className="font-semibold">Augusto Galego</div>
-                        <p className="text-body text-muted-foreground">
-                          CTO, Backend Engineer e Educador. Ajudo
-                          desenvolvedores a crescerem em suas carreiras através
-                          de conteúdo sobre algoritmos, estruturas de dados e
-                          carreira internacional.
+                {/* Author Bio Card */}
+                <Card className="border-border/40 shadow-none">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <ProfileAvatar size="xl" />
+                      <div className="flex-1 space-y-3">
+                        <div>
+                          <h3 className="font-semibold text-foreground">
+                            Augusto Galego
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            CTO & Engineering Lead
+                          </p>
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          CTO, Backend Engineer e Educador com 9+ anos de
+                          experiência. Especialista em algoritmos, estruturas de
+                          dados e carreira internacional. De júnior no Brasil a
+                          CTO nos EUA.
                         </p>
-                        <div className="flex space-x-3">
+                        <div className="flex gap-3">
                           <Button variant="outline" size="sm" asChild={true}>
-                            <Link href="/about">Sobre mim</Link>
+                            <Link
+                              href="/about"
+                              className="flex items-center gap-2"
+                            >
+                              <User className="h-4 w-4" />
+                              Sobre mim
+                            </Link>
                           </Button>
                           <Button variant="outline" size="sm" asChild={true}>
-                            <Link href="/courses">Meus Cursos</Link>
+                            <Link
+                              href="/courses"
+                              className="flex items-center gap-2"
+                            >
+                              <BookOpen className="h-4 w-4" />
+                              Meus cursos
+                            </Link>
                           </Button>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="px-8 py-12 bg-muted/20">
+            <div className="sticky top-8 space-y-8">
+              {/* Table of Contents */}
+              <div>
+                <h3 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">
+                  Índice
+                </h3>
+                <TableOfContents />
+              </div>
+
+              {/* Quick Actions */}
+              <div className="space-y-4 pt-8 border-t border-border/40">
+                <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider">
+                  Ações rápidas
+                </h3>
+                <div className="space-y-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start text-muted-foreground hover:text-foreground"
+                  >
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    Deixar comentário
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full justify-start text-muted-foreground hover:text-foreground"
+                  >
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Salvar para depois
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Final CTA Card */}
+        <div className="px-8 py-12 border-t border-dotted border-border/40 bg-muted/10">
+          <Card className="border-border/40 shadow-none">
+            <CardContent className="p-8 text-center">
+              <div className="max-w-2xl mx-auto space-y-6">
+                <div className="space-y-3">
+                  <h2 className="text-2xl font-bold text-foreground">
+                    Pronto para acelerar sua carreira em tech?
+                  </h2>
+                  <p className="text-muted-foreground">
+                    Junte-se a mais de 103K+ desenvolvedores que acompanham meu
+                    conteúdo sobre algoritmos, estruturas de dados e carreira
+                    internacional.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    asChild={true}
+                    size="lg"
+                    className="flex items-center gap-2"
+                  >
+                    <Link href="/courses">
+                      <BookOpen className="h-4 w-4" />
+                      Ver meus cursos
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" asChild={true}>
+                    <Link href="/blog">Mais artigos</Link>
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

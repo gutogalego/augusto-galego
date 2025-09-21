@@ -1,3 +1,4 @@
+import { LogoHorizontal } from '@/components/common'
 import { Separator } from '@/components/ui/separator'
 import {
   ArrowUpRight,
@@ -75,10 +76,8 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {/* Brand Section - Takes more space on larger screens */}
           <div className="col-span-2 lg:col-span-1 space-y-6">
-            <div className="flex items-center space-x-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-foreground text-background font-bold text-sm">
-                AG
-              </div>
+            <div className="flex items-center">
+              <LogoHorizontal />
             </div>
 
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">

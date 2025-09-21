@@ -145,19 +145,15 @@ export function HeroSection() {
           <div className="space-y-8">
             {/* Profile Image */}
             <div className="relative">
-              <div className="aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted/50 to-muted">
-                {/* Placeholder for profile image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-8xl font-bold text-primary/20">AG</div>
-                </div>
-                {/* When you have the actual image, replace the div above with: */}
-                {/* <Image
-                  src="/augusto-galego-profile.jpg"
+              <div className="aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted/50 to-muted border border-border/20">
+                <Image
+                  src="/galego-picture-clean.jpg"
                   alt="Augusto Galego - CTO e Educador"
-                  fill
-                  className="object-cover"
-                  priority
-                /> */}
+                  fill={true}
+                  className="object-cover object-center"
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, 448px"
+                />
               </div>
 
               {/* Floating badge */}
