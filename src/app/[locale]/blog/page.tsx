@@ -10,7 +10,7 @@ interface BlogPageProps {
 export default async function BlogPage({ params }: BlogPageProps) {
   const { locale } = await params
   const currentLang = (locale as 'en' | 'pt') || 'pt'
-  const posts = getPosts(currentLang)
+  const posts = getPosts()
 
   // Sort posts by date (newest first)
   posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

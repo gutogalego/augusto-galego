@@ -62,7 +62,7 @@ export function BlogLayout({
   return (
     <div className={cn('min-h-screen bg-background', className)}>
       {/* Hero Section with Search */}
-      <BlogHero posts={posts} onSearch={handleSearch} />
+      <BlogHero posts={posts} onSearch={handleSearch} locale={locale} />
 
       {/* Main Content with original styling */}
       <div className="max-w-6xl mx-auto border-x-2 border-dotted border-border/40">
@@ -74,6 +74,7 @@ export function BlogLayout({
                 posts={posts}
                 selectedCategory={selectedCategory}
                 onCategorySelect={handleCategorySelect}
+                locale={locale}
               />
             </div>
           </div>
@@ -90,7 +91,11 @@ export function BlogLayout({
               </div>
             )}
 
-            <ArticleList posts={filteredPosts} variant={variant} />
+            <ArticleList
+              posts={filteredPosts}
+              variant={variant}
+              locale={locale}
+            />
           </div>
         </div>
       </div>

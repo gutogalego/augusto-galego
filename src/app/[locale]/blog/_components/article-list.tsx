@@ -10,6 +10,7 @@ interface ArticleListProps {
   posts: PostMetadata[]
   className?: string
   variant?: 'default' | 'compact' | 'grid'
+  locale?: 'en' | 'pt'
 }
 
 const containerVariants = {
@@ -26,8 +27,10 @@ export function ArticleList({
   posts,
   className,
   variant = 'default',
+  locale: propLocale,
 }: ArticleListProps) {
-  const locale = useLocale() as 'en' | 'pt'
+  const hookLocale = useLocale() as 'en' | 'pt'
+  const locale = propLocale || hookLocale
 
   if (posts.length === 0) {
     return (
@@ -60,6 +63,7 @@ export function ArticleList({
             index={index}
             variant={variant === 'grid' ? 'compact' : variant}
             isLast={index === posts.length - 1}
+            locale={locale}
           />
         ))}
       </AnimatePresence>

@@ -12,6 +12,7 @@ interface BlogSidebarProps {
   selectedCategory?: string
   onCategorySelect?: (category: string) => void
   className?: string
+  locale?: 'en' | 'pt'
 }
 
 export function BlogSidebar({
@@ -19,8 +20,10 @@ export function BlogSidebar({
   selectedCategory,
   onCategorySelect,
   className,
+  locale: propLocale,
 }: BlogSidebarProps) {
-  const locale = useLocale() as 'en' | 'pt'
+  const hookLocale = useLocale() as 'en' | 'pt'
+  const locale = propLocale || hookLocale
 
   const categories = useMemo(() => {
     return getCategoryCounts(posts, locale)

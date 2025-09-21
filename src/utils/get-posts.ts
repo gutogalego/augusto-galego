@@ -26,7 +26,7 @@ export interface PostMetadata {
 
 const postsDirectory = path.join(process.cwd(), 'data', 'posts')
 
-export const getPosts = (locale?: 'en' | 'pt'): PostMetadata[] => {
+export const getPosts = (): PostMetadata[] => {
   const postFolders: string[] = fs.readdirSync(postsDirectory)
 
   return postFolders.map((folder) => {
@@ -38,7 +38,6 @@ export const getPosts = (locale?: 'en' | 'pt'): PostMetadata[] => {
       ...metadata,
       url: folder, // using the folder name as the URL
       slug: folder, // also set slug for consistency
-      language: locale, // set the current locale
     }
   })
 }

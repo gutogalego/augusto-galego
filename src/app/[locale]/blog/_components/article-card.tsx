@@ -19,6 +19,7 @@ interface ArticleCardProps {
   className?: string
   variant?: 'default' | 'compact' | 'featured'
   isLast?: boolean
+  locale?: 'en' | 'pt'
 }
 
 const cardVariants = {
@@ -40,8 +41,10 @@ export function ArticleCard({
   className,
   variant = 'default',
   isLast = false,
+  locale: propLocale,
 }: ArticleCardProps) {
-  const locale = useLocale() as 'en' | 'pt'
+  const hookLocale = useLocale() as 'en' | 'pt'
+  const locale = propLocale || hookLocale
 
   const title = getLocalizedText(post.title, locale)
   const description = getLocalizedText(post.description, locale)

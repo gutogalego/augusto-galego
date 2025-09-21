@@ -39,6 +39,7 @@ interface BlogSearchProps {
   onResultSelect?: (result: SearchResult) => void
   onFilterByCategory?: (category: string) => void
   className?: string
+  locale?: 'en' | 'pt'
 }
 
 export function BlogSearch({
@@ -46,8 +47,10 @@ export function BlogSearch({
   onSearch,
   onResultSelect,
   className,
+  locale: propLocale,
 }: BlogSearchProps) {
-  const locale = useLocale() as 'en' | 'pt'
+  const hookLocale = useLocale() as 'en' | 'pt'
+  const locale = propLocale || hookLocale
   const searchData = postsToSearchResults(posts, locale)
 
   const handleResultSelect = (result: SearchResult) => {

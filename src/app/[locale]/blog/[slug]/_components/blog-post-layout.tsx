@@ -100,7 +100,7 @@ export function BlogPostLayout({
               </span>
             </div>
 
-            <div>
+            <div className="space-y-2">
               {/* Title */}
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
                 {title}
