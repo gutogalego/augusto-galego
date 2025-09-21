@@ -12,7 +12,7 @@ import {
 export function CoursesHero() {
   return (
     <section className="hero-section">
-      <div className="container mx-auto px-4 py-16 lg:py-24">
+      <div className="max-w-6xl mx-auto px-4 py-16 lg:py-24">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <Badge variant="outline" className="px-3 py-1">
             <GraduationCap className="mr-1 h-3 w-3" />

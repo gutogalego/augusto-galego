@@ -69,8 +69,8 @@ const footerSections: FooterSection[] = [
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto px-6 py-16 lg:px-8">
+    <footer className="border-t border-dotted bg-background">
+      <div className="max-w-6xl mx-auto px-6 py-16 lg:px-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {/* Brand Section - Takes more space on larger screens */}

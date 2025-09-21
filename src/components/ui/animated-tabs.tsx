@@ -46,11 +46,12 @@ export function AnimatedTabs({
         const clipLeft = offsetLeft
         const clipRight = offsetLeft + offsetWidth
 
-        container.style.clipPath = `inset(0 ${Number(
+        // Create a subtle underline effect
+        container.style.clipPath = `inset(0% ${Number(
           100 - (clipRight / container.offsetWidth) * 100
-        ).toFixed()}% 0 ${Number(
+        ).toFixed()}% 0% ${Number(
           (clipLeft / container.offsetWidth) * 100
-        ).toFixed()}% round 12px)`
+        ).toFixed()}%)`
       }
     }
   }, [activeTab])
@@ -61,65 +62,37 @@ export function AnimatedTabs({
   }
 
   return (
-    <div
-      className={cn(
-        'relative mx-auto flex w-fit flex-col items-center rounded-full',
-        className
-      )}
-    >
-      {/* Animated background overlay */}
+    <div className={cn('relative flex items-center', className)}>
+      {/* Animated underline indicator */}
       <div
         ref={containerRef}
-        className="absolute z-10 w-full overflow-hidden [clip-path:inset(0px_75%_0px_0%_round_12px)] [transition:clip-path_0.25s_ease]"
+        className="absolute bottom-0 w-full h-0.5 overflow-hidden [clip-path:inset(0%_75%_0%_0%)] [transition:clip-path_0.25s_ease]"
       >
-        <div className="relative flex w-full justify-center bg-foreground">
-          {tabs.map((tab) => {
-            const Icon = tab.icon
-            return (
-              <button
-                key={tab.href}
-                type="button"
-                onClick={() => handleTabClick(tab.href)}
-                className={cn(
-                  'flex h-10 items-center gap-2 rounded-full px-4 py-2 font-medium text-background text-sm transition-colors',
-                  'lg:inline hidden' // Hide on mobile, show on large screens
-                )}
-                tabIndex={-1}
-              >
-                {Icon && <Icon className="h-4 w-4" />}
-                <span className="hidden lg:inline">{tab.name}</span>
-              </button>
-            )
-          })}
-        </div>
+        <div className="w-full h-full bg-foreground" />
       </div>
 
-      {/* Base tabs */}
-      <div className="relative flex w-full justify-center">
-        {tabs.map((tab) => {
-          const isActive = activeTab === tab.href
-          const Icon = tab.icon
+      {/* Tabs in single row */}
+      {tabs.map((tab) => {
+        const isActive = activeTab === tab.href
+        const Icon = tab.icon
 
-          return (
-            <button
-              key={tab.href}
-              type="button"
-              ref={isActive ? activeTabRef : null}
-              onClick={() => handleTabClick(tab.href)}
-              className={cn(
-                'flex h-10 items-center gap-2 rounded-full px-4 py-2 font-medium text-sm transition-colors',
-                'lg:inline hidden', // Hide on mobile, show on large screens
-                isActive
-                  ? 'text-foreground'
-                  : 'text-muted-foreground hover:text-foreground'
-              )}
-            >
-              {Icon && <Icon className="h-4 w-4 transition-colors" />}
-              <span className="hidden lg:inline">{tab.name}</span>
-            </button>
-          )
-        })}
-      </div>
+        return (
+          <button
+            key={tab.href}
+            type="button"
+            ref={isActive ? activeTabRef : null}
+            onClick={() => handleTabClick(tab.href)}
+            className={cn(
+              'flex items-center gap-2 px-4 py-2 font-medium text-sm transition-all duration-200',
+              'hover:text-foreground relative',
+              isActive ? 'text-foreground' : 'text-muted-foreground'
+            )}
+          >
+            {Icon && <Icon className="h-4 w-4 transition-colors" />}
+            <span className="hidden lg:inline">{tab.name}</span>
+          </button>
+        )
+      })}
     </div>
   )
 }

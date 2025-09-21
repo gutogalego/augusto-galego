@@ -67,7 +67,7 @@ export function NewsletterSection() {
   if (isSubscribed) {
     return (
       <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <Card className="max-w-2xl mx-auto text-center tech-card">
             <CardContent className="p-8 space-y-6">
               <div className="flex justify-center">
@@ -99,7 +99,7 @@ export function NewsletterSection() {
 
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-br from-muted/5 via-background to-muted/5">
-      <div className="container mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center space-y-4 mb-12">

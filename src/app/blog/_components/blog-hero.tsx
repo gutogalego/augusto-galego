@@ -1,39 +1,21 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import {
-  BookOpen,
-  Calendar,
-  Filter,
-  Search,
-  Tag,
-  TrendingUp,
-  Users,
-} from 'lucide-react'
+import type { PostMetadata } from '@/utils/getPosts'
+import { BookOpen, Tag, TrendingUp, Users } from 'lucide-react'
+import { BlogSearch } from './blog-search'
 
-const blogStats = [
-  { label: 'Artigos Publicados', value: '50+', icon: BookOpen },
-  { label: 'Leitores Mensais', value: '25K+', icon: Users },
-  { label: 'Tópicos Cobertos', value: '12', icon: Tag },
-]
+interface BlogHeroProps {
+  posts: PostMetadata[]
+  onSearch?: (query: string) => void
+  onTopicClick?: (topic: string) => void
+}
 
-const popularTopics = [
-  'Algoritmos',
-  'Estruturas de Dados',
-  'LeetCode',
-  'Carreira Tech',
-  'Trabalho Remoto',
-  'System Design',
-  'Produtividade',
-  'Europa/EUA',
-]
-
-export function BlogHero() {
+export function BlogHero({ posts, onSearch }: BlogHeroProps) {
   return (
     <section className="hero-section">
-      <div className="container mx-auto px-4 py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="max-w-6xl mx-auto px-4 py-16 lg:py-24">
+        <div className="max-w-3xl mx-auto text-center space-y-8">
           {/* Badge */}
           <Badge variant="outline" className="px-3 py-1">
             <BookOpen className="mr-1 h-3 w-3" />
@@ -42,91 +24,31 @@ export function BlogHero() {
 
           {/* Main Heading */}
           <div className="space-y-6">
-            <div className="text-subtitle">Blog</div>
             <h1 className="text-display">
               Insights sobre{' '}
               <span className="gradient-text">tech e carreira</span>
             </h1>
-            <p className="text-body-large text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
               Artigos práticos sobre algoritmos, estruturas de dados, carreira
-              internacional e tudo que aprendi em 9+ anos como desenvolvedor.
+              internacional e tudo que aprendi em +9 anos como desenvolvedor.
               <strong> Conteúdo real, sem enrolação.</strong>
             </p>
           </div>
 
           {/* Search Bar */}
-          <div className="max-w-md mx-auto">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input placeholder="Buscar artigos..." className="pl-10 h-12" />
-              <Button
-                size="sm"
-                className="absolute right-2 top-1/2 -translate-y-1/2"
-              >
-                <Filter className="h-4 w-4" />
-              </Button>
-            </div>
+          <div className="max-w-xl mx-auto">
+            <BlogSearch
+              posts={posts}
+              onSearch={(query) => {
+                onSearch?.(query)
+                // Você pode adicionar analytics aqui se necessário
+              }}
+              onResultSelect={() => {
+                // O componente já navega automaticamente
+                // Adicione analytics se necessário
+              }}
+            />
           </div>
-
-          {/* Popular Topics */}
-          <div className="space-y-4">
-            <p className="text-sm font-medium text-muted-foreground">
-              Tópicos populares:
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {popularTopics.map((topic) => (
-                <Badge
-                  key={topic}
-                  variant="secondary"
-                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
-                >
-                  {topic}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
-            {blogStats.map((stat) => {
-              const Icon = stat.icon
-              return (
-                <Card key={stat.label} className="tech-card">
-                  <CardContent className="p-4 text-center">
-                    <div className="flex justify-center mb-2">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                        <Icon className="h-5 w-5 text-primary" />
-                      </div>
-                    </div>
-                    <div className="text-2xl font-bold">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {stat.label}
-                    </div>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-
-          {/* Newsletter CTA */}
-          <Card className="tech-card max-w-2xl mx-auto">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div className="text-left">
-                  <h3 className="font-semibold mb-1">
-                    Não perca nenhum artigo
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Receba os novos posts direto no seu email
-                  </p>
-                </div>
-                <Button className="group">
-                  <TrendingUp className="mr-2 h-4 w-4" />
-                  Inscrever-se
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
 

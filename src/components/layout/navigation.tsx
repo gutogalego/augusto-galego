@@ -1,44 +1,51 @@
 'use client'
 
+import { AnimatedTabs } from '@/components/ui/animated-tabs'
 import { Button } from '@/components/ui/button'
-import { Github, Linkedin, Menu, Twitter, X, Youtube } from 'lucide-react'
+import { SocialButton } from '@/components/ui/social-button'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6'
+import {
+  RiArticleLine,
+  RiBookLine,
+  RiCloseLine,
+  RiComputerLine,
+  RiHomeLine,
+  RiMailLine,
+  RiMenuLine,
+  RiUserLine,
+} from 'react-icons/ri'
 import { LogoHorizontal } from '../common'
 
 const navigationItems = [
-  { name: 'Início', href: '/' },
-  { name: 'Sobre', href: '/about' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Cursos', href: '/courses' },
-  { name: 'Setup', href: '/setup' },
-  { name: 'Contato', href: '/contact' },
+  { name: 'Início', href: '/', icon: RiHomeLine },
+  { name: 'Sobre', href: '/about', icon: RiUserLine },
+  { name: 'Blog', href: '/blog', icon: RiArticleLine },
+  { name: 'Cursos', href: '/courses', icon: RiBookLine },
+  { name: 'Setup', href: '/setup', icon: RiComputerLine },
+  { name: 'Contato', href: '/contact', icon: RiMailLine },
 ]
 
 const socialLinks = [
   {
-    name: 'YouTube Principal',
+    name: 'YouTube',
     href: 'https://www.youtube.com/@GutoGalego',
-    icon: Youtube,
+    icon: FaYoutube,
   },
-  {
-    name: 'YouTube Monólogos',
-    href: 'https://www.youtube.com/@GutoMonologos',
-    icon: Youtube,
-  },
-  { name: 'Twitter', href: 'https://x.com/RealGalego', icon: Twitter },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/augusto-galego-60a0b1160/',
-    icon: Linkedin,
+    icon: FaLinkedin,
   },
-  { name: 'GitHub', href: 'https://github.com/gutogalego', icon: Github },
+  { name: 'X', href: 'https://x.com/RealGalego', icon: FaXTwitter },
 ]
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   const isActive = (href: string) => {
     if (href === '/') {
@@ -47,101 +54,108 @@ export function Navigation() {
     return pathname.startsWith(href)
   }
 
+  const handleTabClick = (href: string) => {
+    router.push(href)
+  }
+
+  // Prepare tabs for AnimatedTabs component
+  const tabsData = navigationItems.map((item) => ({
+    name: item.name,
+    href: item.href,
+    isActive: isActive(item.href),
+    icon: item.icon,
+  }))
+
   return (
-    <header className="sticky top-0 z-50 w-full ui-surface">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full bg-card border-b-2 py-1 border-dotted border-border/40">
+      <div className="max-w-6xl mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
-          <LogoHorizontal />
+        <Link href="/" className="flex items-center space-x-2 group">
+          <div className="transition-transform duration-200 group-hover:scale-105">
+            <LogoHorizontal />
+          </div>
         </Link>
-
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          {navigationItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`transition-colors hover:text-primary ${
-                isActive(item.href)
-                  ? 'text-foreground'
-                  : 'text-muted-foreground'
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
+        <nav className="hidden md:flex items-center">
+          <AnimatedTabs tabs={tabsData} onTabClick={handleTabClick} />
         </nav>
-
         {/* Desktop Social Links */}
-        <div className="hidden md:flex items-center space-x-2">
-          {socialLinks.slice(0, 3).map((link) => {
-            const Icon = link.icon
-            return (
-              <Button key={link.href} variant="ghost" size="sm" asChild={true}>
-                <Link
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  <Icon className="h-4 w-4" />
-                  <span className="sr-only">{link.name}</span>
-                </Link>
-              </Button>
-            )
-          })}
-        </div>
+        <div className="hidden md:flex items-center">
+          <div className="flex items-center gap-3 ml-6">
+            {/* Vertical divider */}
+            <div className="w-px h-8 bg-border/40 mr-2" />
 
+            {socialLinks.map((link) => (
+              <SocialButton
+                key={link.href}
+                href={link.href}
+                icon={link.icon}
+                label={link.name}
+              />
+            ))}
+          </div>
+        </div>
         {/* Mobile Menu Button */}
         <Button
           variant="ghost"
           size="sm"
-          className="md:hidden"
+          className="md:hidden h-9 w-9 p-0 hover:bg-muted/50"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {isOpen ? (
+            <RiCloseLine className="h-5 w-5" />
+          ) : (
+            <RiMenuLine className="h-5 w-5" />
+          )}
           <span className="sr-only">Toggle menu</span>
         </Button>
       </div>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden">
-          <div className="border-t bg-background px-4 py-4">
-            <nav className="flex flex-col space-y-3">
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive(item.href)
-                      ? 'text-foreground'
-                      : 'text-muted-foreground'
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Mobile Social Links */}
-            <div className="mt-6 flex items-center space-x-4 border-t pt-4">
-              {socialLinks.map((link) => {
-                const Icon = link.icon
+        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-sm">
+          <div className="px-4 py-6">
+            <nav className="space-y-1">
+              {navigationItems.map((item) => {
+                const Icon = item.icon
                 return (
                   <Link
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground"
+                    key={item.href}
+                    href={item.href}
+                    className={`group flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      isActive(item.href)
+                        ? 'bg-muted/50 text-foreground border border-border/30'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
+                    }`}
+                    onClick={() => setIsOpen(false)}
                   >
-                    <Icon className="h-5 w-5" />
-                    <span className="sr-only">{link.name}</span>
+                    <Icon className="h-5 w-5 transition-colors" />
+                    <span>{item.name}</span>
+
+                    {/* Active indicator */}
+                    {isActive(item.href) && (
+                      <div className="ml-auto w-2 h-2 bg-primary rounded-full" />
+                    )}
                   </Link>
                 )
               })}
+            </nav>
+
+            {/* Mobile Social Links */}
+            <div className="mt-8 pt-6 border-t border-border/30">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-4">
+                Redes Sociais
+              </p>
+              <div className="flex items-center justify-center gap-4">
+                {socialLinks.map((link) => (
+                  <SocialButton
+                    key={link.href}
+                    href={link.href}
+                    icon={link.icon}
+                    label={link.name}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

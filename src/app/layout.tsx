@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'javascript',
     'trabalho remoto',
     'augusto galego',
-    'papai do leetcode',
+    'leetcode',
     'system design',
     'entrevista técnica',
     'coding interview',
@@ -206,7 +206,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
               name: 'Augusto Galego',
-              alternateName: 'Papai do LeetCode',
+              alternateName: 'Galego',
               url: 'https://augustogalego.com',
               description:
                 'CTO, Backend Engineer e Educador. Especialista em algoritmos, estruturas de dados e carreira em tech.',

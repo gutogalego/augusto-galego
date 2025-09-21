@@ -55,10 +55,6 @@ export function HeroSection() {
               <h1 className="text-display">
                 Augusto <span className="gradient-text">Galego</span>
               </h1>
-              <div className="text-headline text-muted-foreground">
-                Papai do{' '}
-                <span className="font-semibold text-primary">LeetCode</span>
-              </div>
               <p className="text-body-large text-muted-foreground max-w-2xl">
                 CTO, Backend Engineer e Educador. Especialista em algoritmos,
                 estruturas de dados e carreira em tech.{' '}

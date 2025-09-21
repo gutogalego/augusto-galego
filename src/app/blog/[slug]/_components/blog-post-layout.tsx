@@ -128,9 +128,6 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
                     </div>
                     <div>
                       <div className="font-medium text-sm">Augusto Galego</div>
-                      <div className="text-xs text-muted-foreground">
-                        Papai do LeetCode
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -176,11 +173,10 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
                       <div className="space-y-3">
                         <div className="font-semibold">Augusto Galego</div>
                         <p className="text-body text-muted-foreground">
-                          CTO, Backend Engineer e Educador. Conhecido como
-                          "Papai do LeetCode", ajudo desenvolvedores a crescerem
-                          em suas carreiras através de conteúdo sobre
-                          algoritmos, estruturas de dados e carreira
-                          internacional.
+                          CTO, Backend Engineer e Educador. Ajudo
+                          desenvolvedores a crescerem em suas carreiras através
+                          de conteúdo sobre algoritmos, estruturas de dados e
+                          carreira internacional.
                         </p>
                         <div className="flex space-x-3">
                           <Button variant="outline" size="sm" asChild={true}>
