@@ -73,7 +73,7 @@ export async function generateMetadata({
   const { metadata } = postData
 
   return {
-    title: `${metadata.title} | Augusto Galego`,
+    title: `${metadata.title} - Blog`,
     description: metadata.description,
     openGraph: {
       title: metadata.title,
