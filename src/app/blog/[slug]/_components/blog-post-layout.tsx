@@ -9,10 +9,7 @@ import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
-  Calendar,
-  Clock,
   Linkedin,
-  MessageCircle,
   Twitter,
   User,
 } from 'lucide-react'
@@ -23,7 +20,6 @@ interface BlogPostLayoutProps {
   children: React.ReactNode
 }
 
-// Função para categorizar posts baseado no título/conteúdo
 const categorizePost = (post: PostMetadata): string => {
   const title = post.title.toLowerCase()
 
@@ -102,7 +98,7 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
         </div>
 
         {/* Post Header */}
-        <div className="px-8 py-16 border-b border-dotted border-border/40">
+        <div className="px-8 pt-12 pb-8 border-b border-dotted border-border/40">
           <div className="max-w-4xl space-y-8">
             {/* Meta info */}
             <div className="flex items-center gap-4 text-sm">
@@ -114,15 +110,17 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
               <span className="text-muted-foreground">9 min de leitura</span>
             </div>
 
-            {/* Title */}
-            <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
-              {metadata.title}
-            </h1>
+            <div>
+              {/* Title */}
+              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+                {metadata.title}
+              </h1>
 
-            {/* Description */}
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
-              {metadata.description}
-            </p>
+              {/* Description */}
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
+                {metadata.description}
+              </p>
+            </div>
 
             {/* Author */}
             <div className="flex items-center gap-3 pt-4">
@@ -142,7 +140,7 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
         {/* Main Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] min-h-screen">
           {/* Main Content */}
-          <div className="px-8 py-12 border-r border-dotted border-border/40">
+          <div className="px-8 py-4 border-r border-dotted border-border/40">
             <div className="max-w-3xl">
               <article className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-sm prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-muted prose-pre:border prose-pre:border-border/40">
                 {children}
@@ -225,39 +223,8 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
 
           {/* Sidebar */}
           <div className="px-8 py-12 bg-muted/20">
-            <div className="sticky top-8 space-y-8">
-              {/* Table of Contents */}
-              <div>
-                <h3 className="font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">
-                  Índice
-                </h3>
-                <TableOfContents />
-              </div>
-
-              {/* Quick Actions */}
-              <div className="space-y-4 pt-8 border-t border-border/40">
-                <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider">
-                  Ações rápidas
-                </h3>
-                <div className="space-y-2">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full justify-start text-muted-foreground hover:text-foreground"
-                  >
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    Deixar comentário
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full justify-start text-muted-foreground hover:text-foreground"
-                  >
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    Salvar para depois
-                  </Button>
-                </div>
-              </div>
+            <div className="sticky top-8">
+              <TableOfContents />
             </div>
           </div>
         </div>
