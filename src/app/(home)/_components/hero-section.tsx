@@ -33,7 +33,7 @@ const highlights = [
 export function HeroSection() {
   return (
     <section className="hero-section">
-      <div className="container mx-auto px-4 py-16 lg:py-24">
+      <div className="max-w-6xl mx-auto px-4 py-16 lg:py-24">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column - Content */}
           <div className="space-y-8">

@@ -1,6 +1,4 @@
 import { Footer, Navigation } from '@/components/layout'
-import { CanvasOverlay } from '@/components/ui/canvas-overlay'
-import { DockNavbar } from '@/components/ui/dock-navbar'
 import { PageTransition } from '@/components/ui/page-transition'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
@@ -234,14 +232,12 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >
-        <CanvasOverlay />
-        <div className="flex min-h-screen flex-col relative z-10">
+        <div className="flex min-h-screen flex-col">
           <Navigation />
           <main className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
-          <DockNavbar />
         </div>
       </body>
     </html>
