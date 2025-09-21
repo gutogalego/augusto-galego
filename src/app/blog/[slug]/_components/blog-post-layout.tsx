@@ -140,7 +140,7 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
         {/* Main Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] min-h-screen">
           {/* Main Content */}
-          <div className="px-8 py-4 border-r border-dotted border-border/40">
+          <div className="px-8 pt-4 pb-12 border-r border-dotted border-border/40">
             <div className="max-w-3xl">
               <article className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-sm prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-muted prose-pre:border prose-pre:border-border/40">
                 {children}
@@ -172,51 +172,6 @@ export function BlogPostLayout({ metadata, children }: BlogPostLayoutProps) {
                     </Button>
                   </div>
                 </div>
-
-                {/* Author Bio Card */}
-                <Card className="border-border/40 shadow-none">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <ProfileAvatar size="xl" />
-                      <div className="flex-1 space-y-3">
-                        <div>
-                          <h3 className="font-semibold text-foreground">
-                            Augusto Galego
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            CTO & Engineering Lead
-                          </p>
-                        </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          CTO, Backend Engineer e Educador com 9+ anos de
-                          experiência. Especialista em algoritmos, estruturas de
-                          dados e carreira internacional. De júnior no Brasil a
-                          CTO nos EUA.
-                        </p>
-                        <div className="flex gap-3">
-                          <Button variant="outline" size="sm" asChild={true}>
-                            <Link
-                              href="/about"
-                              className="flex items-center gap-2"
-                            >
-                              <User className="h-4 w-4" />
-                              Sobre mim
-                            </Link>
-                          </Button>
-                          <Button variant="outline" size="sm" asChild={true}>
-                            <Link
-                              href="/courses"
-                              className="flex items-center gap-2"
-                            >
-                              <BookOpen className="h-4 w-4" />
-                              Meus cursos
-                            </Link>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
             </div>
           </div>
