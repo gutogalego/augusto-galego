@@ -1,17 +1,27 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-// types.ts
+export interface MultilingualText {
+  en: string
+  pt: string
+}
+
 export interface PostMetadata {
-  title: string
-  description: string
+  title: MultilingualText
+  description: MultilingualText
+  excerpt?: MultilingualText
   date: string
   url?: string
   slug?: string
-  category?: string
-  readTime?: string
-  tags?: string[]
+  category?: MultilingualText
+  readTime?: number
+  tags?: MultilingualText[]
   featured?: boolean
+  keywords?: MultilingualText[]
+  language?: 'en' | 'pt'
+  canonicalUrl?: string
+  image?: string
+  lastModified?: string
 }
 
 const postsDirectory = path.join(process.cwd(), 'data', 'posts')

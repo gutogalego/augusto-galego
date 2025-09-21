@@ -1,10 +1,30 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import type { PostMetadata } from '@/utils/getPosts'
+import type { MultilingualText, PostMetadata } from '@/utils/getPosts'
 import { marked } from 'marked'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { BlogPostLayout } from './_components'
+
+function getLocalizedText(
+  text: MultilingualText | string,
+  language: 'en' | 'pt' = 'pt'
+): string {
+  if (typeof text === 'string') {
+    return text
+  }
+  return text[language] || text.en || text.pt
+}
+
+function getLocalizedArray(
+  arr: MultilingualText[] | string[] | undefined,
+  language: 'en' | 'pt' = 'pt'
+): string[] {
+  if (!arr) {
+    return []
+  }
+  return arr.map((item) => getLocalizedText(item, language))
+}
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -71,20 +91,38 @@ export async function generateMetadata({
   }
 
   const { metadata } = postData
+  const currentLang = metadata.language || 'pt'
+
+  const title = getLocalizedText(metadata.title, currentLang)
+  const description = getLocalizedText(metadata.description, currentLang)
+  const excerpt = metadata.excerpt
+    ? getLocalizedText(metadata.excerpt, currentLang)
+    : undefined
+  const tags = getLocalizedArray(metadata.tags, currentLang)
+  const keywords = getLocalizedArray(metadata.keywords, currentLang)
 
   return {
-    title: `${metadata.title} - Blog`,
-    description: metadata.description,
+    title: `${title} - Blog`,
+    description: excerpt || description,
+    keywords: keywords.join(', '),
+    alternates: {
+      canonical: metadata.canonicalUrl,
+    },
     openGraph: {
-      title: metadata.title,
-      description: metadata.description,
+      title: title,
+      description: excerpt || description,
       type: 'article',
       publishedTime: metadata.date,
+      modifiedTime: metadata.lastModified || metadata.date,
+      tags: tags,
+      locale: currentLang === 'pt' ? 'pt-BR' : 'en-US',
+      images: metadata.image ? [{ url: metadata.image }] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
-      title: metadata.title,
-      description: metadata.description,
+      title: title,
+      description: excerpt || description,
+      images: metadata.image ? [metadata.image] : undefined,
     },
   }
 }
