@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import * as FancyButton from '@/components/ui/fancy-button'
 import {
   ArrowRight,
   BookOpen,
@@ -153,12 +154,16 @@ export function FeaturedContent() {
                 </div>
 
                 {/* CTA */}
-                <Button size="lg" className="w-full group" asChild={true}>
+                <FancyButton.Root
+                  size="lg"
+                  className="w-full group"
+                  asChild={true}
+                >
                   <Link href={featuredCourse.href}>
                     Ver Curso Completo
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                </Button>
+                </FancyButton.Root>
               </CardContent>
             </Card>
           </div>

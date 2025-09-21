@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import * as FancyButton from '@/components/ui/fancy-button'
 import {
   ArrowRight,
   Briefcase,
@@ -74,13 +75,13 @@ export function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-              <Button size="lg" asChild={true} className="group">
+              <FancyButton.Root size="lg" asChild={true} className="group">
                 <Link href="/courses">
-                  <GraduationCap className="mr-2 h-4 w-4" />
+                  <FancyButton.Icon as={GraduationCap} className="mr-2" />
                   Ver Cursos
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </Button>
+              </FancyButton.Root>
 
               <Button
                 variant="outline"

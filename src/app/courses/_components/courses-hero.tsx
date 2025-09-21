@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import * as FancyButton from '@/components/ui/fancy-button'
 import {
   ArrowRight,
   GraduationCap,
@@ -55,10 +56,10 @@ export function CoursesHero() {
             </Card>
           </div>
 
-          <Button size="lg" className="group">
+          <FancyButton.Root size="lg" className="group">
             Ver Todos os Cursos
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          </FancyButton.Root>
         </div>
       </div>
     </section>

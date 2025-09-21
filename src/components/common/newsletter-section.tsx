@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import * as FancyButton from '@/components/ui/fancy-button'
 import { Input } from '@/components/ui/input'
 import {
   ArrowRight,
@@ -190,7 +191,7 @@ export function NewsletterSection() {
                       />
                     </div>
 
-                    <Button
+                    <FancyButton.Root
                       type="submit"
                       size="lg"
                       className="w-full group"
@@ -203,12 +204,12 @@ export function NewsletterSection() {
                         </>
                       ) : (
                         <>
-                          <Send className="mr-2 h-4 w-4" />
+                          <FancyButton.Icon as={Send} className="mr-2" />
                           Quero Receber Insights
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
-                    </Button>
+                    </FancyButton.Root>
                   </form>
 
                   <div className="text-center">
