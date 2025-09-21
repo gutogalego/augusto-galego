@@ -1,10 +1,11 @@
 'use client'
 
-import { AnimatedTabs } from '@/components/ui/animated-tabs'
 import { Button } from '@/components/ui/button'
+import { NavigationCard } from '@/components/ui/navigation-card'
+import { NavigationDock } from '@/components/ui/navigation-dock'
 import { SocialButton } from '@/components/ui/social-button'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6'
 import {
@@ -45,7 +46,6 @@ const socialLinks = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const router = useRouter()
 
   const isActive = (href: string) => {
     if (href === '/') {
@@ -54,16 +54,12 @@ export function Navigation() {
     return pathname.startsWith(href)
   }
 
-  const handleTabClick = (href: string) => {
-    router.push(href)
-  }
-
-  // Prepare tabs for AnimatedTabs component
-  const tabsData = navigationItems.map((item) => ({
+  // Prepare navigation items for NavigationDock component
+  const navigationData = navigationItems.map((item) => ({
     name: item.name,
     href: item.href,
-    isActive: isActive(item.href),
     icon: item.icon,
+    isActive: isActive(item.href),
   }))
 
   return (
@@ -71,13 +67,11 @@ export function Navigation() {
       <div className="max-w-6xl mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2 group">
-          <div className="transition-transform duration-200 group-hover:scale-105">
-            <LogoHorizontal />
-          </div>
+          <LogoHorizontal />
         </Link>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center">
-          <AnimatedTabs tabs={tabsData} onTabClick={handleTabClick} />
+          <NavigationDock items={navigationData} />
         </nav>
         {/* Desktop Social Links */}
         <div className="hidden md:flex items-center">
@@ -115,30 +109,17 @@ export function Navigation() {
       {isOpen && (
         <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-sm">
           <div className="px-4 py-6">
-            <nav className="space-y-1">
-              {navigationItems.map((item) => {
-                const Icon = item.icon
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`group flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      isActive(item.href)
-                        ? 'bg-muted/50 text-foreground border border-border/30'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Icon className="h-5 w-5 transition-colors" />
-                    <span>{item.name}</span>
-
-                    {/* Active indicator */}
-                    {isActive(item.href) && (
-                      <div className="ml-auto w-2 h-2 bg-primary rounded-full" />
-                    )}
-                  </Link>
-                )
-              })}
+            <nav className="grid grid-cols-3 gap-3">
+              {navigationItems.map((item) => (
+                <NavigationCard
+                  key={item.href}
+                  href={item.href}
+                  icon={item.icon}
+                  label={item.name}
+                  isActive={isActive(item.href)}
+                  onClick={() => setIsOpen(false)}
+                />
+              ))}
             </nav>
 
             {/* Mobile Social Links */}
