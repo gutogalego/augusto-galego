@@ -5,32 +5,32 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 224 71% 4%;
+    --foreground: 0 0% 9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
+    --card-foreground: 0 0% 9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 4%;
+    --popover-foreground: 0 0% 9%;
 
-    --primary: 217 91% 60%;
+    --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 220 13% 91%;
-    --secondary-foreground: 224 71% 4%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 8.9% 46.1%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 217 91% 60%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 9%;
 
     --radius: 0.75rem;
   }
@@ -87,15 +87,15 @@
   }
 
   .text-display {
-    @apply font-serif text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1];
+    @apply font-sans text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1];
   }
 
   .text-headline {
-    @apply font-serif text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight;
+    @apply font-sans text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight leading-tight;
   }
 
   .text-title {
-    @apply font-serif text-xl md:text-2xl font-semibold tracking-tight;
+    @apply font-sans text-xl md:text-2xl font-semibold tracking-tight;
   }
 
   .text-subtitle {
@@ -104,11 +104,11 @@
   }
 
   .text-body {
-    @apply font-serif text-base leading-relaxed;
+    @apply font-sans text-base leading-relaxed;
   }
 
   .text-body-large {
-    @apply font-serif text-lg leading-relaxed;
+    @apply font-sans text-lg leading-relaxed;
   }
 
   .text-caption {
@@ -125,7 +125,7 @@
   h4,
   h5,
   h6 {
-    @apply font-serif font-semibold tracking-tight;
+    @apply font-sans font-semibold tracking-tight;
   }
 
   h1 {
@@ -155,7 +155,7 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    @apply text-foreground;
   }
 
   .tech-card {
@@ -163,7 +163,7 @@
   }
 
   .hero-section {
-    @apply relative overflow-hidden bg-gradient-to-br from-background via-muted/20 to-secondary/30;
+    @apply relative overflow-hidden bg-background;
   }
 
   .canvas-bg {
@@ -196,15 +196,15 @@
 
   .prose-elegant {
     @apply prose prose-lg max-w-none;
-    @apply prose-headings:font-serif prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground;
-    @apply prose-p:font-serif prose-p:leading-relaxed prose-p:text-foreground prose-p:text-base;
-    @apply prose-a:font-serif prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:underline-offset-2;
+    @apply prose-headings:font-sans prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-foreground;
+    @apply prose-p:font-sans prose-p:leading-relaxed prose-p:text-foreground prose-p:text-base;
+    @apply prose-a:font-sans prose-a:text-foreground prose-a:no-underline hover:prose-a:underline prose-a:underline-offset-2;
     @apply prose-strong:font-semibold prose-strong:text-foreground;
-    @apply prose-em:font-serif prose-em:italic;
-    @apply prose-code:font-mono prose-code:text-primary prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-medium;
+    @apply prose-em:font-sans prose-em:italic;
+    @apply prose-code:font-mono prose-code:text-foreground prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-medium;
     @apply prose-pre:bg-muted prose-pre:border prose-pre:font-mono prose-pre:text-sm prose-pre:rounded-lg;
-    @apply prose-blockquote:border-l-primary prose-blockquote:font-serif prose-blockquote:italic prose-blockquote:text-muted-foreground;
-    @apply prose-ul:font-serif prose-ol:font-serif;
+    @apply prose-blockquote:border-l-foreground prose-blockquote:font-sans prose-blockquote:italic prose-blockquote:text-muted-foreground;
+    @apply prose-ul:font-sans prose-ol:font-sans;
     @apply prose-li:text-foreground prose-li:leading-relaxed;
     @apply prose-hr:border-border;
     line-height: 1.7;
@@ -244,7 +244,7 @@
   }
 
   .prose-elegant blockquote {
-    @apply border-l-2 border-primary/20 pl-6 italic font-serif text-lg;
+    @apply border-l-2 border-foreground/20 pl-6 italic font-sans text-lg;
   }
 
   .prose-elegant table {

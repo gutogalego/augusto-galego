@@ -2,31 +2,9 @@ import { Footer, Navigation } from '@/components/layout'
 import { CanvasOverlay } from '@/components/ui/canvas-overlay'
 import { DockNavbar } from '@/components/ui/dock-navbar'
 import { PageTransition } from '@/components/ui/page-transition'
+import { GeistMono, GeistSans } from 'geist/font'
 import type { Metadata } from 'next'
-import { Crimson_Text, JetBrains_Mono, Nunito } from 'next/font/google'
 import '@/styles/globals.css'
-
-// Sans-serif para UI e navegação
-const nunito = Nunito({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-})
-
-// Serif para títulos e conteúdo editorial
-const crimsonText = Crimson_Text({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-serif',
-  display: 'swap',
-})
-
-// Monospace para código e detalhes técnicos
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: {
@@ -142,7 +120,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${nunito.variable} ${crimsonText.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >
         <CanvasOverlay />
         <div className="flex min-h-screen flex-col relative z-10">

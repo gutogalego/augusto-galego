@@ -18,9 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'], // Nunito
-        serif: ['var(--font-serif)', 'Georgia', 'serif'], // Crimson Text
-        mono: ['var(--font-mono)', 'Menlo', 'monospace'], // JetBrains Mono
+        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'Menlo', 'monospace'],
       },
       colors: {
         border: 'hsl(var(--border))',
