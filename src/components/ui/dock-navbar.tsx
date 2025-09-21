@@ -131,10 +131,10 @@ function DockIcon({
         transition-colors duration-200 relative group
         ${
           isActive
-            ? 'bg-primary text-primary-foreground shadow-lg'
+            ? 'bg-primary text-primary-foreground'
             : 'bg-background/80 backdrop-blur-sm text-foreground hover:bg-accent hover:text-accent-foreground'
         }
-        border border-border/50 shadow-sm
+        border border-border/50
       `}
       whileHover={
         prefersReducedMotion
@@ -159,7 +159,7 @@ function DockIcon({
       <motion.div
         className="absolute -top-12 left-1/2 transform -translate-x-1/2
                    bg-popover text-popover-foreground text-xs px-2 py-1
-                   rounded-md shadow-md border border-border whitespace-nowrap
+                   rounded-md border border-border whitespace-nowrap
                    opacity-0 group-hover:opacity-100 pointer-events-none z-50"
         initial={{ opacity: 0, y: 10 }}
         whileHover={{ opacity: 1, y: 0 }}

@@ -124,7 +124,7 @@ export function AboutHero() {
           <div className="space-y-8">
             {/* Profile Image */}
             <div className="relative">
-              <div className="aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10">
+              <div className="aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted/50 to-muted">
                 {/* Placeholder for profile image */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-8xl font-bold text-primary/20">AG</div>
@@ -141,7 +141,7 @@ export function AboutHero() {
 
               {/* Location badge */}
               <div className="absolute -bottom-4 -right-4">
-                <Card className="shadow-lg">
+                <Card>
                   <CardContent className="p-3">
                     <div className="flex items-center space-x-2">
                       <MapPin className="h-4 w-4 text-primary" />
@@ -186,7 +186,7 @@ export function AboutHero() {
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute right-[calc(50%-4rem)] top-10 -z-10 transform-gpu blur-3xl sm:right-[calc(50%-18rem)] lg:right-48 lg:top-[calc(50%-30rem)] xl:right-[calc(50%-24rem)]">
           <div
-            className="aspect-[1108/632] w-[69.25rem] bg-gradient-to-l from-accent/20 to-primary/20 opacity-20"
+            className="aspect-[1108/632] w-[69.25rem] bg-gradient-to-l from-muted/20 to-muted/10 opacity-20"
             style={{
               clipPath:
                 'polygon(26.4% 48.3%, 8.3% 88.2%, 0% 53.6%, 2.6% 17.8%, 7.5% 15.1%, 24.3% 36%, 44.7% 52.5%, 53.5% 50.6%, 55% 37.1%, 49.7% 12.8%, 78.7% 35.9%, 99.9% 0%, 94.6% 48.9%, 78.6% 36.1%, 41.1% 99.8%, 26.4% 48.3%)',

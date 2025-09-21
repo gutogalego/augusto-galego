@@ -74,7 +74,7 @@ export function YouTubeChannels() {
         {/* Section Header */}
         <div className="text-center space-y-4 mb-12">
           <Badge variant="outline" className="px-3 py-1">
-            <Youtube className="mr-1 h-3 w-3 text-red-500" />
+            <Youtube className="mr-1 h-3 w-3 text-foreground" />
             YouTube
           </Badge>
           <h2 className="text-3xl font-bold lg:text-4xl">
@@ -107,7 +107,7 @@ export function YouTubeChannels() {
 
               <CardHeader>
                 <div className="flex items-start space-x-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-500 text-white">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-foreground text-white">
                     <Youtube className="h-6 w-6" />
                   </div>
                   <div className="flex-1">
@@ -203,12 +203,12 @@ export function YouTubeChannels() {
             {popularVideos.map((video) => (
               <Card
                 key={video.title}
-                className="tech-card group hover:shadow-lg transition-all overflow-hidden"
+                className="tech-card group transition-all overflow-hidden"
               >
                 {/* Video Thumbnail Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 relative">
+                <div className="aspect-video bg-gradient-to-br from-muted/50 to-muted relative">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-500 text-white group-hover:scale-110 transition-transform">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-foreground text-white group-hover:scale-110 transition-transform">
                       <Play className="h-8 w-8 ml-1" />
                     </div>
                   </div>
@@ -247,7 +247,7 @@ export function YouTubeChannels() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Youtube className="mr-2 h-4 w-4 text-red-500" />
+                <Youtube className="mr-2 h-4 w-4 text-foreground" />
                 Ver Todos os Vídeos
                 <ExternalLink className="ml-2 h-4 w-4" />
               </Link>

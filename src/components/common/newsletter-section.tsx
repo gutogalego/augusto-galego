@@ -71,8 +71,8 @@ export function NewsletterSection() {
           <Card className="max-w-2xl mx-auto text-center tech-card">
             <CardContent className="p-8 space-y-6">
               <div className="flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10">
-                  <CheckCircle className="h-8 w-8 text-green-500" />
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+                  <CheckCircle className="h-8 w-8 text-foreground" />
                 </div>
               </div>
 
@@ -98,7 +98,7 @@ export function NewsletterSection() {
   }
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+    <section className="py-16 lg:py-24 bg-gradient-to-br from-muted/5 via-background to-muted/5">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -154,7 +154,7 @@ export function NewsletterSection() {
                       key={topic}
                       className="flex items-center space-x-2 text-sm"
                     >
-                      <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-foreground flex-shrink-0" />
                       <span>{topic}</span>
                     </div>
                   ))}
@@ -226,7 +226,7 @@ export function NewsletterSection() {
                         <span>2000+ inscritos</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <CheckCircle className="h-4 w-4 text-foreground" />
                         <span>Taxa de abertura: 65%</span>
                       </div>
                     </div>

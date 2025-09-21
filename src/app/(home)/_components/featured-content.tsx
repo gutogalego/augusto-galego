@@ -132,7 +132,7 @@ export function FeaturedContent() {
                     <div className="text-sm text-muted-foreground">Alunos</div>
                   </div>
                   <div className="text-center flex items-center justify-center space-x-1">
-                    <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                    <Star className="h-4 w-4 text-foreground fill-foreground" />
                     <div className="text-2xl font-bold">
                       {featuredCourse.rating}
                     </div>
@@ -203,10 +203,7 @@ export function FeaturedContent() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredPosts.map((post) => (
-              <Card
-                key={post.title}
-                className="tech-card group hover:shadow-lg transition-all"
-              >
+              <Card key={post.title} className="tech-card group transition-all">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="secondary" className="text-xs">

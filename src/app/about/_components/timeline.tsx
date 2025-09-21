@@ -128,15 +128,15 @@ const timelineEvents = [
 const getTypeColor = (type: string) => {
   switch (type) {
     case 'education':
-      return 'bg-blue-500/10 text-blue-500 border-blue-500/20'
+      return 'bg-muted text-foreground border-border'
     case 'career':
-      return 'bg-green-500/10 text-green-500 border-green-500/20'
+      return 'bg-secondary text-foreground border-border'
     case 'content':
-      return 'bg-purple-500/10 text-purple-500 border-purple-500/20'
+      return 'bg-accent text-foreground border-border'
     case 'life':
-      return 'bg-orange-500/10 text-orange-500 border-orange-500/20'
+      return 'bg-muted/50 text-foreground border-border'
     default:
-      return 'bg-primary/10 text-primary border-primary/20'
+      return 'bg-muted text-muted-foreground border-border'
   }
 }
 

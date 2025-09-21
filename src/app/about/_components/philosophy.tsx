@@ -172,7 +172,7 @@ export function Philosophy() {
                 </div>
 
                 <div className="relative">
-                  <div className="aspect-square w-full max-w-sm mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10">
+                  <div className="aspect-square w-full max-w-sm mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted/50 to-muted">
                     {/* Placeholder for teaching image */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-6xl">🎓</div>

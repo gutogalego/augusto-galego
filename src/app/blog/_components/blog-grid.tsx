@@ -173,7 +173,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
         {featuredPosts.length > 0 && (
           <div className="mb-16">
             <div className="flex items-center space-x-2 mb-6">
-              <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+              <Star className="h-5 w-5 text-foreground fill-foreground" />
               <h2 className="text-2xl font-bold">Artigos em Destaque</h2>
             </div>
 
@@ -181,7 +181,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
               {featuredPosts.slice(0, 2).map((post, index) => (
                 <Card
                   key={post.url}
-                  className={`tech-card group hover:shadow-lg transition-all ${
+                  className={`tech-card group transition-all ${
                     index === 0 ? 'lg:col-span-2' : ''
                   }`}
                 >
@@ -282,10 +282,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {regularPosts.map((post) => (
-                <Card
-                  key={post.url}
-                  className="tech-card group hover:shadow-lg transition-all"
-                >
+                <Card key={post.url} className="tech-card group transition-all">
                   <CardHeader>
                     <div className="space-y-2">
                       <Badge variant="outline" className="text-xs w-fit">
