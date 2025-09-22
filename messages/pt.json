@@ -56,7 +56,7 @@
     }
   },
   "blog": {
-    "title": "Blog",
+    "title": "Blog | Augusto Galego",
     "subtitle": "Artigos sobre desenvolvimento, tecnologia e carreira",
     "searchPlaceholder": "Pesquisar artigos...",
     "noResults": "Nenhum artigo encontrado",
@@ -65,19 +65,19 @@
     "lastUpdated": "Última atualização"
   },
   "about": {
-    "title": "Sobre Mim",
+    "title": "Sobre Mim | Augusto Galego",
     "subtitle": "Desenvolvedor apaixonado por tecnologia e educação"
   },
   "contact": {
-    "title": "Contato",
+    "title": "Contato | Augusto Galego",
     "subtitle": "Vamos conversar sobre seus projetos"
   },
   "courses": {
-    "title": "Cursos",
+    "title": "Cursos | Augusto Galego",
     "subtitle": "Aprenda desenvolvimento web com conteúdo prático"
   },
   "setup": {
-    "title": "Meu Setup",
+    "title": "Meu Setup | Augusto Galego",
     "subtitle": "Ferramentas e equipamentos que uso no dia a dia"
   },
   "metadata": {
