@@ -42,9 +42,11 @@ export function RouteTransition({
   const pathname = usePathname()
   const prefersReducedMotion = useReducedMotion()
   const [isInitialLoad, setIsInitialLoad] = useState(true)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsInitialLoad(false), 100)
+    setIsMounted(true)
+    const timer = setTimeout(() => setIsInitialLoad(false), 300)
     return () => clearTimeout(timer)
   }, [])
 
@@ -53,11 +55,11 @@ export function RouteTransition({
     (pathname.split('/blog/')[1]?.length ?? 0) > 0
 
   const animationConfig = {
-    duration: isPostRoute ? 0.6 : 0.4,
-    y: isPostRoute ? 20 : 15,
+    duration: isPostRoute ? 0.4 : 0.3,
+    y: isPostRoute ? 12 : 8,
   }
 
-  if (prefersReducedMotion || isInitialLoad) {
+  if (!isMounted || prefersReducedMotion || isInitialLoad) {
     return <div className={className}>{children}</div>
   }
 
