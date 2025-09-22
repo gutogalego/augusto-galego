@@ -22,7 +22,7 @@ import {
   TrendingUp,
 } from 'lucide-react'
 
-import Link from 'next/link'
+import { Link } from '@/lib/navigation'
 import { useState } from 'react'
 
 // Helper function to get text in the correct language

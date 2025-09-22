@@ -1,8 +1,9 @@
 'use client'
 
+import { usePathname, useRouter } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
-import { usePathname, useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useLocale } from 'next-intl'
+import { useTransition } from 'react'
 
 interface LocaleSwitchProps {
   className?: string
@@ -15,59 +16,21 @@ export function LocaleSwitch({
 }: LocaleSwitchProps) {
   const router = useRouter()
   const pathname = usePathname()
-  const [isTransitioning, setIsTransitioning] = useState(false)
+  const locale = useLocale()
+  const [isPending, startTransition] = useTransition()
 
-  // Detect current locale from URL
-  const getCurrentLocaleFromUrl = (): 'pt' | 'en' => {
-    // Check if URL starts with /en or /pt
-    if (pathname.startsWith('/en')) {
-      return 'en'
-    }
-    if (pathname.startsWith('/pt')) {
-      return 'pt'
-    }
-    // Default to Portuguese if no locale prefix found
-    return 'pt'
-  }
+  const currentLocale = locale as 'pt' | 'en'
 
-  const currentLocale = getCurrentLocaleFromUrl()
-
-  const handleLocaleChange = async (newLocale: 'pt' | 'en') => {
+  const handleLocaleChange = (newLocale: 'pt' | 'en') => {
     // Skip if already on the same locale or transitioning
-    if (newLocale === currentLocale || isTransitioning) {
+    if (newLocale === currentLocale || isPending) {
       return
     }
 
-    setIsTransitioning(true)
-
-    try {
-      let newPath: string
-
-      if (currentLocale === 'pt' && pathname === '/') {
-        // From root Portuguese to English
-        newPath = '/en'
-      } else if (currentLocale === 'pt') {
-        // From Portuguese path to English
-        newPath = `/en${pathname}`
-      } else if (currentLocale === 'en' && pathname === '/en') {
-        // From English root to Portuguese root
-        newPath = '/'
-      } else if (currentLocale === 'en') {
-        // From English path to Portuguese
-        const pathWithoutLocale = pathname.slice('/en'.length) || '/'
-        newPath = pathWithoutLocale === '/' ? '/' : pathWithoutLocale
-      } else {
-        // Fallback case
-        newPath = newLocale === 'pt' ? pathname : `/en${pathname}`
-      }
-
-      router.push(newPath)
-    } catch (error) {
-      console.error('Error changing locale:', error)
-    } finally {
-      // Reset transition state after a delay
-      setTimeout(() => setIsTransitioning(false), 500)
-    }
+    startTransition(() => {
+      // Use next-intl's router which handles locale switching automatically
+      router.replace(pathname, { locale: newLocale })
+    })
   }
 
   const isPortuguese = currentLocale === 'pt'
@@ -79,13 +42,13 @@ export function LocaleSwitch({
         <button
           type="button"
           onClick={() => handleLocaleChange('pt')}
-          disabled={isTransitioning}
+          disabled={isPending}
           className={cn(
             'px-2 py-1 text-xs font-medium rounded transition-all duration-200',
             isPortuguese
               ? 'bg-primary text-primary-foreground'
               : 'text-muted-foreground hover:text-foreground hover:bg-muted/50',
-            isTransitioning && 'opacity-50 cursor-not-allowed'
+            isPending && 'opacity-50 cursor-not-allowed'
           )}
         >
           PT
@@ -94,13 +57,13 @@ export function LocaleSwitch({
         <button
           type="button"
           onClick={() => handleLocaleChange('en')}
-          disabled={isTransitioning}
+          disabled={isPending}
           className={cn(
             'px-2 py-1 text-xs font-medium rounded transition-all duration-200',
             isEnglish
               ? 'bg-primary text-primary-foreground'
               : 'text-muted-foreground hover:text-foreground hover:bg-muted/50',
-            isTransitioning && 'opacity-50 cursor-not-allowed'
+            isPending && 'opacity-50 cursor-not-allowed'
           )}
         >
           EN
@@ -125,13 +88,13 @@ export function LocaleSwitch({
         <button
           type="button"
           onClick={() => handleLocaleChange('pt')}
-          disabled={isTransitioning}
+          disabled={isPending}
           className={cn(
             'relative z-10 flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 min-w-[80px] justify-center',
             isPortuguese
               ? 'text-foreground'
               : 'text-muted-foreground hover:text-foreground',
-            isTransitioning && 'opacity-50 cursor-not-allowed'
+            isPending && 'opacity-50 cursor-not-allowed'
           )}
         >
           <span className="text-base">🇧🇷</span>
@@ -142,13 +105,13 @@ export function LocaleSwitch({
         <button
           type="button"
           onClick={() => handleLocaleChange('en')}
-          disabled={isTransitioning}
+          disabled={isPending}
           className={cn(
             'relative z-10 flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-full transition-all duration-200 min-w-[80px] justify-center',
             isEnglish
               ? 'text-foreground'
               : 'text-muted-foreground hover:text-foreground',
-            isTransitioning && 'opacity-50 cursor-not-allowed'
+            isPending && 'opacity-50 cursor-not-allowed'
           )}
         >
           <span className="text-base">🇺🇸</span>

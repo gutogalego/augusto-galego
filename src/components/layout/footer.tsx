@@ -1,5 +1,6 @@
 import { LogoHorizontal } from '@/components/common'
 import { Separator } from '@/components/ui/separator'
+import { Link } from '@/lib/navigation'
 import {
   ArrowUpRight,
   Github,
@@ -8,7 +9,6 @@ import {
   Twitter,
   Youtube,
 } from 'lucide-react'
-import Link from 'next/link'
 
 interface FooterLink {
   name: string

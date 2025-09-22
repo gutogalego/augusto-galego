@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { Link } from '@/lib/navigation'
 import { ArrowLeft, BookOpen, Home, Search } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
-import Link from 'next/link'
 
 export default async function NotFound() {
   const t = await getTranslations('notFound')

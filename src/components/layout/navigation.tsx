@@ -1,14 +1,12 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { LanguageSelector } from '@/components/ui/language-selector'
 import { LocaleSwitch } from '@/components/ui/locale-switch'
 import { NavigationCard } from '@/components/ui/navigation-card'
 import { NavigationDock } from '@/components/ui/navigation-dock'
 import { SocialButton } from '@/components/ui/social-button'
+import { Link, usePathname } from '@/lib/navigation'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { FaLinkedin, FaXTwitter, FaYoutube } from 'react-icons/fa6'
 import {

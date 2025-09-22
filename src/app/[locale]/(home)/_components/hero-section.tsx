@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import * as FancyButton from '@/components/ui/fancy-button'
+import { Link } from '@/lib/navigation'
 import {
   ArrowRight,
   Briefcase,
@@ -18,7 +19,6 @@ import {
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import Link from 'next/link'
 
 export function HeroSection() {
   const t = useTranslations('hero')

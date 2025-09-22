@@ -6,12 +6,12 @@ import {
   generatePostTags,
   getLocalizedText,
 } from '@/lib/blog-utils'
+import { Link } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
 import type { PostMetadata } from '@/utils/get-posts'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useLocale } from 'next-intl'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 interface ArticleCardProps {

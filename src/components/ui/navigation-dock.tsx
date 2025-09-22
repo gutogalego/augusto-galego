@@ -1,7 +1,7 @@
 'use client'
 
+import { Link } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
-import Link from 'next/link'
 import type * as React from 'react'
 import { Dock, DockIcon, DockItem, DockLabel } from './dock'
 

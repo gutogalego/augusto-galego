@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import * as FancyButton from '@/components/ui/fancy-button'
+import { Link } from '@/lib/navigation'
 import {
   ArrowRight,
   BookOpen,
@@ -19,7 +20,6 @@ import {
   TrendingUp,
   Users,
 } from 'lucide-react'
-import Link from 'next/link'
 
 const featuredCourse = {
   title: 'Estruturas de Dados e Algoritmos + LeetCode',

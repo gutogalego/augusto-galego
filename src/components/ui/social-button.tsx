@@ -1,5 +1,5 @@
+import { Link } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
-import Link from 'next/link'
 
 interface SocialButtonProps {
   href: string

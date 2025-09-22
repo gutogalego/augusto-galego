@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Link } from '@/lib/navigation'
 import {
   ArrowRight,
   Bell,
@@ -17,7 +18,6 @@ import {
   Users,
   Youtube,
 } from 'lucide-react'
-import Link from 'next/link'
 
 const channels = [
   {

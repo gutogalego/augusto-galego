@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { Link } from '@/lib/navigation'
 import {
   ArrowRight,
   BookOpen,
@@ -12,7 +13,6 @@ import {
   Target,
   Users,
 } from 'lucide-react'
-import Link from 'next/link'
 
 const coreValues = [
   {

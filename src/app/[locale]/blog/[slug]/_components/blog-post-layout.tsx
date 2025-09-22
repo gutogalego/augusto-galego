@@ -13,6 +13,7 @@ import {
   getLocalizedText,
 } from '@/lib/blog-utils'
 import { generateStructuredData } from '@/lib/metadata'
+import { Link } from '@/lib/navigation'
 import type { PostMetadata } from '@/utils/get-posts'
 import {
   ArrowLeft,
@@ -22,7 +23,6 @@ import {
   Twitter,
 } from 'lucide-react'
 import { useLocale } from 'next-intl'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 interface BlogPostLayoutProps {

@@ -1,7 +1,7 @@
 'use client'
 
+import { usePathname } from '@/lib/navigation'
 import { motion } from 'framer-motion'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
