@@ -1,7 +1,9 @@
+'use client'
 import { ProfileAvatar } from '@/components/common'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { LoadingScreen } from '@/components/ui/loading-screen'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { TableOfContents } from '@/components/ui/table-of-contents'
 import {
@@ -20,6 +22,7 @@ import {
 } from 'lucide-react'
 import { useLocale } from 'next-intl'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 interface BlogPostLayoutProps {
   metadata: PostMetadata
@@ -36,8 +39,13 @@ export function BlogPostLayout({
 }: BlogPostLayoutProps) {
   const hookLocale = useLocale() as 'en' | 'pt'
   const locale = propLocale || hookLocale
+  const [isMounted, setIsMounted] = useState(false)
   const category = categorizePost(metadata, locale)
   const formattedDate = formatPostDate(metadata.date, locale)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Get localized content
   const title = getLocalizedText(metadata.title, locale)
@@ -55,6 +63,10 @@ export function BlogPostLayout({
     wordCount: metadata.readTime ? metadata.readTime * 250 : undefined, // Estimate 250 words per minute
     inLanguage: locale === 'pt' ? 'pt-BR' : 'en-US',
   })
+
+  if (!isMounted) {
+    return <LoadingScreen isLoading={true} debounceMs={0} />
+  }
 
   return (
     <div className="min-h-screen bg-background">

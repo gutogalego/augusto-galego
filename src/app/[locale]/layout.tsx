@@ -1,4 +1,5 @@
 import { Footer, Navigation } from '@/components/layout'
+import { InitialLoading } from '@/components/ui/initial-loading'
 import { RouteTransition } from '@/components/ui/route-transition'
 import {
   generateLocalizedMetadata,
@@ -167,11 +168,23 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="//twitter.com" />
         <link rel="dns-prefetch" href="//www.linkedin.com" />
         <link rel="dns-prefetch" href="//github.com" />
+
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              body {
+                background-color: hsl(var(--background));
+                color: hsl(var(--foreground));
+              }
+            `,
+          }}
+        />
       </head>
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
+          <InitialLoading />
           <div className="flex min-h-screen flex-col">
             <Suspense fallback={<div className="h-16 bg-background" />}>
               <Navigation />
