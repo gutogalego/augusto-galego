@@ -18,12 +18,16 @@ export function BlogHero({
   const locale = propLocale || hookLocale
   const heroContent = {
     pt: {
-      title: 'AUGUSTO GALEGO BLOG',
-      subtitle: 'Algoritmos, estruturas de dados e carreira em tech',
+      badge: 'AUGUSTO GALEGO BLOG',
+      title: 'Últimas Atualizações',
+      subtitle:
+        'Todos os artigos mais recentes sobre algoritmos, estruturas de dados e carreira tech, direto da fonte.',
     },
     en: {
-      title: 'AUGUSTO GALEGO BLOG',
-      subtitle: 'Algorithms, data structures and tech career',
+      badge: 'AUGUSTO GALEGO BLOG',
+      title: 'Latest Updates',
+      subtitle:
+        'All the latest articles about algorithms, data structures and tech career, straight from the source.',
     },
   }
 
@@ -31,14 +35,33 @@ export function BlogHero({
 
   return (
     <div className="bg-background">
-      <div className="max-w-6xl mx-auto px-8 py-24 border-x-2 border-dotted border-border/40">
+      <div
+        className="max-w-6xl mx-auto px-8 py-24 border-x-2 border-dotted border-border/40"
+        style={{
+          backgroundImage: `
+            linear-gradient(135deg, hsl(var(--background)) 0%, transparent 70%),
+            linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '100% 100%, 60px 60px, 60px 60px',
+        }}
+      >
         <div className="max-w-4xl mx-auto">
-          {/* Minimal Header */}
-          <div className="space-y-6 mb-16">
-            <h1 className="text-2xl font-mono font-medium text-foreground tracking-wide">
+          {/* Header */}
+          <div className="space-y-4 mb-8">
+            {/* Badge */}
+            <div className="inline-block">
+              <span className="text-sm font-mono font-medium text-muted-foreground uppercase tracking-widest">
+                {content.badge}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
               {content.title}
             </h1>
 
+            {/* Subtitle */}
             <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
               {content.subtitle}
             </p>

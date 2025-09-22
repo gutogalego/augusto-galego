@@ -65,10 +65,10 @@ export function BlogLayout({
       <BlogHero posts={posts} onSearch={handleSearch} locale={locale} />
 
       {/* Main Content with original styling */}
-      <div className="max-w-6xl mx-auto border-x-2 border-dotted border-border/40">
+      <div className="max-w-6xl mx-auto border-2 border-b-0 border-dotted border-border/40">
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] min-h-screen">
           {/* Sidebar */}
-          <div className="px-8 py-12 bg-muted/20 border-r border-dotted border-border/40">
+          <div className="px-8 py-12 bg-muted/20 border-r-2 border-dotted border-border/40">
             <div className="sticky top-8">
               <BlogSidebar
                 posts={posts}
