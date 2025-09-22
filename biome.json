@@ -259,6 +259,16 @@
           }
         }
       }
+    },
+    {
+      "include": ["**/manifest.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useNamingConvention": "off"
+          }
+        }
+      }
     }
   ],
   "files": {

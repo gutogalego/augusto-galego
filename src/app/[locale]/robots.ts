@@ -1,6 +1,13 @@
 import type { MetadataRoute } from 'next'
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<MetadataRoute.Robots> {
+  const { locale } = await params
+  const baseUrl = 'https://augustogalego.com'
+
   return {
     rules: [
       {
@@ -87,7 +94,7 @@ export default function robots(): MetadataRoute.Robots {
       //   disallow: '/',
       // },
     ],
-    sitemap: 'https://augustogalego.com/sitemap.xml',
-    host: 'https://augustogalego.com',
+    sitemap: `${baseUrl}/${locale}/sitemap.xml`,
+    host: baseUrl,
   }
 }
