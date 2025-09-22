@@ -94,10 +94,37 @@
     @apply border-border;
   }
 
+  *,
+  *:focus,
+  *:hover {
+    outline: none;
+  }
+
+  *:not(svg),
+  *::not(path),
+  *::not(g),
+  *::not(circle),
+  *::not(ellipse),
+  *::not(line),
+  *::not(polygon),
+  *::not(polyline),
+  *::not(rect),
+  *::not(text),
+  *::not(tspan),
+  *::not(use) {
+    min-width: 0;
+  }
+
+  html,
   body {
-    @apply bg-background text-foreground font-sans;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    height: 100%;
+  }
+
+  body {
+    @apply w-full max-w-[100dvw] overflow-x-hidden scroll-smooth bg-background text-sm text-foreground antialiased font-sans;
     text-rendering: optimizeLegibility;
+    overscroll-behavior: none;
+    font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
