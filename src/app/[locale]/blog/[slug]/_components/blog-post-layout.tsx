@@ -94,7 +94,7 @@ export function BlogPostLayout({
             asChild={true}
             className="text-muted-foreground hover:text-foreground -ml-2"
           >
-            <Link href="/blog">
+            <Link href="blog">
               <ArrowLeft className="mr-2 h-4 w-4" />
               {locale === 'pt' ? 'Voltar para o blog' : 'Back to blog'}
             </Link>
@@ -216,14 +216,14 @@ export function BlogPostLayout({
                     size="lg"
                     className="flex items-center gap-2"
                   >
-                    <Link href="/courses">
+                    <Link href="courses">
                       <BookOpen className="h-4 w-4" />
                       {locale === 'pt' ? 'Ver meus cursos' : 'View my courses'}
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Button>
                   <Button variant="outline" size="lg" asChild={true}>
-                    <Link href="/blog">
+                    <Link href="blog">
                       {locale === 'pt' ? 'Mais artigos' : 'More articles'}
                     </Link>
                   </Button>

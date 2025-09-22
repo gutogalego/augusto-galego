@@ -80,7 +80,7 @@ export function ArticleCard({
       }}
     >
       <Link
-        href={`/blog/${post.slug || post.url}`}
+        href={`blog/${post.slug || post.url}`}
         className={cn(
           baseClasses,
           'hover:bg-muted/30',
