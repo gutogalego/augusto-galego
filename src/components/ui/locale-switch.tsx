@@ -3,8 +3,7 @@
 import { usePathname, useRouter } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
 import { useLocale } from 'next-intl'
-import { useRouter as useNextRouter } from 'next/navigation'
-import { useCallback, useEffect, useState, useTransition } from 'react'
+import { useTransition } from 'react'
 
 interface LocaleSwitchProps {
   className?: string
@@ -15,72 +14,19 @@ export function LocaleSwitch({
   className,
   variant = 'default',
 }: LocaleSwitchProps) {
-  const nextRouter = useNextRouter()
+  const router = useRouter()
   const pathname = usePathname()
-  const hookLocale = useLocale()
+  const currentLocale = useLocale() as 'pt' | 'en'
   const [isPending, startTransition] = useTransition()
 
-  const detectLocaleFromPathname = useCallback((): 'pt' | 'en' => {
-    if (typeof window !== 'undefined') {
-      const currentPath = window.location.pathname
-      if (currentPath.startsWith('/en')) {
-        return 'en'
-      }
-      if (currentPath.startsWith('/pt')) {
-        return 'pt'
-      }
-    }
-
-    if (pathname.startsWith('/en')) {
-      return 'en'
-    }
-    if (pathname.startsWith('/pt')) {
-      return 'pt'
-    }
-    return (hookLocale as 'pt' | 'en') || 'pt'
-  }, [pathname, hookLocale])
-
-  const [currentLocale, setCurrentLocale] = useState<'pt' | 'en'>(() =>
-    detectLocaleFromPathname()
-  )
-
-  useEffect(() => {
-    const newLocale = detectLocaleFromPathname()
-    setCurrentLocale(newLocale)
-  }, [detectLocaleFromPathname])
-
   const handleLocaleChange = (newLocale: 'pt' | 'en') => {
-    // Skip if already on the same locale or transitioning
     if (newLocale === currentLocale || isPending) {
       return
     }
 
-    setCurrentLocale(newLocale)
-
     startTransition(() => {
-      // Use window.location to get the actual current path
-      const currentPath =
-        typeof window !== 'undefined' ? window.location.pathname : pathname
-
-      // Remove current locale prefix if it exists
-      let pathWithoutLocale = currentPath
-      if (currentPath.startsWith(`/${currentLocale}`)) {
-        pathWithoutLocale = currentPath.slice(`/${currentLocale}`.length) || '/'
-      }
-
-      // Ensure path starts with '/'
-      if (!pathWithoutLocale.startsWith('/')) {
-        pathWithoutLocale = `/${pathWithoutLocale}`
-      }
-
-      // Build new path with new locale
-      const newPath = `/${newLocale}${pathWithoutLocale}`
-
-      // Debug: uncomment for troubleshooting
-      // console.log('Locale Switch:', { currentLocale, newLocale, currentPath, pathWithoutLocale, newPath })
-
-      // Use Next.js router directly for more reliable navigation
-      nextRouter.push(newPath)
+      // Use next-intl router for proper locale switching
+      router.replace(pathname, { locale: newLocale })
     })
   }
 

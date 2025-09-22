@@ -52,22 +52,16 @@ export function Navigation() {
   const navigationItems = getNavigationItems(t)
 
   const isActive = (href: string) => {
-    // Get the actual current path from window.location if available
-    let currentPath = pathname
-
-    if (typeof window !== 'undefined') {
-      const fullPath = window.location.pathname
-      // Remove locale prefix from the full path
-      const pathWithoutLocale = fullPath.replace(/^\/(en|pt)/, '') || '/'
-      currentPath = pathWithoutLocale
-    }
+    // The pathname from next-intl usePathname is already normalized (without locale prefix)
+    // Handle exact matches and sub-routes properly
 
     if (href === '/') {
-      return currentPath === '/'
+      // Home is only active when exactly on home
+      return pathname === '/'
     }
 
-    // For other routes, check exact match or subpages
-    return currentPath === href || currentPath.startsWith(`${href}/`)
+    // For other routes, check exact match or if current path is a sub-route
+    return pathname === href || pathname.startsWith(`${href}/`)
   }
 
   // Prepare navigation items for NavigationDock component

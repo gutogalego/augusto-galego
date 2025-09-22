@@ -1,14 +1,18 @@
+import { defaultLocale, locales } from '@/lib/navigation'
 import createMiddleware from 'next-intl/middleware'
 
 export default createMiddleware({
   // A list of all locales that are supported
-  locales: ['en', 'pt'],
+  locales,
 
   // Used when no locale matches
-  defaultLocale: 'pt',
+  defaultLocale,
 
   // Always show the locale in the URL
   localePrefix: 'always',
+
+  // Ensure proper redirect behavior
+  alternateLinks: false,
 })
 
 export const config = {

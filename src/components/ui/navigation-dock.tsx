@@ -40,9 +40,13 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
   const prefersReducedMotion = useReducedMotion()
   const currentPathname = usePathname()
 
-  const handleLinkClick = (href: string, isActive: boolean) => {
-    // Se já estiver na página atual, rola para o topo
+  const handleLinkClick = (
+    href: string,
+    isActive: boolean,
+    event: React.MouseEvent
+  ) => {
     if (isActive || currentPathname === href) {
+      event.preventDefault()
       scrollToTop({ behavior: 'smooth' })
     }
   }
@@ -90,7 +94,7 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
                 <Link
                   href={item.href}
                   prefetch={true}
-                  onClick={() => handleLinkClick(item.href, isActive)}
+                  onClick={(e) => handleLinkClick(item.href, isActive, e)}
                   className={cn(
                     'flex items-center py-2 relative z-10 w-full',
                     prefersReducedMotion

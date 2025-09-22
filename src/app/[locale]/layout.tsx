@@ -58,7 +58,7 @@ export async function generateMetadata({
   }
 }
 
-const locales = ['en', 'pt']
+const locales = ['pt', 'en']
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -183,7 +183,7 @@ export default async function LocaleLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           <InitialLoading />
           <div className="flex flex-col">
             <Suspense fallback={<div className="h-16 bg-background" />}>
