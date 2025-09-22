@@ -1,5 +1,5 @@
 import { Footer, Navigation } from '@/components/layout'
-import { PageTransition } from '@/components/ui/page-transition'
+import { RouteTransition } from '@/components/ui/route-transition'
 import {
   generateLocalizedMetadata,
   generateStructuredData,
@@ -177,7 +177,7 @@ export default async function LocaleLayout({
               <Navigation />
             </Suspense>
             <main className="flex-1">
-              <PageTransition>{children}</PageTransition>
+              <RouteTransition>{children}</RouteTransition>
             </main>
             <Footer />
           </div>

@@ -3,6 +3,14 @@
 import { cn } from '@/lib/shadcn'
 import { useCallback, useEffect, useState } from 'react'
 
+// Helper function to safely get element height
+function safeGetOffsetHeight(element: Element | null | undefined): number {
+  if (element instanceof HTMLElement) {
+    return element.offsetHeight
+  }
+  return 0
+}
+
 // Função debounce para melhor performance
 function debounce<T extends (...args: never[]) => void>(
   func: T,
@@ -53,8 +61,8 @@ function getBackgroundLineTop(toc: TocItem[]): string {
   let totalHeight = 0
 
   for (let i = 0; i < firstH3Index && i < tocButtons.length; i++) {
-    const button = tocButtons[i] as HTMLElement
-    totalHeight += button.offsetHeight
+    const button = tocButtons[i]
+    totalHeight += safeGetOffsetHeight(button)
   }
 
   return `${totalHeight}px`
@@ -74,8 +82,8 @@ function getIndicatorTop(toc: TocItem[], activeId: string): string {
   let totalHeight = 0
 
   for (let i = firstH2Index; i < activeIndex && i < tocButtons.length; i++) {
-    const button = tocButtons[i] as HTMLElement
-    totalHeight += button.offsetHeight
+    const button = tocButtons[i]
+    totalHeight += safeGetOffsetHeight(button)
   }
 
   return `${totalHeight}px`
@@ -119,8 +127,8 @@ function getIndicatorHeight(toc: TocItem[], activeId: string): string {
   let totalHeight = 0
 
   for (let i = activeIndex; i <= endIndex && i < tocButtons.length; i++) {
-    const button = tocButtons[i] as HTMLElement
-    totalHeight += button.offsetHeight
+    const button = tocButtons[i]
+    totalHeight += safeGetOffsetHeight(button)
   }
 
   return `${totalHeight}px`

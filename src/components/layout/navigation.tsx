@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { LanguageSelector } from '@/components/ui/language-selector'
+import { LocaleSwitch } from '@/components/ui/locale-switch'
 import { NavigationCard } from '@/components/ui/navigation-card'
 import { NavigationDock } from '@/components/ui/navigation-dock'
 import { SocialButton } from '@/components/ui/social-button'
@@ -78,12 +79,12 @@ export function Navigation() {
         <nav className="hidden md:flex items-center">
           <NavigationDock items={navigationData} />
         </nav>
-        {/* Desktop Language Selector */}
+        {/* Desktop Language Switch */}
         <div className="hidden md:flex items-center">
           <div className="flex items-center gap-3 ml-6">
             {/* Vertical divider */}
             <div className="w-px h-8 bg-border/40 mr-2" />
-            <LanguageSelector />
+            <LocaleSwitch variant="compact" />
           </div>
         </div>
         {/* Mobile Menu Button */}
@@ -119,13 +120,13 @@ export function Navigation() {
               ))}
             </nav>
 
-            {/* Mobile Language Selector */}
+            {/* Mobile Language Switch */}
             <div className="mt-8 pt-6 border-t-2 border-border/30">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-4">
                 {t('common.language')}
               </p>
               <div className="flex items-center justify-center">
-                <LanguageSelector />
+                <LocaleSwitch />
               </div>
             </div>
 

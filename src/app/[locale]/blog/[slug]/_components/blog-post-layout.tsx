@@ -67,6 +67,7 @@ export function BlogPostLayout({
         }}
       />
       <ScrollProgress />
+
       {/* Header with connected borders */}
       <div className="max-w-6xl mx-auto border-x-2 border-dotted border-border/40">
         <div className="px-8 py-6 border-b-2 border-dotted border-border/40">

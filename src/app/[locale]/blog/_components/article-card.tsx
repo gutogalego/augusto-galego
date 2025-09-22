@@ -12,6 +12,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useLocale } from 'next-intl'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 interface ArticleCardProps {
   post: PostMetadata
