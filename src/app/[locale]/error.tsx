@@ -61,7 +61,7 @@ export default function ErrorPage({
               </Button>
 
               <Button variant="outline" asChild={true}>
-                <Link href="/">
+                <Link href="">
                   <Home className="mr-2 h-4 w-4" />
                   Voltar ao Início
                 </Link>
