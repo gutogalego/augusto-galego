@@ -79,7 +79,6 @@ export function BlogSearch({
       searchDelay={250}
       onSearch={handleSearch}
       onResultSelect={handleResultSelect}
-      enableHistory={true}
       enableFuzzySearch={true}
       className={className}
     />

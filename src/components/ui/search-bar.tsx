@@ -100,9 +100,7 @@ const SearchBar = React.forwardRef<HTMLInputElement, SearchBarProps>(
 
               // Dark mode optimizations
               'dark:bg-background/30 dark:focus:bg-background/50',
-              'dark:border-border/50 dark:focus:border-border',
-
-              props.className
+              'dark:border-border/50 dark:focus:border-border'
             )}
             {...props}
           />

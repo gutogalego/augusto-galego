@@ -65,7 +65,6 @@ export function BlogTransition({
         ? { duration: 0 }
         : {
             ...BLOG_SPRING_CONFIG,
-            duration: 0.6,
             staggerChildren: 0.1,
             delayChildren: 0.1,
           },
@@ -95,7 +94,6 @@ export function BlogTransition({
         ? { duration: 0 }
         : {
             ...BLOG_SPRING_CONFIG,
-            duration: 0.7,
             staggerChildren: 0.08,
             delayChildren: 0.15,
           },
@@ -153,7 +151,7 @@ export function BlogTransitionItem({
       transition: prefersReducedMotion
         ? { duration: 0 }
         : {
-            type: 'spring',
+            type: 'spring' as const,
             stiffness: 400,
             damping: 25,
             delay,
