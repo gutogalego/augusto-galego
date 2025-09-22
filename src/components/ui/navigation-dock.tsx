@@ -1,9 +1,30 @@
 'use client'
 
+import { scrollToTop } from '@/hooks/use-scroll-to-top'
 import { Link } from '@/lib/navigation'
+import { usePathname } from '@/lib/navigation'
 import { cn } from '@/lib/shadcn'
+import { useEffect, useState } from 'react'
 import type * as React from 'react'
-import { Dock, DockIcon, DockItem, DockLabel } from './dock'
+import * as FancyButton from './fancy-button'
+
+function useReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mediaQuery.matches)
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setPrefersReducedMotion(event.matches)
+    }
+
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
+  return prefersReducedMotion
+}
 
 interface NavigationDockProps {
   items: Array<{
@@ -16,32 +37,101 @@ interface NavigationDockProps {
 }
 
 export function NavigationDock({ items, className }: NavigationDockProps) {
-  return (
-    <Dock className={cn('', className)}>
-      {items.map((item) => {
-        const Icon = item.icon
-        const isActive = item.isActive
+  const prefersReducedMotion = useReducedMotion()
+  const currentPathname = usePathname()
 
-        return (
-          <DockItem key={item.href} className="aspect-square">
-            <Link
-              href={item.href}
-              prefetch={true}
+  const handleLinkClick = (href: string, isActive: boolean) => {
+    // Se já estiver na página atual, rola para o topo
+    if (isActive || currentPathname === href) {
+      scrollToTop({ behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <div className="mx-2 flex max-w-full items-center relative">
+      <div
+        className={cn(
+          'mx-auto flex w-fit gap-2 bg-card/80 border border-border/30 backdrop-blur-sm px-3 py-2 relative',
+          className
+        )}
+        style={{ borderRadius: '20px' }}
+        role="toolbar"
+        aria-label="Navigation dock"
+      >
+        {items.map((item) => {
+          const Icon = item.icon
+          const isActive = item.isActive
+
+          return (
+            <div
+              key={item.href}
               className={cn(
-                'flex h-full w-full items-center justify-center rounded-xl transition-colors',
-                isActive
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                'relative inline-flex items-center justify-center h-10 rounded-lg group',
+                prefersReducedMotion
+                  ? 'transition-none'
+                  : 'transition-all duration-500 ease-out',
+                isActive ? 'min-w-[120px]' : 'w-10'
               )}
             >
-              <DockIcon>
-                <Icon className="h-4 w-4" />
-              </DockIcon>
-            </Link>
-            <DockLabel>{item.name}</DockLabel>
-          </DockItem>
-        )
-      })}
-    </Dock>
+              <FancyButton.Root
+                size="sm"
+                asChild={true}
+                variant={isActive ? 'basic' : 'ghost'}
+                className={cn(
+                  'relative overflow-hidden w-full',
+                  prefersReducedMotion
+                    ? 'transition-none'
+                    : 'transition-all duration-500 ease-out'
+                )}
+              >
+                <Link
+                  href={item.href}
+                  prefetch={true}
+                  onClick={() => handleLinkClick(item.href, isActive)}
+                  className={cn(
+                    'flex items-center py-2 relative z-10 w-full',
+                    prefersReducedMotion
+                      ? 'transition-none'
+                      : 'transition-all duration-500 ease-out',
+                    isActive ? 'justify-center px-4' : 'justify-center px-0'
+                  )}
+                >
+                  <FancyButton.Icon as={Icon} />
+                  <span
+                    className={cn(
+                      'text-sm font-medium whitespace-nowrap overflow-hidden',
+                      prefersReducedMotion
+                        ? 'transition-none'
+                        : 'transition-all duration-500 ease-out',
+                      isActive
+                        ? 'opacity-100 max-w-[80px] ml-2 relative'
+                        : 'opacity-0 max-w-0 ml-0 absolute'
+                    )}
+                  >
+                    {item.name}
+                  </span>
+                  {isActive && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50 -translate-x-full animate-[shine_2s_ease-in-out_infinite]" />
+                  )}
+                </Link>
+              </FancyButton.Root>
+              {!isActive && (
+                <div
+                  className={cn(
+                    'absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-popover border border-border px-3 py-2 text-xs text-foreground shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none z-[100]',
+                    prefersReducedMotion
+                      ? 'transition-none'
+                      : 'transition-opacity duration-200'
+                  )}
+                  role="tooltip"
+                >
+                  {item.name}
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </div>
   )
 }

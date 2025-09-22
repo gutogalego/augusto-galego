@@ -46,10 +46,10 @@ export const fancyButtonVariants = tv({
       basic: {
         root: [
           // base
-          'bg-background text-foreground border border-border',
+          'bg-background text-foreground border border-border/30',
           'shadow-sm',
           // hover
-          'hover:bg-accent hover:text-accent-foreground',
+          'hover:bg-accent hover:text-accent-foreground hover:border-border/50',
         ],
       },
       ghost: {
@@ -91,11 +91,12 @@ export const fancyButtonVariants = tv({
           'before:bg-gradient-to-b before:from-white/20 before:to-transparent before:p-px',
           // before mask
           'before:[mask-clip:content-box,border-box] before:[mask-composite:exclude] before:[mask-image:linear-gradient(#fff_0_0),linear-gradient(#fff_0_0)]',
-          // after - shine effect
-          'after:absolute after:inset-0 after:rounded-[inherit] after:bg-gradient-to-b after:from-white/10 after:to-transparent',
-          'after:pointer-events-none after:opacity-0 after:transition after:duration-200 after:ease-out',
+          // after - shine effect with clip-path animation
+          'after:absolute after:inset-0 after:rounded-[inherit] after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent',
+          'after:pointer-events-none after:opacity-0 after:transition-all after:duration-500 after:ease-out',
+          'after:[clip-path:polygon(-100%_0,_-100%_100%,_-100%_100%,_-100%_0)]',
           // hover
-          'hover:after:opacity-100 hover:shadow-md hover:-translate-y-0.5',
+          'hover:after:opacity-100 hover:after:[clip-path:polygon(-100%_0,_200%_100%,_200%_100%,_200%_0)] hover:shadow-md hover:-translate-y-0.5',
           // active
           'active:translate-y-0 active:shadow-sm',
         ],
