@@ -18,6 +18,21 @@
     "portuguese": "Portuguese",
     "english": "English"
   },
+  "search": {
+    "placeholder": "Search for articles about algorithms, career, tech...",
+    "triggerText": "Search for articles about algorithms, career, tech...",
+    "searching": "Searching articles...",
+    "noResults": "No results found",
+    "noResultsDescription": "Try using different keywords like \"algorithms\", \"career\" or \"system\"",
+    "featuredArticles": "Featured Articles",
+    "searchResults": "Search Results",
+    "cancel": "Cancel",
+    "clear": "Clear",
+    "navigate": "Navigate",
+    "select": "Select",
+    "close": "Close",
+    "shortcutHint": "K"
+  },
   "notFound": {
     "title": "Page not found",
     "description": "Oops! The page you're looking for doesn't exist or has been moved.",

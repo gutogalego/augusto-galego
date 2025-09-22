@@ -18,6 +18,21 @@
     "portuguese": "Português",
     "english": "Inglês"
   },
+  "search": {
+    "placeholder": "Buscar artigos sobre algoritmos, carreira, tech...",
+    "triggerText": "Buscar artigos sobre algoritmos, carreira, tech...",
+    "searching": "Buscando artigos...",
+    "noResults": "Nenhum resultado encontrado",
+    "noResultsDescription": "Tente usar palavras-chave diferentes como \"algoritmos\", \"carreira\" ou \"sistema\"",
+    "featuredArticles": "Artigos em Destaque",
+    "searchResults": "Resultados da Busca",
+    "cancel": "Cancelar",
+    "clear": "Limpar",
+    "navigate": "Navegar",
+    "select": "Selecionar",
+    "close": "Fechar",
+    "shortcutHint": "K"
+  },
   "notFound": {
     "title": "Página não encontrada",
     "description": "Ops! A página que você está procurando não existe ou foi movida.",
