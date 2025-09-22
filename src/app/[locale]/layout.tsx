@@ -185,11 +185,11 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <InitialLoading />
-          <div className="flex min-h-screen flex-col">
+          <div className="flex flex-col">
             <Suspense fallback={<div className="h-16 bg-background" />}>
               <Navigation />
             </Suspense>
-            <main className="flex-1">
+            <main className="min-h-screen">
               <RouteTransition>{children}</RouteTransition>
             </main>
             <Footer />
