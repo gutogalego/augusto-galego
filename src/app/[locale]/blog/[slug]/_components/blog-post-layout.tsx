@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { LoadingScreen } from '@/components/ui/loading-screen'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { TableOfContents } from '@/components/ui/table-of-contents'
+import { useScrollToTop } from '@/hooks'
 import {
   categorizePost,
   formatPostDate,
@@ -42,6 +43,9 @@ export function BlogPostLayout({
   const [isMounted, setIsMounted] = useState(false)
   const category = categorizePost(metadata, locale)
   const formattedDate = formatPostDate(metadata.date, locale)
+
+  // Scroll para o topo quando o post for carregado
+  useScrollToTop({ enabled: isMounted })
 
   useEffect(() => {
     setIsMounted(true)
