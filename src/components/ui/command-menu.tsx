@@ -8,6 +8,7 @@ import * as Dialog from '@/components/ui/dialog'
 import { cn } from '@/lib/shadcn'
 import type { PolymorphicComponentProps } from '@/utils/polymorphic'
 import { type VariantProps, tv } from '@/utils/tv'
+import * as DialogPrimitive from '@radix-ui/react-dialog'
 
 const CommandDialogTitle = Dialog.DialogTitle
 const CommandDialogDescription = Dialog.DialogDescription
@@ -26,30 +27,38 @@ const CommandDialog = ({
       <Dialog.DialogPortal>
         <Dialog.DialogOverlay
           className={cn(
-            'justify-center items-center sm:justify-center sm:items-start sm:pt-[10vh]',
+            'fixed inset-0 z-50 bg-black/40 backdrop-blur-sm',
+            'data-[state=open]:animate-in data-[state=closed]:animate-out',
+            'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
             overlayClassName
           )}
         />
-        <Dialog.DialogContent
+        <DialogPrimitive.Content
           className={cn(
-            'flex max-h-[90vh] sm:max-h-[80vh] max-w-[720px] flex-col overflow-hidden rounded-2xl',
-            'data-[state=open]:animate-in data-[state=closed]:animate-out',
-            'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
-            'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
-            'data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-4',
+            // Reset all animations and use custom ones
+            '!animate-none',
+            // Position
+            'fixed left-1/2 top-1/2 z-50 w-full max-w-[640px] -translate-x-1/2 -translate-y-1/2',
+            // Layout
+            'flex max-h-[85vh] flex-col overflow-hidden rounded-2xl bg-background shadow-2xl',
+            'border border-border/50 !m-0 !p-0 gap-0',
+            // Custom scale-only animation
+            'transition-all duration-200 ease-out',
+            'data-[state=closed]:opacity-0 data-[state=open]:opacity-100',
+            'data-[state=closed]:scale-90 data-[state=open]:scale-100',
             className
           )}
         >
           <Command
             className={cn(
-              'divide-y divide-border',
+              'divide-y divide-border/50',
               'grid min-h-0 auto-cols-auto grid-flow-row',
               '[&>[cmdk-label]+*]:!border-t-0'
             )}
           >
             {children}
           </Command>
-        </Dialog.DialogContent>
+        </DialogPrimitive.Content>
       </Dialog.DialogPortal>
     </Dialog.Dialog>
   )
@@ -133,12 +142,12 @@ const commandItemVariants = tv({
   ],
   variants: {
     size: {
-      small: 'px-3 py-2.5',
-      medium: 'px-3 py-3',
+      small: 'px-3 py-2',
+      medium: 'px-4 py-3',
     },
   },
   defaultVariants: {
-    size: 'small',
+    size: 'medium',
   },
 })
 
