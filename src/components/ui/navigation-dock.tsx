@@ -51,7 +51,10 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
     <div className="mx-2 flex max-w-full items-center relative">
       <div
         className={cn(
-          'mx-auto flex w-fit gap-2 bg-card/80 border border-border/30 backdrop-blur-sm px-3 py-2 relative',
+          'mx-auto flex gap-2 bg-card/80 border border-border/30 backdrop-blur-sm px-3 py-2 relative',
+          prefersReducedMotion
+            ? 'transition-none'
+            : 'transition-all duration-500 ease-out',
           className
         )}
         style={{ borderRadius: '20px' }}
@@ -66,11 +69,11 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
             <div
               key={item.href}
               className={cn(
-                'relative inline-flex items-center justify-center h-10 rounded-lg group',
+                'relative flex items-center justify-center h-10 rounded-lg group flex-shrink-0',
                 prefersReducedMotion
                   ? 'transition-none'
                   : 'transition-all duration-500 ease-out',
-                isActive ? 'min-w-[120px]' : 'w-10'
+                isActive ? 'w-[120px]' : 'w-10'
               )}
             >
               <FancyButton.Root
@@ -102,11 +105,17 @@ export function NavigationDock({ items, className }: NavigationDockProps) {
                       'text-sm font-medium whitespace-nowrap overflow-hidden',
                       prefersReducedMotion
                         ? 'transition-none'
-                        : 'transition-all duration-500 ease-out',
+                        : 'transition-[max-width,margin] duration-500 ease-out',
                       isActive
                         ? 'opacity-100 max-w-[80px] ml-2 relative'
                         : 'opacity-0 max-w-0 ml-0 absolute'
                     )}
+                    style={{
+                      opacity: isActive ? 1 : 0,
+                      transition: prefersReducedMotion
+                        ? 'none'
+                        : 'max-width 500ms ease-out, margin 500ms ease-out',
+                    }}
                   >
                     {item.name}
                   </span>

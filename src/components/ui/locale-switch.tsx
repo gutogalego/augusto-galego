@@ -127,11 +127,6 @@ export function LocaleSwitch({
           )}
         >
           PT
-          {isPortuguese && (
-            <span className="ml-1 text-[10px]" aria-hidden="true">
-              ✓
-            </span>
-          )}
         </button>
         <span className="text-muted-foreground/50">|</span>
         <button
@@ -154,11 +149,6 @@ export function LocaleSwitch({
           )}
         >
           EN
-          {isEnglish && (
-            <span className="ml-1 text-[10px]" aria-hidden="true">
-              ✓
-            </span>
-          )}
         </button>
       </div>
     )
@@ -202,14 +192,7 @@ export function LocaleSwitch({
           )}
         >
           <span className="text-base">🇧🇷</span>
-          <span className="flex items-center gap-1">
-            PT
-            {isPortuguese && (
-              <span className="text-xs" aria-hidden="true">
-                ✓
-              </span>
-            )}
-          </span>
+          <span>PT</span>
         </button>
 
         {/* English Button */}
@@ -233,14 +216,7 @@ export function LocaleSwitch({
           )}
         >
           <span className="text-base">🇺🇸</span>
-          <span className="flex items-center gap-1">
-            EN
-            {isEnglish && (
-              <span className="text-xs" aria-hidden="true">
-                ✓
-              </span>
-            )}
-          </span>
+          <span>EN</span>
         </button>
       </div>
     </div>
