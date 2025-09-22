@@ -69,7 +69,7 @@ export function BlogPostLayout({
       <ScrollProgress />
       {/* Header with connected borders */}
       <div className="max-w-6xl mx-auto border-x-2 border-dotted border-border/40">
-        <div className="px-8 py-6 border-b border-dotted border-border/40">
+        <div className="px-8 py-6 border-b-2 border-dotted border-border/40">
           {/* Back Button */}
           <Button
             variant="ghost"
@@ -85,7 +85,7 @@ export function BlogPostLayout({
         </div>
 
         {/* Post Header */}
-        <div className="px-8 pt-12 pb-8 border-b border-dotted border-border/40">
+        <div className="px-8 pt-12 pb-8 border-b-2 border-dotted border-border/40">
           <div className="max-w-4xl space-y-8">
             {/* Meta info */}
             <div className="flex items-center gap-4 text-sm">
@@ -130,14 +130,14 @@ export function BlogPostLayout({
         {/* Main Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] min-h-screen">
           {/* Main Content */}
-          <div className="px-8 py-12 border-r border-dotted border-border/40">
+          <div className="px-8 py-12 border-r-2 border-dotted border-border/40">
             <div className="max-w-3xl">
               <article className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-sm prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-muted prose-pre:border prose-pre:border-border/40">
                 {children}
               </article>
 
               {/* Post Footer */}
-              <div className="mt-16 pt-8 border-t border-dotted border-border/40 space-y-8">
+              <div className="mt-16 pt-8 border-t-2 border-dotted border-border/40 space-y-8">
                 {/* Share */}
                 <div className="space-y-4">
                   <h3 className="font-semibold text-foreground">
@@ -177,7 +177,7 @@ export function BlogPostLayout({
         </div>
 
         {/* Final CTA Card */}
-        <div className="px-8 py-12 border-t border-dotted border-border/40 bg-muted/10">
+        <div className="px-8 py-12 border-t-2 border-dotted border-border/40 bg-muted/10">
           <Card className="border-border/40 shadow-none">
             <CardContent className="p-8 text-center">
               <div className="max-w-2xl mx-auto space-y-6">

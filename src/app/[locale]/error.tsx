@@ -69,7 +69,7 @@ export default function ErrorPage({
             </div>
 
             {/* Contact Info */}
-            <div className="pt-8 border-t text-sm text-muted-foreground">
+            <div className="pt-8 border-t-2 text-sm text-muted-foreground">
               <p>
                 Se o problema persistir, entre em contato em{' '}
                 <a

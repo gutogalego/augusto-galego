@@ -173,7 +173,7 @@ const SearchResults = React.forwardRef<HTMLDivElement, SearchResultsProps>(
         </div>
 
         {/* Navigation Hints */}
-        <div className="border-t border-border/30 p-2 bg-muted/20">
+        <div className="border-t-2 border-border/30 p-2 bg-muted/20">
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">

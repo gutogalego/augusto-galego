@@ -220,7 +220,7 @@ export function NewsletterSection() {
                   </div>
 
                   {/* Social Proof */}
-                  <div className="border-t pt-4">
+                  <div className="border-t-2 pt-4">
                     <div className="flex items-center justify-center space-x-4 text-sm text-muted-foreground">
                       <div className="flex items-center space-x-1">
                         <Users className="h-4 w-4" />

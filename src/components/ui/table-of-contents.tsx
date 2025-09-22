@@ -278,7 +278,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
       </div>
 
       {showBackToTop && (
-        <div className="border-t border-border/40 pt-4 animate-in fade-in slide-in-from-bottom-2 duration-200">
+        <div className="border-t-2 border-border/40 pt-4 animate-in fade-in slide-in-from-bottom-2 duration-200">
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

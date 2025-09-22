@@ -104,7 +104,7 @@ export function Navigation() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-sm">
+        <div className="md:hidden border-t-2 border-border/40 bg-background/95 backdrop-blur-sm">
           <div className="px-4 py-6">
             <nav className="grid grid-cols-3 gap-3">
               {navigationItems.map((item) => (
@@ -120,7 +120,7 @@ export function Navigation() {
             </nav>
 
             {/* Mobile Language Selector */}
-            <div className="mt-8 pt-6 border-t border-border/30">
+            <div className="mt-8 pt-6 border-t-2 border-border/30">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-4">
                 {t('common.language')}
               </p>
@@ -130,7 +130,7 @@ export function Navigation() {
             </div>
 
             {/* Mobile Social Links */}
-            <div className="mt-6 pt-6 border-t border-border/30">
+            <div className="mt-6 pt-6 border-t-2 border-border/30">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-4">
                 {t('navigation.socialMedia')}
               </p>

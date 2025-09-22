@@ -83,7 +83,7 @@ export function ArticleCard({
         className={cn(
           baseClasses,
           'hover:bg-muted/30',
-          index === 0 && 'border-t border-dashed-wide'
+          index === 0 && 'border-t-2 border-dashed-wide'
         )}
       >
         <article className={contentClasses}>
