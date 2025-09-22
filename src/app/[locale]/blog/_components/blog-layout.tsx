@@ -8,7 +8,7 @@ import {
 import { cn } from '@/lib/shadcn'
 import type { PostMetadata } from '@/utils/get-posts'
 import { useLocale } from 'next-intl'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ArticleList } from './article-list'
 import { BlogHero } from './blog-hero'
 import { BlogSidebar } from './blog-sidebar'
@@ -28,10 +28,15 @@ export function BlogLayout({
 }: BlogLayoutProps) {
   const hookLocale = useLocale() as 'en' | 'pt'
   const locale = propLocale || hookLocale
+  const [isMounted, setIsMounted] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(
     getAllCategoriesText(locale)
   )
   const [searchQuery, setSearchQuery] = useState('')
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const filteredPosts = useMemo(() => {
     let filtered = posts
@@ -57,6 +62,52 @@ export function BlogLayout({
     if (query.trim()) {
       setSelectedCategory(getAllCategoriesText(locale)) // Reset to all articles when searching
     }
+  }
+
+  if (!isMounted) {
+    return (
+      <div className={cn('min-h-screen bg-background', className)}>
+        <div className="animate-pulse">
+          {/* Hero Skeleton */}
+          <div className="h-64 bg-muted/20" />
+
+          {/* Main Content Skeleton */}
+          <div className="max-w-6xl mx-auto border-2 border-b-0 border-dotted border-border/40">
+            <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] min-h-screen">
+              {/* Sidebar Skeleton */}
+              <div className="px-8 py-12 bg-muted/20 border-r-2 border-dotted border-border/40">
+                <div className="space-y-4">
+                  <div className="h-4 bg-muted rounded" />
+                  <div className="h-4 bg-muted rounded w-3/4" />
+                  <div className="h-4 bg-muted rounded w-1/2" />
+                </div>
+              </div>
+
+              {/* Articles Skeleton */}
+              <div className="p-8">
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <div className="h-4 bg-muted rounded" />
+                    <div className="h-4 bg-muted rounded w-4/5" />
+                    <div className="h-4 bg-muted rounded w-3/5" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-4 bg-muted rounded" />
+                    <div className="h-4 bg-muted rounded w-4/5" />
+                    <div className="h-4 bg-muted rounded w-3/5" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-4 bg-muted rounded" />
+                    <div className="h-4 bg-muted rounded w-4/5" />
+                    <div className="h-4 bg-muted rounded w-3/5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
