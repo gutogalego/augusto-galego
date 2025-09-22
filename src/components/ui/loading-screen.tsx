@@ -7,25 +7,51 @@ import { useEffect, useState } from 'react'
 interface LoadingScreenProps {
   isLoading: boolean
   className?: string
+  debounceMs?: number // Tempo de debounce em ms (padrão: 1500ms)
 }
 
-export function LoadingScreen({ isLoading, className }: LoadingScreenProps) {
+export function LoadingScreen({
+  isLoading,
+  className,
+  debounceMs = 1500,
+}: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
-  const [showScreen, setShowScreen] = useState(isLoading)
+  const [showScreen, setShowScreen] = useState(false)
+  const [shouldShow, setShouldShow] = useState(false)
 
   useEffect(() => {
     if (isLoading) {
-      setShowScreen(true)
-      setProgress(0)
+      const debounceTimeout = setTimeout(() => {
+        setShouldShow(true)
+        setShowScreen(true)
+        setProgress(0)
+      }, debounceMs)
 
-      // Simula progresso de carregamento
+      return () => {
+        clearTimeout(debounceTimeout)
+        setShouldShow(false)
+      }
+    }
+
+    setShouldShow(false)
+    if (showScreen) {
+      setProgress(100)
+      const timeout = setTimeout(() => {
+        setShowScreen(false)
+      }, 300)
+      return () => clearTimeout(timeout)
+    }
+  }, [isLoading, showScreen, debounceMs])
+
+  useEffect(() => {
+    if (shouldShow && showScreen) {
       const interval = setInterval(() => {
         setProgress((prev) => {
           if (prev >= 100) {
             clearInterval(interval)
             return 100
           }
-          // Progresso mais rápido no início, mais lento no final
+
           const increment =
             prev < 50 ? Math.random() * 20 + 10 : Math.random() * 5 + 2
           return Math.min(prev + increment, 100)
@@ -34,15 +60,7 @@ export function LoadingScreen({ isLoading, className }: LoadingScreenProps) {
 
       return () => clearInterval(interval)
     }
-
-    // Quando parar de carregar, completa rapidamente e depois esconde
-    setProgress(100)
-    const timeout = setTimeout(() => {
-      setShowScreen(false)
-    }, 300)
-
-    return () => clearTimeout(timeout)
-  }, [isLoading])
+  }, [shouldShow, showScreen])
 
   if (!showScreen) {
     return null
@@ -51,7 +69,7 @@ export function LoadingScreen({ isLoading, className }: LoadingScreenProps) {
   return (
     <div
       className={cn(
-        'fixed inset-0 z-50 flex items-center justify-center bg-background',
+        'fixed inset-0 z-50 min-h-screen flex items-center justify-center bg-background',
         'transition-opacity duration-300',
         isLoading || progress < 100 ? 'opacity-100' : 'opacity-0',
         className
@@ -60,7 +78,7 @@ export function LoadingScreen({ isLoading, className }: LoadingScreenProps) {
       <div className="flex flex-col items-center space-y-8">
         {/* Logo Icon */}
         <div className="mb-4">
-          <LogoIcon className="h-12 w-12 text-foreground" />
+          <LogoIcon className="h-12 w-12 text-foreground animate-pulse" />
         </div>
 
         {/* Loading text */}
@@ -69,6 +87,14 @@ export function LoadingScreen({ isLoading, className }: LoadingScreenProps) {
           <span>LOADING</span>
           <span>-</span>
           <span className="tabular-nums">{Math.round(progress)}%</span>
+        </div>
+
+        {/* Progress bar */}
+        <div className="w-48 h-1 bg-muted rounded-full overflow-hidden">
+          <div
+            className="h-full bg-foreground transition-all duration-300 ease-out"
+            style={{ width: `${progress}%` }}
+          />
         </div>
 
         {/* URL display */}
