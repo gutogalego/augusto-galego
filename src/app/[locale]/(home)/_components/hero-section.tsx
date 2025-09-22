@@ -78,7 +78,7 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
               <FancyButton.Root size="lg" asChild={true} className="group">
-                <Link href="courses">
+                <Link href="/courses">
                   <FancyButton.Icon as={GraduationCap} className="mr-2" />
                   {t('cta.courses')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -91,7 +91,7 @@ export function HeroSection() {
                 asChild={true}
                 className="group"
               >
-                <Link href="blog">
+                <Link href="/blog">
                   <Code className="mr-2 h-4 w-4" />
                   {t('cta.blog')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

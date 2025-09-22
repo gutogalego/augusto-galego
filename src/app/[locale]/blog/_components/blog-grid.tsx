@@ -176,13 +176,13 @@ export function BlogGrid({ posts }: BlogGridProps) {
           <div className="flex flex-wrap justify-center gap-2">
             {categories.map((category) => (
               <Button
-                key={category}
+                key={category.toString()}
                 variant={selectedCategory === category ? 'default' : 'outline'}
                 size="sm"
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => setSelectedCategory(category.toString())}
                 className="text-xs"
               >
-                {category === 'all' ? 'Todos' : category}
+                {category === 'all' ? 'Todos' : category.toString()}
               </Button>
             ))}
           </div>
@@ -246,7 +246,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
                         asChild={true}
                         className="group/btn"
                       >
-                        <Link href={`blog/${post.url}`}>
+                        <Link href={`/blog/${post.url}`}>
                           <BookOpen className="mr-2 h-4 w-4" />
                           Ler artigo
                           <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -339,7 +339,7 @@ export function BlogGrid({ posts }: BlogGridProps) {
                         asChild={true}
                         className="w-full group/btn justify-between"
                       >
-                        <Link href={`blog/${post.url}`}>
+                        <Link href={`/blog/${post.url}`}>
                           <span>Ler artigo</span>
                           <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                         </Link>

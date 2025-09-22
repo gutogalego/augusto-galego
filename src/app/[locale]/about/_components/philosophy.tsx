@@ -163,7 +163,7 @@ export function Philosophy() {
                   </div>
 
                   <Button asChild={true} className="group">
-                    <Link href="courses">
+                    <Link href="/courses">
                       <BookOpen className="mr-2 h-4 w-4" />
                       Ver Meus Cursos
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -235,7 +235,7 @@ export function Philosophy() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild={true} className="group">
-                  <Link href="contact">
+                  <Link href="/contact">
                     <Mail className="mr-2 h-4 w-4" />
                     Entrar em Contato
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
