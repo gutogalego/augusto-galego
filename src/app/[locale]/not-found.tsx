@@ -32,7 +32,7 @@ export default async function NotFound() {
                   asChild={true}
                   className="h-auto p-4 flex-col space-y-2"
                 >
-                  <Link href="/">
+                  <Link href="">
                     <Home className="h-6 w-6" />
                     <span className="text-sm">{t('home')}</span>
                   </Link>
@@ -43,7 +43,7 @@ export default async function NotFound() {
                   asChild={true}
                   className="h-auto p-4 flex-col space-y-2"
                 >
-                  <Link href="/blog">
+                  <Link href="blog">
                     <BookOpen className="h-6 w-6" />
                     <span className="text-sm">{t('blog')}</span>
                   </Link>
@@ -54,7 +54,7 @@ export default async function NotFound() {
                   asChild={true}
                   className="h-auto p-4 flex-col space-y-2"
                 >
-                  <Link href="/about">
+                  <Link href="about">
                     <Search className="h-6 w-6" />
                     <span className="text-sm">{t('about')}</span>
                   </Link>
@@ -65,7 +65,7 @@ export default async function NotFound() {
             {/* Back Button */}
             <div className="pt-4">
               <Button asChild={true} className="group">
-                <Link href="/">
+                <Link href="">
                   <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                   {t('backToHome')}
                 </Link>
