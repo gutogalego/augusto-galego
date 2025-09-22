@@ -3,7 +3,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 
-import { cn } from '@/lib/shadcn'
 import type { PolymorphicComponentProps } from '@/utils/polymorphic'
 import { recursiveCloneChildren } from '@/utils/recursive-clone-children'
 import { type VariantProps, tv } from '@/utils/tv'
@@ -15,36 +14,36 @@ const INPUT_ICON_NAME = 'InputIcon'
 const INPUT_AFFIX_NAME = 'InputAffixButton'
 const INPUT_INLINE_AFFIX_NAME = 'InputInlineAffixButton'
 
-const inputVariants = tv({
+export const inputVariants = tv({
   slots: {
     root: [
       // base
-      'group relative flex w-full overflow-hidden bg-card text-foreground shadow-sm',
+      'group relative flex w-full overflow-hidden bg-background text-foreground shadow-sm',
       'transition duration-200 ease-out',
-      'divide-x divide-border/50',
+      'divide-x divide-border',
       // before
       'before:absolute before:inset-0 before:ring-1 before:ring-inset before:ring-border',
       'before:pointer-events-none before:rounded-[inherit]',
       'before:transition before:duration-200 before:ease-out',
       // hover
-      'hover:shadow-md hover:before:ring-border/70',
+      'hover:shadow-none',
       // focus
-      'has-[input:focus]:shadow-lg has-[input:focus]:before:ring-ring',
+      'has-[input:focus]:shadow-md has-[input:focus]:before:ring-ring',
       // disabled
-      'has-[input:disabled]:shadow-none has-[input:disabled]:before:ring-transparent has-[input:disabled]:opacity-50',
+      'has-[input:disabled]:shadow-none has-[input:disabled]:before:ring-transparent',
     ],
     wrapper: [
       // base
-      'group/input-wrapper flex w-full cursor-text items-center bg-card',
+      'group/input-wrapper flex w-full cursor-text items-center bg-background',
       'transition duration-200 ease-out',
       // hover
-      'hover:[&:not(&:has(input:focus))]:bg-accent/50',
+      'hover:[&:not(&:has(input:focus))]:bg-muted/50',
       // disabled
       'has-[input:disabled]:pointer-events-none has-[input:disabled]:bg-muted/50',
     ],
     input: [
       // base
-      'w-full bg-transparent text-sm text-foreground outline-none',
+      'w-full bg-transparent bg-none text-sm text-foreground outline-none',
       'transition duration-200 ease-out',
       // placeholder
       'placeholder:select-none placeholder:text-muted-foreground placeholder:transition placeholder:duration-200 placeholder:ease-out',
@@ -53,60 +52,65 @@ const inputVariants = tv({
       // focus
       'focus:outline-none',
       // focus placeholder
-      'group-has-[input:focus]:placeholder:text-muted-foreground/60',
+      'group-has-[input:focus]:placeholder:text-muted-foreground/80',
       // disabled
-      'disabled:text-muted-foreground disabled:placeholder:text-muted-foreground/50',
+      'disabled:text-muted-foreground disabled:placeholder:text-muted-foreground',
     ],
     icon: [
       // base
-      'flex size-4 shrink-0 select-none items-center justify-center',
+      'flex size-5 shrink-0 select-none items-center justify-center',
       'transition duration-200 ease-out',
       // placeholder state
-      'group-has-[:placeholder-shown]:text-muted-foreground/60',
+      'group-has-[:placeholder-shown]:text-muted-foreground',
       // filled state
-      'text-muted-foreground',
+      'text-muted-foreground/80',
       // hover
       'group-has-[:placeholder-shown]:group-hover/input-wrapper:text-muted-foreground/80',
       // focus
-      'group-has-[:placeholder-shown]:group-has-[input:focus]/input-wrapper:text-foreground',
+      'group-has-[:placeholder-shown]:group-has-[input:focus]/input-wrapper:text-muted-foreground/80',
       // disabled
-      'group-has-[input:disabled]/input-wrapper:text-muted-foreground/40',
+      'group-has-[input:disabled]/input-wrapper:text-muted-foreground',
     ],
     affix: [
       // base
-      'shrink-0 bg-card text-sm text-muted-foreground',
+      'shrink-0 bg-background text-sm text-muted-foreground/80',
       'flex items-center justify-center truncate',
       'transition duration-200 ease-out',
       // placeholder state
-      'group-has-[:placeholder-shown]:text-muted-foreground/60',
+      'group-has-[:placeholder-shown]:text-muted-foreground',
       // focus state
-      'group-has-[:placeholder-shown]:group-has-[input:focus]:text-foreground',
+      'group-has-[:placeholder-shown]:group-has-[input:focus]:text-muted-foreground/80',
     ],
     inlineAffix: [
       // base
-      'text-sm text-muted-foreground',
+      'text-sm text-muted-foreground/80',
       // placeholder state
-      'group-has-[:placeholder-shown]:text-muted-foreground/60',
+      'group-has-[:placeholder-shown]:text-muted-foreground',
       // focus state
-      'group-has-[:placeholder-shown]:group-has-[input:focus]:text-foreground',
+      'group-has-[:placeholder-shown]:group-has-[input:focus]:text-muted-foreground/80',
     ],
   },
   variants: {
     size: {
-      default: {
+      medium: {
         root: 'rounded-lg',
         wrapper: 'gap-2 px-3',
         input: 'h-10',
       },
-      sm: {
+      small: {
         root: 'rounded-md',
         wrapper: 'gap-2 px-2.5',
         input: 'h-9',
       },
-      lg: {
+      xsmall: {
+        root: 'rounded-md',
+        wrapper: 'gap-1.5 px-2',
+        input: 'h-8',
+      },
+      large: {
         root: 'rounded-lg',
         wrapper: 'gap-3 px-4',
-        input: 'h-12',
+        input: 'h-12 text-lg',
       },
     },
     hasError: {
@@ -114,10 +118,10 @@ const inputVariants = tv({
         root: [
           // base
           'before:ring-destructive',
-          // hover
+          // base
           'hover:before:ring-destructive hover:[&:not(&:has(input:focus)):has(>:only-child)]:before:ring-destructive',
           // focus
-          'has-[input:focus]:shadow-destructive/20 has-[input:focus]:before:ring-destructive',
+          'has-[input:focus]:shadow-md has-[input:focus]:before:ring-destructive',
         ],
       },
       false: {
@@ -131,22 +135,27 @@ const inputVariants = tv({
   compoundVariants: [
     //#region affix
     {
-      size: 'default',
+      size: 'medium',
       class: {
         affix: 'px-3',
       },
     },
     {
-      size: ['sm', 'lg'],
+      size: ['small', 'xsmall'],
       class: {
-        affix: 'px-3',
+        affix: 'px-2.5',
+      },
+    },
+    {
+      size: 'large',
+      class: {
+        affix: 'px-4',
       },
     },
     //#endregion
   ],
   defaultVariants: {
-    size: 'default',
-    hasError: false,
+    size: 'medium',
   },
 })
 
@@ -308,26 +317,6 @@ function InputInlineAffix({
 }
 InputInlineAffix.displayName = INPUT_INLINE_AFFIX_NAME
 
-// Componente simples para compatibilidade com uso básico
-const SimpleInput = React.forwardRef<
-  HTMLInputElement,
-  React.InputHTMLAttributes<HTMLInputElement> & InputSharedProps
->(
-  (
-    { className, size = 'default' as const, hasError = false, ...props },
-    ref
-  ) => {
-    return (
-      <InputRoot size={size} hasError={hasError} className={className}>
-        <InputWrapper>
-          <Input ref={ref} {...props} />
-        </InputWrapper>
-      </InputRoot>
-    )
-  }
-)
-SimpleInput.displayName = 'SimpleInput'
-
 export {
   InputRoot as Root,
   InputWrapper as Wrapper,
@@ -335,9 +324,4 @@ export {
   InputIcon as Icon,
   InputAffix as Affix,
   InputInlineAffix as InlineAffix,
-  SimpleInput,
-  inputVariants,
 }
-
-// Export default para compatibilidade
-export { SimpleInput as default }
