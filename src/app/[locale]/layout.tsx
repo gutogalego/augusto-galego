@@ -77,7 +77,7 @@ export default async function LocaleLayout({
     notFound()
   }
 
-  const messages = await getMessages()
+  const messages = await getMessages({ locale })
 
   const langAttribute = locale === 'pt' ? 'pt-BR' : 'en-US'
 
