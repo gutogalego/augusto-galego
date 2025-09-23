@@ -44,5 +44,6 @@
   "editor.insertSpaces": true,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true
+  "files.trimTrailingWhitespace": true,
+  "i18n-ally.localesPaths": ["messages", "src/i18n"]
 }
