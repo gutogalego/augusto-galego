@@ -1,5 +1,71 @@
 {
-  "title": "What would Steve Jobs do?",
-  "description": "Could Steve Jobs fix the current state of brainrot?",
-  "date": "2025-05-28"
+  "title": {
+    "en": "What Would Steve Jobs Do?",
+    "pt": "O Que Steve Jobs Faria?"
+  },
+  "description": {
+    "en": "A thought experiment about whether Steve Jobs could fix the current state of technology addiction and digital brainrot",
+    "pt": "Um experimento mental sobre se Steve Jobs poderia consertar o estado atual do vício em tecnologia e brainrot digital"
+  },
+  "excerpt": {
+    "en": "Exploring whether a visionary like Steve Jobs could single-handedly change our toxic relationship with technology and create more human-centered devices.",
+    "pt": "Explorando se um visionário como Steve Jobs poderia sozinho mudar nossa relação tóxica com a tecnologia e criar dispositivos mais centrados no ser humano."
+  },
+  "date": "2025-05-28",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Technology Philosophy",
+    "pt": "Filosofia da Tecnologia"
+  },
+  "tags": [
+    {
+      "en": "Steve Jobs",
+      "pt": "Steve Jobs"
+    },
+    {
+      "en": "technology addiction",
+      "pt": "vício em tecnologia"
+    },
+    {
+      "en": "digital wellness",
+      "pt": "bem-estar digital"
+    },
+    {
+      "en": "product philosophy",
+      "pt": "filosofia de produto"
+    },
+    {
+      "en": "tech criticism",
+      "pt": "crítica tecnológica"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "Steve Jobs philosophy",
+      "pt": "filosofia Steve Jobs"
+    },
+    {
+      "en": "technology brainrot",
+      "pt": "brainrot tecnológico"
+    },
+    {
+      "en": "digital detox",
+      "pt": "detox digital"
+    },
+    {
+      "en": "human-centered design",
+      "pt": "design centrado no humano"
+    },
+    {
+      "en": "tech industry criticism",
+      "pt": "crítica à indústria tech"
+    },
+    {
+      "en": "attention economy",
+      "pt": "economia da atenção"
+    }
+  ],
+  "readTime": 4,
+  "featured": false
 }

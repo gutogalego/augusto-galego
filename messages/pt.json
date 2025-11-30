@@ -1,0 +1,196 @@
+{
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "blog": "Blog",
+    "courses": "Cursos",
+    "setup": "Setup",
+    "contact": "Contato",
+    "socialMedia": "Redes Sociais"
+  },
+  "common": {
+    "readMore": "Ler mais",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "notFound": "Não encontrado",
+    "backToHome": "Voltar ao início",
+    "language": "Idioma",
+    "portuguese": "Português",
+    "english": "Inglês"
+  },
+  "search": {
+    "placeholder": "Buscar artigos sobre algoritmos, carreira, tech...",
+    "triggerText": "Buscar artigos sobre algoritmos, carreira, tech...",
+    "searching": "Buscando artigos...",
+    "noResults": "Nenhum resultado encontrado",
+    "noResultsDescription": "Tente usar palavras-chave diferentes como \"algoritmos\", \"carreira\" ou \"sistema\"",
+    "featuredArticles": "Artigos em Destaque",
+    "searchResults": "Resultados da Busca",
+    "cancel": "Cancelar",
+    "clear": "Limpar",
+    "navigate": "Navegar",
+    "select": "Selecionar",
+    "close": "Fechar",
+    "shortcutHint": "K"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "Ops! A página que você está procurando não existe ou foi movida.",
+    "suggestions": "Que tal tentar uma dessas opções?",
+    "home": "Página Inicial",
+    "blog": "Blog",
+    "about": "Sobre",
+    "backToHome": "Voltar ao Início",
+    "contactText": "Se você acredita que isso é um erro, entre em contato comigo em",
+    "contactEmail": "algoritmos.galego@gmail.com"
+  },
+  "hero": {
+    "title": "Augusto Galego",
+    "subtitle": "Desenvolvedor & Educador",
+    "description": "CTO, Backend Engineer e Educador. Especialista em algoritmos, estruturas de dados e carreira em tech. De júnior no Brasil a CTO nos EUA em 9+ anos.",
+    "location": "Pádua, Itália",
+    "role": "CTO",
+    "highlights": {
+      "cto": "CTO em startup americana",
+      "leetcode": "Especialista em LeetCode",
+      "educator": "Educador com 103K+ seguidores",
+      "journey": "Trajetória Brasil → Itália → EUA"
+    },
+    "stats": {
+      "subscribers": "Inscritos YouTube",
+      "experience": "Anos de Experiência",
+      "lessons": "Aulas no Curso Principal",
+      "countries": "Países Trabalhados"
+    },
+    "cta": {
+      "courses": "Ver Cursos",
+      "blog": "Ler Blog",
+      "channels": "Canais no YouTube:",
+      "available": "Disponível para mentorias",
+      "new": "Novo"
+    }
+  },
+  "blog": {
+    "title": "Blog | Augusto Galego",
+    "subtitle": "Artigos sobre desenvolvimento, tecnologia e carreira",
+    "searchPlaceholder": "Pesquisar artigos...",
+    "noResults": "Nenhum artigo encontrado",
+    "readTime": "min de leitura",
+    "publishedOn": "Publicado em",
+    "lastUpdated": "Última atualização"
+  },
+  "about": {
+    "title": "Sobre Mim | Augusto Galego",
+    "subtitle": "Desenvolvedor apaixonado por tecnologia e educação"
+  },
+  "contact": {
+    "title": "Contato | Augusto Galego",
+    "subtitle": "Vamos conversar sobre seus projetos"
+  },
+  "courses": {
+    "title": "Cursos | Augusto Galego",
+    "subtitle": "Aprenda desenvolvimento web com conteúdo prático"
+  },
+  "setup": {
+    "title": "Meu Setup | Augusto Galego",
+    "subtitle": "Ferramentas e equipamentos que uso no dia a dia"
+  },
+  "metadata": {
+    "home": {
+      "title": "Augusto Galego - CTO, Backend Engineer e Educador",
+      "description": "CTO, Backend Engineer e Educador. Especialista em algoritmos, estruturas de dados e carreira em tech. Aprenda com quem saiu do Brasil e chegou ao topo na Europa.",
+      "keywords": [
+        "algoritmos",
+        "estruturas de dados",
+        "leetcode",
+        "programação",
+        "carreira tech",
+        "backend",
+        "python",
+        "javascript",
+        "trabalho remoto",
+        "augusto galego",
+        "system design",
+        "entrevista técnica",
+        "coding interview",
+        "programador brasileiro",
+        "tech lead",
+        "cto",
+        "startup",
+        "europa",
+        "emigração tech"
+      ]
+    },
+    "about": {
+      "title": "Sobre",
+      "description": "Conheça a trajetória de Augusto Galego: de desenvolvedor júnior no Brasil a CTO nos EUA. Especialista em algoritmos, estruturas de dados e educação em tech.",
+      "keywords": [
+        "augusto galego",
+        "trajetória",
+        "carreira tech",
+        "brasil",
+        "eua",
+        "europa",
+        "cto",
+        "desenvolvedor",
+        "algoritmos",
+        "educação"
+      ]
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Artigos sobre algoritmos, estruturas de dados, carreira em tech e trabalho remoto internacional. Insights de quem saiu do Brasil e chegou ao topo na Europa.",
+      "keywords": [
+        "blog",
+        "artigos",
+        "algoritmos",
+        "estruturas de dados",
+        "carreira tech",
+        "trabalho remoto",
+        "internacional",
+        "insights",
+        "programação"
+      ]
+    },
+    "courses": {
+      "title": "Cursos",
+      "description": "Cursos práticos sobre algoritmos, estruturas de dados e carreira em tech. Aprenda com quem saiu do Brasil e chegou ao topo na Europa e EUA.",
+      "keywords": [
+        "cursos",
+        "algoritmos",
+        "estruturas de dados",
+        "carreira tech",
+        "prático",
+        "educação",
+        "programação",
+        "leetcode"
+      ]
+    },
+    "contact": {
+      "title": "Contato",
+      "description": "Entre em contato com Augusto Galego para mentorias, parcerias ou dúvidas sobre carreira em tech e algoritmos.",
+      "keywords": [
+        "contato",
+        "mentoria",
+        "parcerias",
+        "carreira tech",
+        "algoritmos",
+        "consultoria",
+        "augusto galego"
+      ]
+    },
+    "setup": {
+      "title": "Setup & Produtividade",
+      "description": "Conheça o setup de trabalho e dicas de produtividade de Augusto Galego. Ferramentas, configurações e metodologias para ser mais eficiente.",
+      "keywords": [
+        "setup",
+        "produtividade",
+        "ferramentas",
+        "configurações",
+        "metodologias",
+        "eficiência",
+        "trabalho remoto"
+      ]
+    }
+  }
+}

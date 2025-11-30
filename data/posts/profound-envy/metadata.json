@@ -1,5 +1,71 @@
 {
-  "title": "Profound Envy",
-  "description": "envy",
-  "date": "2025-06-30"
+  "title": {
+    "en": "Profound Envy",
+    "pt": "Inveja Profunda"
+  },
+  "description": {
+    "en": "A deep exploration of envy, its psychological roots, and how it affects our relationships and personal growth",
+    "pt": "Uma exploração profunda da inveja, suas raízes psicológicas e como ela afeta nossos relacionamentos e crescimento pessoal"
+  },
+  "excerpt": {
+    "en": "An honest examination of envy as a human emotion, exploring its destructive nature and the insights it can provide about our own desires and insecurities.",
+    "pt": "Um exame honesto da inveja como emoção humana, explorando sua natureza destrutiva e os insights que pode fornecer sobre nossos próprios desejos e inseguranças."
+  },
+  "date": "2025-06-30",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Psychology",
+    "pt": "Psicologia"
+  },
+  "tags": [
+    {
+      "en": "psychology",
+      "pt": "psicologia"
+    },
+    {
+      "en": "emotions",
+      "pt": "emoções"
+    },
+    {
+      "en": "self-reflection",
+      "pt": "autorreflexão"
+    },
+    {
+      "en": "personal growth",
+      "pt": "crescimento pessoal"
+    },
+    {
+      "en": "human nature",
+      "pt": "natureza humana"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "envy psychology",
+      "pt": "psicologia da inveja"
+    },
+    {
+      "en": "emotional intelligence",
+      "pt": "inteligência emocional"
+    },
+    {
+      "en": "jealousy vs envy",
+      "pt": "ciúme vs inveja"
+    },
+    {
+      "en": "toxic emotions",
+      "pt": "emoções tóxicas"
+    },
+    {
+      "en": "self-awareness",
+      "pt": "autoconhecimento"
+    },
+    {
+      "en": "human psychology",
+      "pt": "psicologia humana"
+    }
+  ],
+  "readTime": 3,
+  "featured": false
 }

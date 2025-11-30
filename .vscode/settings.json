@@ -1,0 +1,49 @@
+{
+  "search.exclude": {
+    "package-lock.json": true,
+    "pnpm-lock.json": true,
+    "yarn.lock": true
+  },
+  // Tailwind
+  "css.lint.unknownAtRules": "ignore",
+
+  // Disable default formatters
+  "prettier.enable": false,
+  "eslint.enable": false,
+
+  // Enable Biome
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+
+  // File associations
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  // Additional settings
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "i18n-ally.localesPaths": ["messages", "src/i18n"]
+}

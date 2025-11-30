@@ -1,5 +1,71 @@
 {
-  "title": "Getting started gives you the framework to think about how to get started",
-  "description": "Thoughts on people asking me how to get started",
-  "date": "2025-05-24"
+  "title": {
+    "en": "Getting Started Gives You the Framework to Think About How to Get Started",
+    "pt": "Começar Te Dá o Framework Para Pensar em Como Começar"
+  },
+  "description": {
+    "en": "Why you need to start doing something before asking for advice, and how shared experience creates meaningful conversations",
+    "pt": "Por que você precisa começar a fazer algo antes de pedir conselhos, e como experiência compartilhada cria conversas significativas"
+  },
+  "excerpt": {
+    "en": "A reflection on why people need to start doing something before they can receive meaningful guidance, using programming and smartphone analogies to illustrate the importance of shared vocabulary.",
+    "pt": "Uma reflexão sobre por que as pessoas precisam começar a fazer algo antes de poderem receber orientação significativa, usando analogias de programação e smartphones para ilustrar a importância do vocabulário compartilhado."
+  },
+  "date": "2025-05-24",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Career Advice",
+    "pt": "Conselhos de Carreira"
+  },
+  "tags": [
+    {
+      "en": "career advice",
+      "pt": "conselhos de carreira"
+    },
+    {
+      "en": "getting started",
+      "pt": "começando"
+    },
+    {
+      "en": "programming",
+      "pt": "programação"
+    },
+    {
+      "en": "learning",
+      "pt": "aprendizado"
+    },
+    {
+      "en": "mentorship",
+      "pt": "mentoria"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "getting started programming",
+      "pt": "começando a programar"
+    },
+    {
+      "en": "career guidance",
+      "pt": "orientação de carreira"
+    },
+    {
+      "en": "learning framework",
+      "pt": "framework de aprendizado"
+    },
+    {
+      "en": "shared vocabulary",
+      "pt": "vocabulário compartilhado"
+    },
+    {
+      "en": "frontend backend",
+      "pt": "frontend backend"
+    },
+    {
+      "en": "programming advice",
+      "pt": "conselhos de programação"
+    }
+  ],
+  "readTime": 5,
+  "featured": false
 }

@@ -1,5 +1,71 @@
 {
-    "title": "Load Balancers",
-    "description": "Little writeup on load balancers",
-    "date": "2023-11-08"
-  }
+  "title": {
+    "en": "Load Balancers",
+    "pt": "Balanceadores de Carga"
+  },
+  "description": {
+    "en": "A comprehensive guide to load balancers, their algorithms, types, and how they ensure scalability and availability in distributed systems",
+    "pt": "Um guia completo sobre balanceadores de carga, seus algoritmos, tipos e como garantem escalabilidade e disponibilidade em sistemas distribuídos"
+  },
+  "excerpt": {
+    "en": "Learn about load balancers, the essential infrastructure component that distributes incoming requests across multiple servers to ensure high availability and performance.",
+    "pt": "Aprenda sobre balanceadores de carga, o componente essencial de infraestrutura que distribui solicitações entre múltiplos servidores para garantir alta disponibilidade e performance."
+  },
+  "date": "2023-11-08",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "System Design",
+    "pt": "Design de Sistemas"
+  },
+  "tags": [
+    {
+      "en": "load balancing",
+      "pt": "balanceamento de carga"
+    },
+    {
+      "en": "system design",
+      "pt": "design de sistemas"
+    },
+    {
+      "en": "scalability",
+      "pt": "escalabilidade"
+    },
+    {
+      "en": "distributed systems",
+      "pt": "sistemas distribuídos"
+    },
+    {
+      "en": "infrastructure",
+      "pt": "infraestrutura"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "load balancer",
+      "pt": "balanceador de carga"
+    },
+    {
+      "en": "load balancing algorithms",
+      "pt": "algoritmos de balanceamento"
+    },
+    {
+      "en": "round robin",
+      "pt": "round robin"
+    },
+    {
+      "en": "layer 4 layer 7",
+      "pt": "camada 4 camada 7"
+    },
+    {
+      "en": "high availability",
+      "pt": "alta disponibilidade"
+    },
+    {
+      "en": "traffic distribution",
+      "pt": "distribuição de tráfego"
+    }
+  ],
+  "readTime": 7,
+  "featured": true
+}

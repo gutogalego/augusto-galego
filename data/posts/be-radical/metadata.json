@@ -1,5 +1,71 @@
 {
-  "title": "Be Radical",
-  "description": "Expressing your humanity by doing things that are not normal.",
-  "date": "2025-06-05"
+  "title": {
+    "en": "Be Radical",
+    "pt": "Seja Radical"
+  },
+  "description": {
+    "en": "Expressing your humanity by doing things that are not normal and embracing what makes you unique",
+    "pt": "Expressando sua humanidade fazendo coisas que não são normais e abraçando o que te torna único"
+  },
+  "excerpt": {
+    "en": "A reflection on the importance of being radical, doing things differently, and not conforming to societal expectations to truly express your humanity.",
+    "pt": "Uma reflexão sobre a importância de ser radical, fazer as coisas de forma diferente e não se conformar com as expectativas sociais para verdadeiramente expressar sua humanidade."
+  },
+  "date": "2025-06-05",
+  "lastModified": "2025-09-21",
+  "language": "en",
+  "category": {
+    "en": "Philosophy",
+    "pt": "Filosofia"
+  },
+  "tags": [
+    {
+      "en": "philosophy",
+      "pt": "filosofia"
+    },
+    {
+      "en": "individuality",
+      "pt": "individualidade"
+    },
+    {
+      "en": "authenticity",
+      "pt": "autenticidade"
+    },
+    {
+      "en": "personal growth",
+      "pt": "crescimento pessoal"
+    },
+    {
+      "en": "non-conformity",
+      "pt": "não-conformidade"
+    }
+  ],
+  "keywords": [
+    {
+      "en": "be radical",
+      "pt": "seja radical"
+    },
+    {
+      "en": "expressing humanity",
+      "pt": "expressando humanidade"
+    },
+    {
+      "en": "being different",
+      "pt": "ser diferente"
+    },
+    {
+      "en": "authenticity",
+      "pt": "autenticidade"
+    },
+    {
+      "en": "non-conformity",
+      "pt": "não-conformidade"
+    },
+    {
+      "en": "personal philosophy",
+      "pt": "filosofia pessoal"
+    }
+  ],
+  "readTime": 3,
+  "featured": false
 }

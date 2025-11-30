@@ -1,34 +1,35 @@
-## Por que existe um DNS?
+# DNS - Sistema de Nomes de Domínio
 
-Pense em uma lista telefônica. Não se pode esperar que você memorize todos os números que pretende ligar. Da mesma forma, cada servidor tem seu próprio "número", o endereço IP. Por exemplo, **192.133.76.0**. Mas, novamente, não vamos realmente nos lembrar desse número. Lembrar de "Twitter.com" é mais fácil.
+## Por Que o DNS Existe?
+
+Pense em uma lista telefônica. Você não pode ser esperado para memorizar todos os números que pretende ligar. Da mesma forma, cada servidor tem seu próprio "número", o endereço IP. Por exemplo **192.133.76.0**. Mas novamente, não vamos realmente lembrar deste número. Lembrar "Twitter.com" é mais fácil.
 
 O DNS é a lista telefônica da internet.
 
-## O que exatamente é "O DNS"?
+## O Que Exatamente é "O DNS"?
 
-DNS significa Sistema de Nomes de Domínios (Domain Name System). E é uma infraestrutura hierárquica composta por vários servidores de nomes. Existem quatro tipos de servidores na hierarquia:
+DNS significa Sistema de Nomes de Domínio. E é uma infraestrutura hierárquica composta por múltiplos servidores de nomes. Existem quatro tipos de servidores na hierarquia:
 
-1. **Resolver DNS:** O resolvedor é o que inicia a consulta e encaminha a solicitação para outros servidores de nomes DNS. Às vezes eles também podem armazenar em cache.
-2. **Servidores de nomes de nível raiz:** Servidores de nome de nível raiz mantêm o servidor de nomes com base em domínios de topo (TLDs) como .com, .io etc. Eles retornam uma lista de servidores que contêm os endereços IP do domínio .io, por exemplo.
-3. **Servidores de nomes TLD:** eles mantêm os endereços IP dos servidores autoritativos da organização.
-4. **Servidores de nomes autoritativos:** Eles fornecem os Endereços IP dos servidores de aplicação.
+1. **Resolvedor DNS:** O resolvedor é o que inicia a consulta e encaminha a solicitação para outros servidores de nomes DNS. Às vezes eles também podem fazer cache.
+2. **Servidores de nomes de nível raiz:** Os servidores de nomes raiz mantêm servidores de nomes baseados em domínios de nível superior (TLDs) como .com .io etc. Eles retornam uma lista de servidores que possuem os endereços IP do domínio .io, por exemplo.
+3. **Servidores de nomes TLD**: Eles possuem os endereços IP dos servidores autoritativos da organização.
+4. **Servidores de nomes autoritativos:** Eles fornecem os endereços IP dos servidores de aplicação.
 
+## Dois Tipos de Consultas
 
-## Dois tipos de consultas:
+Existem consultas Iterativas e Recursivas ao DNS. Iterativa é geralmente preferida para reduzir a carga de consultas:
 
-Existem consultas Iterativas e Recursivas ao DNS. A Iterativa é geralmente preferida para reduzir a carga de consulta.
-
-1. **Iterativa**: O servidor local solicita a raiz, TLD e os servidores autoritativos pelos endereços IP.
+1. **Iterativa**: O servidor local solicita aos servidores raiz, TLD e autoritativos por seus endereços IP
 2. **Recursiva**: O usuário final solicita ao servidor local. O servidor local encaminha a solicitação para outros servidores de nomes.
 
-## Cache
+## Estratégia de Cache
 
-O cache é utilizado no navegador, nos sistemas operacionais, no servidor de nomes local e no provedor de serviços de internet (ISP). Eles são usados para tornar a experiência do usuário mais rápida e reduzir a carga.![[Screenshot 2023-11-06 at 11.12.20 PM.png]]
+O cache é usado no navegador, nos sistemas operacionais, no servidor de nomes local e no ISP. Eles são usados para tornar a experiência do usuário mais rápida e reduzir a carga.
 
-## Distribuição:
+## Distribuição Global
 
-A hierarquia do DNS é extremamente distribuída. Existem 13 servidores de nomes raiz lógicos no mundo, e eles são gerenciados por 12 organizações diferentes.
+A hierarquia DNS é extremamente distribuída. Existem 13 servidores de nomes raiz lógicos no mundo, e eles são gerenciados por 12 organizações diferentes.
 
-## Escalabilidade
+## Escalabilidade e Performance
 
-Existem cerca de 1000 réplicas dos 13 servidores. Elas oferecem capacidade adicional e reduzem a latência.
+Existem cerca de 1000 replicações dos 13 servidores. Esses oferecem capacidade adicional e latência reduzida.

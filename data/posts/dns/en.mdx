@@ -1,39 +1,35 @@
-## Why does a DNS exist?
+# DNS - Domain Name System
 
-Think of a phonebook. You can't possible be expected to memorize every number you intend on calling. Similarly, every server has it's own "number", the IP address. For example **192.133.76.0**. But again, we won't really remember this number. Remembering "Twitter.com" is easier.
+## Why Does DNS Exist?
+
+Think of a phonebook. You can't possibly be expected to memorize every number you intend on calling. Similarly, every server has its own "number", the IP address. For example **192.133.76.0**. But again, we won't really remember this number. Remembering "Twitter.com" is easier.
 
 The DNS is the internet's phonebook.
 
-## What exactly is "The DNS"?
+## What Exactly is "The DNS"?
 
-DNS stands for Domain name system. And it is a hierarchical infrastructure composed of multiple name servers. There are four types of servers in the hierarchy:
+DNS stands for Domain Name System. And it is a hierarchical infrastructure composed of multiple name servers. There are four types of servers in the hierarchy:
 
-1. **DNS Resolver:** The resolver is what initiates the query, and forwards the request to other DNS Name servers. Sometimes they can also cache.  
-2. **Root-level name servers:** Root name servers maintain name server based on top level domains (TLDs) such as .com .io etc. They return a list of servers that hold the IP addesses of the .io domain for example.
-3. **TLD name servers**: they hold the IP addresses of authoritative servers of the organization.
+1. **DNS Resolver:** The resolver is what initiates the query, and forwards the request to other DNS Name servers. Sometimes they can also cache.
+2. **Root-level name servers:** Root name servers maintain name server based on top level domains (TLDs) such as .com .io etc. They return a list of servers that hold the IP addresses of the .io domain for example.
+3. **TLD name servers**: They hold the IP addresses of authoritative servers of the organization.
 4. **Authoritative name servers:** They provide the IP Addresses of the application servers.
 
+## Two Types of Queries
 
-## Two types of queries:
+There are Iterative and Recursive queries to the DNS. Iterative is usually preferred to reduce query load:
 
-There are Iterative and Recursive queries to the DNS. Iterative is usually preferred to reduce query load
-
-1. **Iterative**: The local server requests for the root, TLD, and the authoritative servers for they IP address
+1. **Iterative**: The local server requests for the root, TLD, and the authoritative servers for their IP address
 2. **Recursive**: The end user requests the local server. The local server forwards the request to other name servers.
 
+## Caching Strategy
 
-## Caching
+Caching is used in the browser, the operating systems, the local name server, and on the ISP. They are used to make the user experience faster, and reduce load.
 
-Caching is used in the browser, the operating systems, the local name server, and on the ISP. They are used to make the user experience faster, and reduce load.![[Screenshot 2023-11-06 at 11.12.20 PM.png]]
+## Global Distribution
 
+The DNS hierarchy is extremely distributed. There are 13 logical root name servers in the world, and they are managed by 12 different organizations.
 
-
-## Distribution:
-
-The DNS hierarchy ex extremely distributed. There are 13 logical root name server on the world, and they are managed by 12 different organizations.
-
-
-## Scalability
+## Scalability and Performance
 
 There are about 1000 replications of the 13 servers. Those offer additional capacity, and reduced latency.
-
