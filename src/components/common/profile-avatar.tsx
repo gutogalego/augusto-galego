@@ -23,7 +23,7 @@ export function ProfileAvatar({ size = 'md', className }: ProfileAvatarProps) {
       )}
     >
       <Image
-        src="/galego-picture-clean.jpg"
+        src="/galego-picture-clean.png"
         alt="Augusto Galego"
         fill={true}
         className="object-cover object-center"

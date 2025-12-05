@@ -19,6 +19,10 @@ const config = {
       },
     ],
   },
+  transpilePackages: ['next-intl'],
+  experimental: {
+    optimizePackageImports: ['next-intl'],
+  },
 }
 
 export default withNextIntl(config)

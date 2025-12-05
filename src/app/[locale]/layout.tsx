@@ -136,26 +136,20 @@ export default async function LocaleLayout({
     inLanguage: locale === 'pt' ? 'pt-BR' : 'en-US',
   })
 
+  const structuredDataArray = [personStructuredData, websiteStructuredData]
+
   return (
     <html lang={langAttribute} suppressHydrationWarning={true}>
-      <head>
-        {/* Structured Data */}
+      <head suppressHydrationWarning={true}>
         <script
           type="application/ld+json"
+          suppressHydrationWarning={true}
           // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe static JSON-LD structured data
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personStructuredData),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe static JSON-LD structured data
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteStructuredData),
+            __html: JSON.stringify(structuredDataArray),
           }}
         />
 
-        {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -163,13 +157,14 @@ export default async function LocaleLayout({
           crossOrigin=""
         />
 
-        {/* DNS prefetch for social media domains */}
         <link rel="dns-prefetch" href="//www.youtube.com" />
         <link rel="dns-prefetch" href="//twitter.com" />
         <link rel="dns-prefetch" href="//www.linkedin.com" />
         <link rel="dns-prefetch" href="//github.com" />
 
         <style
+          suppressHydrationWarning={true}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Safe static CSS for initial render
           dangerouslySetInnerHTML={{
             __html: `
               body {

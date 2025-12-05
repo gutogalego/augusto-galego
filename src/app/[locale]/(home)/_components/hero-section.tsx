@@ -149,7 +149,7 @@ export function HeroSection() {
             <div className="relative">
               <div className="aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted/50 to-muted border border-border/20">
                 <Image
-                  src="/galego-picture-clean.jpg"
+                  src="/galego-picture-clean.png"
                   alt="Augusto Galego - CTO e Educador"
                   fill={true}
                   className="object-cover object-center"

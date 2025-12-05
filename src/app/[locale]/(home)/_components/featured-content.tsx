@@ -65,8 +65,8 @@ const featuredPosts = [
 
 const quickStats = [
   { label: 'Alunos impactados', value: '5K+', icon: Users },
-  { label: 'Horas de conteúdo', value: '100+', icon: Clock },
-  { label: 'Avaliação média', value: '4.9', icon: Star },
+  { label: 'Horas de conteúdo', value: '8', icon: Clock },
+  { label: 'Avaliação média', value: '4.8', icon: Star },
 ]
 
 export function FeaturedContent() {

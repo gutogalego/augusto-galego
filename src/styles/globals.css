@@ -109,18 +109,9 @@
     outline: none;
   }
 
-  *:not(svg),
-  *::not(path),
-  *::not(g),
-  *::not(circle),
-  *::not(ellipse),
-  *::not(line),
-  *::not(polygon),
-  *::not(polyline),
-  *::not(rect),
-  *::not(text),
-  *::not(tspan),
-  *::not(use) {
+  *:not(svg):not(path):not(g):not(circle):not(ellipse):not(line):not(
+      polygon
+    ):not(polyline):not(rect):not(text):not(tspan):not(use) {
     min-width: 0;
   }
 
@@ -352,4 +343,14 @@
       width: 100%;
     }
   }
+}
+
+body.sales-page header,
+body.sales-page nav,
+body.sales-page footer {
+  display: none !important;
+}
+
+body.sales-page main {
+  padding-top: 0 !important;
 }

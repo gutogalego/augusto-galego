@@ -1,6 +1,5 @@
 import { generateLocalizedMetadata } from '@/lib/metadata'
 import type { Metadata } from 'next'
-import { CoursesCatalog } from './_components/courses-catalog'
 import { CoursesHero } from './_components/courses-hero'
 import { CoursesTestimonials } from './_components/courses-testimonials'
 
@@ -17,7 +16,6 @@ export default function CoursesPage() {
   return (
     <>
       <CoursesHero />
-      <CoursesCatalog />
       <CoursesTestimonials />
     </>
   )
