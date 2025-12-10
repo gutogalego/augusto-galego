@@ -26,6 +26,7 @@ const getNavigationItems = (t: (key: string) => string) => [
   { name: t('navigation.about'), href: '/about', icon: RiUserLine },
   { name: t('navigation.blog'), href: '/blog', icon: RiArticleLine },
   { name: t('navigation.courses'), href: '/courses', icon: RiBookLine },
+  { name: t('navigation.books'), href: '/books', icon: RiBookLine },
   { name: t('navigation.setup'), href: '/setup', icon: RiComputerLine },
   { name: t('navigation.contact'), href: '/contact', icon: RiMailLine },
 ]
