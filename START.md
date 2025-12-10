@@ -25,7 +25,7 @@ Galego é especializado em **backend development** com expertise em:
 
 ### **Canal Principal: @GutoGalego**
 
-- **Inscritos**: 103K+[13]
+- **Inscritos**: 117K+[13]
 - **Conteúdo**: 226 vídeos focados em algoritmos, estruturas de dados, LeetCode e carreira em tech[13]
 - **Status**: Canal principal ativo e estabelecido
 

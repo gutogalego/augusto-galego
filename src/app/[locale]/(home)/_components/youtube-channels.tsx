@@ -24,7 +24,7 @@ const channels = [
     name: '@GutoGalego',
     description:
       'Canal principal com foco em algoritmos, estruturas de dados, LeetCode e carreira em tech.',
-    subscribers: '103K+',
+    subscribers: '117K+',
     videos: '226',
     category: 'Educação Tech',
     status: 'Ativo',
