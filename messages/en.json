@@ -6,6 +6,7 @@
     "courses": "Courses",
     "setup": "Setup",
     "contact": "Contact",
+    "books": "Books",
     "socialMedia": "Social Media"
   },
   "common": {
@@ -91,6 +92,31 @@
     "title": "Courses | Augusto Galego",
     "subtitle": "Learn web development with practical content"
   },
+  "books": {
+    "title": "Recommended Books",
+    "subtitle": "Essential reading for every software developer, from beginner to advanced",
+    "buyOnAmazon": "Buy on Amazon",
+    "recommendations": {
+      "clean-code": "I don't make the rules, it's very influential. I read it and think +/- half the ideas have value.",
+      "refactoring": "One of the easiest books to recommend. Refactoring is good.",
+      "pragmatic-programmer": "Another book very easy to recommend. Every dev should read it.",
+      "software-architecture": "Software Architecture AND Software Architecture: The Hard Parts.",
+      "art-science-engineering": "Personal opinion, perhaps the best book I've read in the last 2 years.",
+      "grokking-algorithms": "Introductory book for structures and algorithms. If you don't understand this, it's a good book. If you already do, it won't be very useful.",
+      "cracking-code": "To pass FAANG interviews.",
+      "system-design-interview": "Also to pass FAANG interviews.",
+      "mythical-man-month": "Timeless classic on software project management.",
+      "sicp": "Structure and Interpretation of Computer Programs. The foundation of computer science.",
+      "extreme-programming": "The fundamental book on XP and agile practices.",
+      "ddia": "The 'bible' of distributed systems.",
+      "tanenbaum-os": "Modern Operating Systems. The definitive textbook on the subject.",
+      "k-and-r": "The C Programming Language. The origin of it all.",
+      "ddd-red-book": "Domain-Driven Design. The classic red book.",
+      "microservices-patterns": "Essential patterns for microservices architecture.",
+      "cormen": "Introduction to Algorithms. The definitive academic guide on algorithms.",
+      "knuth": "The Art of Computer Programming. The magnum opus of computing."
+    }
+  },
   "setup": {
     "title": "My Setup | Augusto Galego",
     "subtitle": "Tools and equipment I use daily"
@@ -164,6 +190,18 @@
         "education",
         "programming",
         "leetcode"
+      ]
+    },
+    "books": {
+      "title": "Recommended Books",
+      "description": "Curated list of essential books for software developers. Clean Code, Architecture, Distributed Systems and more.",
+      "keywords": [
+        "books",
+        "recommendations",
+        "clean code",
+        "software architecture",
+        "tech career",
+        "reading"
       ]
     },
     "contact": {
