@@ -25,7 +25,7 @@ export function HeroSection() {
 
   const stats = [
     { label: t('stats.subscribers'), value: '117K+', icon: Users },
-    { label: t('stats.experience'), value: '9+', icon: Briefcase },
+    { label: t('stats.experience'), value: '10+', icon: Briefcase },
     { label: t('stats.lessons'), value: '68', icon: GraduationCap },
     { label: t('stats.countries'), value: '3', icon: Globe },
   ]
