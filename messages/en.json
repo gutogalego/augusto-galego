@@ -47,14 +47,14 @@
   "hero": {
     "title": "Augusto Galego",
     "subtitle": "Developer & Educator",
-    "description": "CTO, Backend Engineer and Educator. Expert in algorithms, data structures and tech career. From junior in Brazil to CTO in the USA in 9+ years.",
-    "location": "Padua, Italy",
+    "description": "CTO, Backend Engineer and Educator. Expert in algorithms, data structures and tech career. From junior in Brazil to CTO in the USA in 10+years.",
+    "location": "Berlin, Germany",
     "role": "CTO",
     "highlights": {
       "cto": "CTO at American startup",
       "leetcode": "LeetCode specialist",
-      "educator": "Educator with 103K+ followers",
-      "journey": "Journey Brazil → Italy → USA"
+      "educator": "Educator with 117K+ followers",
+      "journey": "Journey Brazil → Italy → Germany"
     },
     "stats": {
       "subscribers": "YouTube Subscribers",
@@ -98,7 +98,7 @@
   "metadata": {
     "home": {
       "title": "Augusto Galego - CTO, Backend Engineer & Educator",
-      "description": "CTO, Backend Engineer and Educator. Expert in algorithms, data structures and tech career. From junior in Brazil to CTO in the USA in 9+ years.",
+      "description": "CTO, Backend Engineer and Educator. Expert in algorithms, data structures and tech career. From junior in Brazil to CTO in the USA in 10+years.",
       "keywords": [
         "algorithms",
         "data structures",

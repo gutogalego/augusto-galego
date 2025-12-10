@@ -1,0 +1,23 @@
+name: Deploy to Hostinger VPS
+
+on:
+  push:
+    branches:
+      - main
+      - docker
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Hostinger
+        uses: hostinger/deploy-on-vps@v2
+        with:
+          api-key: ${{ secrets.HOSTINGER_API_KEY }}
+          virtual-machine: ${{ secrets.HOSTINGER_VM_ID }}
+          project-name: augusto-galego
+          docker-compose-path: docker-compose.yml
+

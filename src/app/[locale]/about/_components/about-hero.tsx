@@ -22,7 +22,7 @@ const quickFacts = [
   {
     icon: Briefcase,
     label: 'Experiência',
-    value: '9+ anos em desenvolvimento',
+    value: '10+anos em desenvolvimento',
     year: '2014-2025',
   },
   {
@@ -40,7 +40,7 @@ const quickFacts = [
 ]
 
 const achievements = [
-  '103K+ seguidores no YouTube',
+  '117K+ seguidores no YouTube',
   'Especialista reconhecido em LeetCode',
   'Transição internacional bem-sucedida',
   'Educador com milhares de alunos',
@@ -69,7 +69,7 @@ export function AboutHero() {
               </h1>
 
               <div className="text-xl text-muted-foreground">
-                Uma jornada de 9+ anos em tecnologia
+                Uma jornada de 10+anos em tecnologia
               </div>
 
               <div className="prose prose-lg max-w-none text-muted-foreground">

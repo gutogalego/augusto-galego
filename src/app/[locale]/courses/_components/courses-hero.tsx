@@ -309,7 +309,7 @@ export function CoursesHero() {
                       ]
                     : [
                         'CTO of American startup, leading engineering team',
-                        '9+ years of experience as a Backend Engineer',
+                        '10+years of experience as a Backend Engineer',
                         'Worked in Berlin, remote for Australia, and now USA',
                         'In tech since 2014',
                         'Built services from scratch serving tens of thousands of users',

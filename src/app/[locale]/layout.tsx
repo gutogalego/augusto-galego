@@ -91,8 +91,8 @@ export default async function LocaleLayout({
     nationality: 'Brazilian',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Padua',
-      addressCountry: 'IT',
+      addressLocality: 'Berlin',
+      addressCountry: 'DE',
     },
     alumniOf: {
       '@type': 'EducationalOrganization',

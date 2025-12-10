@@ -2,7 +2,7 @@
 
 ## **Perfil Pessoal e Profissional**
 
-**Augusto Miranda Galego**, conhecido como **"Galego"** ou **"Papai do LeetCode"**, é um engenheiro de software backend brasileiro com **9+ anos de experiência profissional**. Formado em **Sistemas de Informação pela UFSC em 2014**, atualmente reside em **Pádua, Itália** e trabalha como **CTO de uma startup americana**.[1][2][3][4][5][6][7]
+**Augusto Miranda Galego**, conhecido como **"Galego"** ou **"Papai do LeetCode"**, é um engenheiro de software backend brasileiro com **10+anos de experiência profissional**. Formado em **Sistemas de Informação pela UFSC em 2014**, atualmente reside em **Pádua, Itália** e trabalha como **CTO de uma startup americana**.[1][2][3][4][5][6][7]
 
 ### **Trajetória de Carreira**
 
@@ -25,7 +25,7 @@ Galego é especializado em **backend development** com expertise em:
 
 ### **Canal Principal: @GutoGalego**
 
-- **Inscritos**: 103K+[13]
+- **Inscritos**: 117K+[13]
 - **Conteúdo**: 226 vídeos focados em algoritmos, estruturas de dados, LeetCode e carreira em tech[13]
 - **Status**: Canal principal ativo e estabelecido
 
