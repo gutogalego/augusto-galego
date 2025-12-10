@@ -1,4 +1,4 @@
-
+version: "3.9"
 
 services:
   web:
@@ -10,4 +10,3 @@ services:
       NODE_ENV: production
       PORT: 8080
     command: ["pnpm", "run", "start"]
-
