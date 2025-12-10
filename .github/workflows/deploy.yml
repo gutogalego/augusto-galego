@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - docker
 
 jobs:
   deploy:
@@ -20,4 +19,3 @@ jobs:
           virtual-machine: ${{ secrets.HOSTINGER_VM_ID }}
           project-name: augusto-galego
           docker-compose-path: docker-compose.yml
-
