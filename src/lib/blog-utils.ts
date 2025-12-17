@@ -1,5 +1,71 @@
 import type { MultilingualText, PostMetadata } from '@/utils/get-posts'
 
+export function getCategoryColors(tag: string): {
+  bg: string
+  text: string
+} {
+  const normalizedTag = tag.toLowerCase()
+
+  if (
+    normalizedTag.includes('carreira') ||
+    normalizedTag.includes('career') ||
+    normalizedTag.includes('mindset') ||
+    normalizedTag.includes('filosofia') ||
+    normalizedTag.includes('philosophy') ||
+    normalizedTag.includes('reflexões') ||
+    normalizedTag.includes('reflections')
+  ) {
+    return {
+      bg: 'bg-purple-100 dark:bg-purple-950',
+      text: 'text-purple-700 dark:text-purple-300',
+    }
+  }
+
+  if (
+    normalizedTag.includes('algoritmo') ||
+    normalizedTag.includes('algorithm') ||
+    normalizedTag.includes('leetcode') ||
+    normalizedTag.includes('complexidade') ||
+    normalizedTag.includes('complexity') ||
+    normalizedTag.includes('big o')
+  ) {
+    return {
+      bg: 'bg-blue-100 dark:bg-blue-950',
+      text: 'text-blue-700 dark:text-blue-300',
+    }
+  }
+
+  if (
+    normalizedTag.includes('system design') ||
+    normalizedTag.includes('infraestrutura') ||
+    normalizedTag.includes('infrastructure') ||
+    normalizedTag.includes('networking') ||
+    normalizedTag.includes('load balancer') ||
+    normalizedTag.includes('dns')
+  ) {
+    return {
+      bg: 'bg-green-100 dark:bg-green-950',
+      text: 'text-green-700 dark:text-green-300',
+    }
+  }
+
+  if (
+    normalizedTag.includes('produtividade') ||
+    normalizedTag.includes('productivity') ||
+    normalizedTag.includes('setup')
+  ) {
+    return {
+      bg: 'bg-amber-100 dark:bg-amber-950',
+      text: 'text-amber-700 dark:text-amber-300',
+    }
+  }
+
+  return {
+    bg: 'bg-gray-100 dark:bg-gray-950',
+    text: 'text-gray-700 dark:text-gray-300',
+  }
+}
+
 /**
  * Utility function to get localized text from multilingual objects
  */

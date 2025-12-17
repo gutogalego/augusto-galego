@@ -68,8 +68,7 @@ export function HeroSection() {
             {/* Highlights */}
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {highlights.map((highlight) => (
-                <div key={highlight} className="flex items-center space-x-2">
-                  <Star className="h-4 w-4 text-primary fill-primary" />
+                <div key={highlight} className="flex items-center">
                   <span className="text-sm font-medium">{highlight}</span>
                 </div>
               ))}
@@ -160,10 +159,10 @@ export function HeroSection() {
 
               {/* Floating badge */}
               <div className="absolute -bottom-4 -right-4">
-                <Card>
+                <Card className="border-green-500/20 shadow-lg shadow-green-500/20">
                   <CardContent className="p-3">
                     <div className="flex items-center space-x-2">
-                      <div className="h-2 w-2 rounded-full bg-foreground animate-pulse" />
+                      <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse shadow-md shadow-green-500/50" />
                       <span className="text-xs font-medium">
                         {t('cta.available')}
                       </span>

@@ -8,8 +8,8 @@ export default createMiddleware({
   // Used when no locale matches
   defaultLocale,
 
-  // Always show the locale in the URL
-  localePrefix: 'always',
+  // Never show the locale in the URL
+  localePrefix: 'never',
 
   // Ensure proper redirect behavior
   alternateLinks: false,

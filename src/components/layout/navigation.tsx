@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { LocaleSwitch } from '@/components/ui/locale-switch'
 import { NavigationCard } from '@/components/ui/navigation-card'
 import { NavigationDock } from '@/components/ui/navigation-dock'
 import { SocialButton } from '@/components/ui/social-button'
@@ -14,6 +13,7 @@ import {
   RiBookLine,
   RiCloseLine,
   RiComputerLine,
+  RiGraduationCapLine,
   RiHomeLine,
   RiMailLine,
   RiMenuLine,
@@ -25,7 +25,11 @@ const getNavigationItems = (t: (key: string) => string) => [
   { name: t('navigation.home'), href: '/', icon: RiHomeLine },
   { name: t('navigation.about'), href: '/about', icon: RiUserLine },
   { name: t('navigation.blog'), href: '/blog', icon: RiArticleLine },
-  { name: t('navigation.courses'), href: '/courses', icon: RiBookLine },
+  {
+    name: t('navigation.courses'),
+    href: '/courses',
+    icon: RiGraduationCapLine,
+  },
   { name: t('navigation.books'), href: '/books', icon: RiBookLine },
   { name: t('navigation.setup'), href: '/setup', icon: RiComputerLine },
   { name: t('navigation.contact'), href: '/contact', icon: RiMailLine },
@@ -84,14 +88,6 @@ export function Navigation() {
         <nav className="hidden md:flex items-center">
           <NavigationDock items={navigationData} />
         </nav>
-        {/* Desktop Language Switch */}
-        <div className="hidden md:flex items-center">
-          <div className="flex items-center gap-3 ml-6">
-            {/* Vertical divider */}
-            <div className="w-px h-8 bg-border/40 mr-2" />
-            <LocaleSwitch />
-          </div>
-        </div>
         {/* Mobile Menu Button */}
         <Button
           variant="ghost"
@@ -140,16 +136,6 @@ export function Navigation() {
                   />
                 ))}
               </nav>
-
-              {/* Mobile Language Switch */}
-              <div className="mt-12 pt-8 border-t border-border/30 max-w-sm mx-auto w-full">
-                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-6 text-center">
-                  {t('common.language')}
-                </p>
-                <div className="flex items-center justify-center">
-                  <LocaleSwitch />
-                </div>
-              </div>
 
               {/* Mobile Social Links */}
               <div className="mt-8 pt-8 border-t border-border/30 max-w-sm mx-auto w-full">

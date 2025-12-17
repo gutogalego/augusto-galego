@@ -1,16 +1,20 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import * as FancyButton from '@/components/ui/fancy-button'
+import { FreeLessonModal } from '@/components/ui/free-lesson-modal'
 import {
   ArrowRight,
   BookOpen,
   Briefcase,
   Map as MapIcon,
+  Play,
   Sparkles,
 } from 'lucide-react'
-import { useLocale } from 'next-intl'
 import Image from 'next/image'
+import { useState } from 'react'
 
 interface CourseCardProps {
   title: string
@@ -23,6 +27,8 @@ interface CourseCardProps {
   href: string
   badge?: string
   accentColor: string
+  external?: boolean
+  freeVideoId?: string
 }
 
 function CourseCard({
@@ -33,9 +39,13 @@ function CourseCard({
   icon,
   stats,
   ctaText,
+  href,
   badge,
   accentColor,
+  external,
+  freeVideoId,
 }: CourseCardProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <div className="group relative h-full flex flex-col p-8 lg:p-12">
       <div className="flex-1 space-y-5">
@@ -98,121 +108,187 @@ function CourseCard({
         </div>
       </div>
 
-      <div className="pt-8">
+      <div className="pt-8 space-y-3">
+        {freeVideoId && (
+          <Button
+            variant="outline"
+            size="default"
+            className="w-full"
+            onClick={() => setIsModalOpen(true)}
+          >
+            <Play className="mr-2 h-4 w-4" />
+            Assista a primeira aula grátis
+          </Button>
+        )}
+
         <FancyButton.Root
           size="default"
           className="group/btn w-full justify-center"
+          asChild={true}
           style={
             {
               '--fancy-button-bg': accentColor,
             } as React.CSSProperties
           }
         >
-          {ctaText}
-          <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+          {external ? (
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              {ctaText}
+              <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+            </a>
+          ) : (
+            <a href={href}>
+              {ctaText}
+              <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+            </a>
+          )}
         </FancyButton.Root>
       </div>
+
+      {freeVideoId && (
+        <FreeLessonModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          courseTitle={title}
+          videoId={freeVideoId}
+        />
+      )}
     </div>
   )
 }
 
 export function CoursesHero() {
-  const locale = useLocale()
-  const isPt = locale === 'pt'
-
   const courses = {
     algorithms: {
-      title: isPt
-        ? 'Aprenda algoritmos na prática'
-        : 'Learn algorithms hands-on',
-      subtitle: isPt ? 'Curso Principal' : 'Main Course',
-      description: isPt
-        ? 'Domine estruturas de dados e algoritmos com explicações visuais e exercícios práticos do LeetCode.'
-        : 'Master data structures and algorithms with visual explanations and practical LeetCode exercises.',
-      bulletPoints: isPt
-        ? [
-            'Arrays, Strings, Hash Tables, Trees, Graphs',
-            'Sliding Window, Two Pointers, BFS/DFS',
-            '150+ exercícios resolvidos do LeetCode',
-            'Explicações visuais e animadas',
-          ]
-        : [
-            'Arrays, Strings, Hash Tables, Trees, Graphs',
-            'Sliding Window, Two Pointers, BFS/DFS',
-            '150+ solved LeetCode exercises',
-            'Visual and animated explanations',
-          ],
+      title: 'Estruturas de Dados e Algoritmos + LeetCode',
+      subtitle: 'Curso Principal',
+      description:
+        'Domine estruturas de dados e algoritmos com explicações visuais e exercícios práticos do LeetCode.',
+      bulletPoints: [
+        'Arrays, Strings, Hash Tables, Trees, Graphs',
+        'Sliding Window, Two Pointers, BFS/DFS',
+        'Exercícios resolvidos do LeetCode',
+        'Explicações visuais e animadas',
+      ],
       icon: <BookOpen className="h-7 w-7" />,
       stats: [
-        { label: isPt ? 'Alunos' : 'Students', value: '5K+' },
-        { label: isPt ? 'Aulas' : 'Lessons', value: '150+' },
-        { label: isPt ? 'Avaliação' : 'Rating', value: '4.9' },
+        { label: 'Alunos', value: '5K+' },
+        { label: 'Aulas', value: '50+' },
+        { label: 'Avaliação', value: '4.9' },
       ],
-      ctaText: isPt ? 'Começar Agora' : 'Start Now',
-      href: '#',
-      badge: isPt ? 'Mais Popular' : 'Most Popular',
+      ctaText: 'Começar Agora',
+      href: 'https://pay.hub.la/L8wi9vio7WPnWbmF8ZIO?coupon=SITEGALEGO',
+      badge: 'Mais Popular',
       accentColor: '#6366f1',
+      freeVideoId: 'g-hIXvdDeZk',
+      external: true,
     },
     roadmap: {
-      title: isPt
-        ? 'Roadmap pro seu próximo emprego'
-        : 'Roadmap to your next job',
-      subtitle: isPt ? 'Guia de Carreira' : 'Career Guide',
-      description: isPt
-        ? 'Plano passo a passo para conseguir seu emprego dos sonhos em tech.'
-        : 'Step-by-step plan to land your dream tech job.',
-      bulletPoints: isPt
-        ? [
-            'Currículo que passa pelo ATS',
-            'LinkedIn otimizado para recrutadores',
-            'Preparação para entrevistas técnicas',
-            'Negociação salarial e ofertas',
-          ]
-        : [
-            'ATS-friendly resume templates',
-            'LinkedIn optimized for recruiters',
-            'Technical interview preparation',
-            'Salary negotiation strategies',
-          ],
+      title: 'Roadmap pro seu próximo emprego',
+      subtitle: 'Guia de Carreira',
+      description:
+        'Plano passo a passo para conseguir seu emprego dos sonhos em tech.',
+      bulletPoints: [
+        'Currículo que passa pelo ATS',
+        'LinkedIn otimizado para recrutadores',
+        'Preparação para entrevistas técnicas',
+        'Templates de currículo',
+      ],
       icon: <MapIcon className="h-7 w-7" />,
       stats: [
-        { label: isPt ? 'Módulos' : 'Modules', value: '12' },
-        { label: isPt ? 'Templates' : 'Templates', value: '25+' },
-        { label: isPt ? 'Horas' : 'Hours', value: '20+' },
+        { label: 'Módulos', value: '5+' },
+        { label: 'Professores', value: '5' },
+        { label: 'Horas', value: '6' },
       ],
-      ctaText: isPt ? 'Ver Roadmap' : 'View Roadmap',
-      href: '#',
-      badge: isPt ? 'Novo' : 'New',
+      ctaText: 'Ver Roadmap',
+      href: 'https://pay.hub.la/hrZKmxeXzeLN8AvObjVJ?coupon=SITEGALEGO',
+      badge: 'Novo',
       accentColor: '#10b981',
+      external: true,
     },
-    comingSoon: {
-      title: isPt ? 'System Design na Prática' : 'System Design in Practice',
-      subtitle: isPt ? 'Em Breve' : 'Coming Soon',
-      description: isPt
-        ? 'Aprenda a projetar sistemas escaláveis como os usados por Netflix, Uber e Google.'
-        : 'Learn to design scalable systems like those used by Netflix, Uber, and Google.',
-      bulletPoints: isPt
-        ? [
-            'Arquitetura de microserviços',
-            'Escalabilidade e performance',
-            'Casos reais: Netflix, Uber, Twitter',
-            'Entrevistas de System Design',
-          ]
-        : [
-            'Microservices architecture',
-            'Scalability and performance',
-            'Real cases: Netflix, Uber, Twitter',
-            'System Design interviews',
-          ],
+    workshopLeetCode: {
+      title: 'Workshop: 10 LeetCodes para Entrevistas',
+      subtitle: 'Workshop Prático',
+      description:
+        'Aprenda a resolver os 10 problemas mais cobrados em entrevistas técnicas com estratégias de resolução.',
+      bulletPoints: [
+        'Problemas mais cobrados em FAANGs',
+        'Estratégias de resolução passo a passo',
+        'Dicas para otimização de código',
+        'Preparação focada para entrevistas',
+      ],
+      icon: <BookOpen className="h-7 w-7" />,
+      stats: [
+        { label: 'Problemas', value: '10' },
+        { label: 'Nível', value: 'Médio' },
+      ],
+      ctaText: 'Ver Workshop',
+      href: 'https://pay.hub.la/RGfq0dk8iqDeL5IC5yog?coupon=SITEGALEGO2',
+      accentColor: '#3b82f6',
+      external: true,
+    },
+    workshopSystemDesign: {
+      title: 'Workshop: System Design para Entrevistas',
+      subtitle: 'Workshop Prático',
+      description:
+        'Domine os fundamentos de System Design e aprenda a projetar sistemas escaláveis para entrevistas.',
+      bulletPoints: [
+        'Fundamentos de arquitetura distribuída',
+        'Problemas práticos de System Design',
+        'Exemplos de sistemas reais',
+        'Preparação para entrevistas FAANG',
+      ],
       icon: <Briefcase className="h-7 w-7" />,
       stats: [
-        { label: isPt ? 'Projetos' : 'Projects', value: '8' },
-        { label: isPt ? 'Casos' : 'Cases', value: '15+' },
-        { label: isPt ? 'Horas' : 'Hours', value: '30+' },
+        { label: 'Horas', value: '4+' },
+        { label: 'Nível', value: 'Médio' },
       ],
-      ctaText: isPt ? 'Lista de Espera' : 'Join Waitlist',
+      ctaText: 'Ver Workshop',
+      href: 'https://pay.hub.la/ASHOugkp5yQfI4pdLNHx?coupon=SITEGALEGO',
+      accentColor: '#10b981',
+      external: true,
+    },
+    systemDesignFull: {
+      title: 'System Design na Prática',
+      subtitle: 'Em Breve',
+      description:
+        'Curso completo para projetar sistemas escaláveis como Netflix, Uber e Google.',
+      bulletPoints: [
+        'Arquitetura de microserviços',
+        'Escalabilidade e performance',
+        'Casos reais: Netflix, Uber, Twitter',
+        'Projetos práticos completos',
+      ],
+      icon: <Briefcase className="h-7 w-7" />,
+      stats: [
+        { label: 'Projetos', value: '8' },
+        { label: 'Casos', value: '15+' },
+        { label: 'Horas', value: '30+' },
+      ],
+      ctaText: 'Lista de Espera',
       href: '#',
       accentColor: '#f59e0b',
+    },
+    mentoring: {
+      title: 'Mentorias 1:1',
+      subtitle: 'Em Breve',
+      description:
+        'Sessões individuais de mentoria para acelerar sua carreira em tech com orientação personalizada.',
+      bulletPoints: [
+        'Revisão de currículo e LinkedIn',
+        'Preparação para entrevistas',
+        'Planejamento de carreira',
+        'Estratégias de crescimento',
+      ],
+      icon: <MapIcon className="h-7 w-7" />,
+      stats: [
+        { label: 'Sessões', value: '1:1' },
+        { label: 'Duração', value: '1h' },
+        { label: 'Formato', value: 'Online' },
+      ],
+      ctaText: 'Lista de Espera',
+      href: '#',
+      accentColor: '#8b5cf6',
     },
   }
 
@@ -237,42 +313,40 @@ export function CoursesHero() {
               </div>
             </div>
             <div className="text-left">
-              <p className="text-sm font-medium text-foreground">
-                {isPt ? 'Cursos do' : 'Courses by'}
-              </p>
+              <p className="text-sm font-medium text-foreground">Cursos do</p>
               <p className="text-xl lg:text-2xl font-bold tracking-tight">
                 Augusto Galego
               </p>
               <p className="text-xs text-muted-foreground">
-                {isPt ? 'CTO • 10+ anos em tech' : 'CTO • 10+ years in tech'}
+                CTO • 10+ anos em tech
               </p>
             </div>
           </div>
 
-          <div className="overflow-hidden bg-background">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="relative min-h-[500px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 lg:mb-24">
+            <div className="relative">
+              <Card className="tech-card h-full">
                 <CourseCard {...courses.algorithms} />
-                <div className="hidden lg:block absolute right-0 top-8 bottom-8 w-px bg-border/40" />
-              </div>
-
-              <div className="relative min-h-[500px]">
-                <div className="lg:hidden w-full h-px bg-border/40" />
-                <CourseCard {...courses.roadmap} />
-              </div>
+              </Card>
             </div>
-
-            <div
-              className="w-full h-px bg-border/40 mx-8"
-              style={{ width: 'calc(100% - 4rem)' }}
-            />
-
-            <div className="relative min-h-[400px]">
-              <CourseCard {...courses.comingSoon} />
+            <div className="relative">
+              <Card className="tech-card h-full">
+                <CourseCard {...courses.roadmap} />
+              </Card>
+            </div>
+            <div className="relative">
+              <Card className="tech-card h-full">
+                <CourseCard {...courses.workshopLeetCode} />
+              </Card>
+            </div>
+            <div className="relative">
+              <Card className="tech-card h-full">
+                <CourseCard {...courses.workshopSystemDesign} />
+              </Card>
             </div>
           </div>
 
-          <div className="mt-16 lg:mt-24">
+          <div>
             <div className="w-full h-px bg-border/40 mb-12" />
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -288,37 +362,24 @@ export function CoursesHero() {
               <div className="space-y-6">
                 <div>
                   <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
-                    {isPt ? 'Sobre o Instrutor' : 'About the Instructor'}
+                    Sobre o Instrutor
                   </p>
                   <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
-                    {isPt ? 'Quem é o Galego?' : 'Who is Galego?'}
+                    Quem é o Galego?
                   </h2>
                 </div>
 
                 <ul className="space-y-4">
-                  {(isPt
-                    ? [
-                        'CTO de startup americana, liderando equipe de engenharia',
-                        '10+ anos de experiência',
-                        'Trabalhei em Berlim, remoto para Austrália, e agora EUA',
-                        'Na área de tech desde 2014',
-                        'Criei serviços do zero que atenderam dezenas de milhares de usuários',
-                        'Mantive sistemas B2B com centenas de milhares de usuários e milhões de transações mensais',
-                        'Implementei sistemas RAG do zero e trabalhei com observabilidade de sistemas de IA distribuídos',
-                        'Stack: Python, Node, React, Django, AWS, Serverless, GraphQL, Next.js, TypeScript, Postgres, DynamoDB',
-                      ]
-                    : [
-                        'CTO of American startup, leading engineering team',
-                        '10+years of experience as a Backend Engineer',
-                        'Worked in Berlin, remote for Australia, and now USA',
-                        'In tech since 2014',
-                        'Built services from scratch serving tens of thousands of users',
-                        'Maintained B2B systems with hundreds of thousands of users and millions of monthly transactions',
-                        'Implemented RAG systems from scratch and worked on observability of distributed AI systems',
-                        'Optimized Python backends reducing response times by up to 80%',
-                        'Stack: Python, Node, React, Django, AWS, Serverless, GraphQL, Next.js, TypeScript, Postgres, DynamoDB',
-                      ]
-                  ).map((point) => (
+                  {[
+                    'CTO de startup americana, liderando equipe de engenharia',
+                    '10+ anos de experiência',
+                    'Trabalhei em Berlim, remoto para Austrália, e agora EUA',
+                    'Na área de tech desde 2014',
+                    'Criei serviços do zero que atenderam dezenas de milhares de usuários',
+                    'Mantive sistemas B2B com centenas de milhares de usuários e milhões de transações mensais',
+                    'Implementei sistemas RAG do zero e trabalhei com observabilidade de sistemas de IA distribuídos',
+                    'Stack: Python, Node, React, Django, AWS, Serverless, GraphQL, Next.js, TypeScript, Postgres, DynamoDB',
+                  ].map((point) => (
                     <li
                       key={point}
                       className="flex items-start gap-3 text-base text-muted-foreground"

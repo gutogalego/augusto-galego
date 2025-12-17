@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge'
 import {
   formatPostDate,
   generatePostTags,
+  getCategoryColors,
   getLocalizedText,
 } from '@/lib/blog-utils'
 import { Link } from '@/lib/navigation'
@@ -113,15 +114,18 @@ export function ArticleCard({
             </p>
 
             <div className="flex gap-1 pt-1">
-              {tags.slice(0, 2).map((tag) => (
-                <Badge
-                  key={tag}
-                  variant="secondary"
-                  className="text-xs px-2 py-0.5 font-medium"
-                >
-                  {tag}
-                </Badge>
-              ))}
+              {tags.slice(0, 2).map((tag) => {
+                const colors = getCategoryColors(tag)
+                return (
+                  <Badge
+                    key={tag}
+                    variant="secondary"
+                    className={`text-xs px-2 py-0.5 font-medium border-0 ${colors.bg} ${colors.text}`}
+                  >
+                    {tag}
+                  </Badge>
+                )
+              })}
             </div>
           </div>
         </article>

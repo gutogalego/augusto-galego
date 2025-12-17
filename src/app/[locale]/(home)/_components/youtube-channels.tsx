@@ -7,17 +7,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { getCategoryColors } from '@/lib/blog-utils'
 import { Link } from '@/lib/navigation'
-import {
-  ArrowRight,
-  Bell,
-  ExternalLink,
-  Play,
-  Star,
-  TrendingUp,
-  Users,
-  Youtube,
-} from 'lucide-react'
+import { Bell, ExternalLink, Play, Star, Youtube } from 'lucide-react'
 
 const channels = [
   {
@@ -82,8 +74,8 @@ export function YouTubeChannels() {
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Conteúdo técnico no canal principal e reflexões sobre carreira e
-            produtividade no canal secundário. Escolha o que mais combina com
-            você.
+            produtividade no canal secundário. Dois formatos, o mesmo
+            compromisso: conteúdo de valor.
           </p>
         </div>
 
@@ -152,39 +144,35 @@ export function YouTubeChannels() {
                     Tópicos principais:
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {channel.highlights.map((highlight) => (
-                      <Badge
-                        key={highlight}
-                        variant="outline"
-                        className="text-xs"
-                      >
-                        {highlight}
-                      </Badge>
-                    ))}
+                    {channel.highlights.map((highlight) => {
+                      const colors = getCategoryColors(highlight)
+                      return (
+                        <Badge
+                          key={highlight}
+                          variant="outline"
+                          className={`text-xs border-0 ${colors.bg} ${colors.text}`}
+                        >
+                          {highlight}
+                        </Badge>
+                      )
+                    })}
                   </div>
                 </div>
 
                 {/* CTA Buttons */}
-                <div className="flex space-x-3">
-                  <Button className="flex-1 group" asChild={true}>
-                    <Link
-                      href={channel.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Bell className="mr-2 h-4 w-4" />
-                      Inscrever-se
-                      <ExternalLink className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-                    </Link>
-                  </Button>
-
-                  {!channel.isMain && (
-                    <Button variant="outline" size="sm" className="group">
-                      <TrendingUp className="mr-2 h-4 w-4" />
-                      Ajude a crescer!
-                    </Button>
-                  )}
-                </div>
+                <Button className="w-full group" asChild={true}>
+                  <Link
+                    href={channel.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Bell className="mr-2 h-4 w-4" />
+                    {channel.isMain
+                      ? 'Inscrever-se'
+                      : 'Inscreva-se e ajude a crescer'}
+                    <ExternalLink className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           ))}
