@@ -1,0 +1,27 @@
+{
+  "title": {
+    "pt": "Se você se sente perdido como dev leia esse texto"
+  },
+  "description": {
+    "pt": "Se você se sente perdido como dev leia esse texto"
+  },
+  "excerpt": {
+    "pt": "Se você se sente perdido como dev leia esse texto"
+  },
+  "date": "2025-12-18",
+  "lastModified": "2025-12-18",
+  "language": "pt",
+  "category": {
+    "pt": "Reflexões"
+  },
+  "tags": [
+    {
+      "pt": "perdido"
+    },
+    {
+      "pt": "carreira"
+    }
+  ],
+  "readTime": 7,
+  "featured": true
+}
