@@ -10,8 +10,10 @@ import {
   BookOpen,
   Briefcase,
   Map as MapIcon,
+  Package,
   Play,
   Sparkles,
+  Star,
 } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -163,12 +165,13 @@ export function CoursesHero() {
       title: 'Estruturas de Dados e Algoritmos + LeetCode',
       subtitle: 'Curso Principal',
       description:
-        'Domine estruturas de dados e algoritmos com explicações visuais e exercícios práticos do LeetCode.',
+        'Curso completo com 68 aulas, explicações visuais e desenhos na tela. Aprenda os fundamentos que todo desenvolvedor precisa saber, incluindo as principais estruturas de dados e algoritmos mais cobrados em entrevistas técnicas.',
       bulletPoints: [
-        'Arrays, Strings, Hash Tables, Trees, Graphs',
-        'Sliding Window, Two Pointers, BFS/DFS',
-        'Exercícios resolvidos do LeetCode',
-        'Explicações visuais e animadas',
+        'Arrays, Strings, Hash Tables, Trees, Graphs e muito mais',
+        'Sliding Window, Two Pointers, BFS/DFS, Dynamic Programming',
+        'Mais de 50 exercícios resolvidos do LeetCode',
+        'Explicações visuais e desenhos animados na tela',
+        'Python como linguagem principal',
       ],
       icon: <BookOpen className="h-7 w-7" />,
       stats: [
@@ -187,12 +190,13 @@ export function CoursesHero() {
       title: 'Roadmap pro seu próximo emprego',
       subtitle: 'Guia de Carreira',
       description:
-        'Plano passo a passo para conseguir seu emprego dos sonhos em tech.',
+        'Tudo o que você precisa saber para achar vagas no Brasil e na gringa, melhorar seu LinkedIn e ser aprovado nas entrevistas técnicas. Um guia completo com estratégias práticas para conseguir o emprego dos seus sonhos.',
       bulletPoints: [
-        'Currículo que passa pelo ATS',
-        'LinkedIn otimizado para recrutadores',
-        'Preparação para entrevistas técnicas',
-        'Templates de currículo',
+        'Como criar um currículo que passa pelo ATS',
+        'LinkedIn otimizado para atrair recrutadores',
+        'Estratégias para preparação de entrevistas técnicas e comportamentais',
+        'Templates prontos de currículo e mensagens',
+        'Dicas de networking e busca de vagas internacionais',
       ],
       icon: <MapIcon className="h-7 w-7" />,
       stats: [
@@ -210,12 +214,13 @@ export function CoursesHero() {
       title: 'Workshop: 10 LeetCodes para Entrevistas',
       subtitle: 'Workshop Prático',
       description:
-        'Aprenda a resolver os 10 problemas mais cobrados em entrevistas técnicas com estratégias de resolução.',
+        'Aprenda a resolver os 10 problemas de algoritmos mais cobrados em entrevistas técnicas de empresas como Google, Meta, Amazon e outras FAANGs. Explicações detalhadas com estratégias de resolução passo a passo.',
       bulletPoints: [
-        'Problemas mais cobrados em FAANGs',
-        'Estratégias de resolução passo a passo',
-        'Dicas para otimização de código',
-        'Preparação focada para entrevistas',
+        'Os 10 problemas mais cobrados em entrevistas de FAANGs',
+        'Estratégias de resolução explicadas passo a passo',
+        'Técnicas para otimização de complexidade de tempo e espaço',
+        'Dicas para se comunicar bem durante a entrevista',
+        'Preparação focada e objetiva para entrevistas',
       ],
       icon: <BookOpen className="h-7 w-7" />,
       stats: [
@@ -231,12 +236,13 @@ export function CoursesHero() {
       title: 'Workshop: System Design para Entrevistas',
       subtitle: 'Workshop Prático',
       description:
-        'Domine os fundamentos de System Design e aprenda a projetar sistemas escaláveis para entrevistas.',
+        'Domine os fundamentos de System Design e aprenda a projetar sistemas escaláveis para passar em entrevistas de grandes empresas de tecnologia. Aprenda na prática como funcionam sistemas distribuídos.',
       bulletPoints: [
-        'Fundamentos de arquitetura distribuída',
-        'Problemas práticos de System Design',
-        'Exemplos de sistemas reais',
-        'Preparação para entrevistas FAANG',
+        'Fundamentos de arquitetura distribuída e escalabilidade',
+        'Problemas práticos de System Design resolvidos',
+        'Exemplos de sistemas reais: cache, load balancer, CDN',
+        'Framework para resolver qualquer problema de System Design',
+        'Preparação específica para entrevistas FAANG',
       ],
       icon: <Briefcase className="h-7 w-7" />,
       stats: [
@@ -321,6 +327,94 @@ export function CoursesHero() {
                 CTO • 10+ anos em tech
               </p>
             </div>
+          </div>
+
+          {/* Combo Banner - Featured */}
+          <div className="mb-12 lg:mb-16">
+            <Card className="tech-card relative overflow-hidden">
+              {/* Gradient Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-blue-500/10 to-green-500/10" />
+
+              <div className="relative p-8 lg:p-12">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                  <div className="flex-1 space-y-4">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <Badge
+                        variant="outline"
+                        className="px-2.5 py-0.5 text-xs font-medium border-purple-500/50 text-purple-600 dark:text-purple-400"
+                      >
+                        <Star className="mr-1 h-3 w-3 fill-current" />
+                        Melhor Oferta
+                      </Badge>
+                      <Badge
+                        variant="outline"
+                        className="px-2.5 py-0.5 text-xs font-medium border-green-500/50 text-green-600 dark:text-green-400"
+                      >
+                        <Package className="mr-1 h-3 w-3" />
+                        Combo Completo
+                      </Badge>
+                    </div>
+
+                    <div>
+                      <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-3">
+                        Combo com TODOS os cursos
+                      </h2>
+                      <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                        Tenha acesso completo aos 4 cursos e acelere sua
+                        carreira em tech com o pacote mais completo.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                      {[
+                        '✓ Estruturas de Dados e Algoritmos + LeetCode',
+                        '✓ Roadmap pro seu próximo emprego',
+                        '✓ Workshop: 10 LeetCodes para Entrevistas',
+                        '✓ Workshop: System Design para Entrevistas',
+                      ].map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-center gap-2 text-sm font-medium"
+                        >
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-start lg:items-end gap-4">
+                    <div className="text-left lg:text-right">
+                      <p className="text-sm text-muted-foreground mb-1">
+                        Parcelado em até
+                      </p>
+                      <p className="text-4xl font-bold tracking-tight">
+                        12x R$ 68,22
+                      </p>
+                    </div>
+
+                    <FancyButton.Root
+                      size="lg"
+                      className="group/btn w-full lg:w-auto justify-center"
+                      asChild={true}
+                      style={
+                        {
+                          '--fancy-button-bg': '#8b5cf6',
+                        } as React.CSSProperties
+                      }
+                    >
+                      <a
+                        href="https://pay.hub.la/wodh0iMlNYsqyqAj20gt?coupon=SITEGALEGO"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Garantir Acesso ao Combo
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </a>
+                    </FancyButton.Root>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 lg:mb-24">
