@@ -298,6 +298,22 @@ export default function BooksPage() {
       amazonUrl: 'https://amzn.to/49jtTEd',
       stars: 4.5,
     },
+    {
+      id: 'alice-in-wonderland',
+      title: 'Alice no País das Maravilhas',
+      author: 'Lewis Carroll',
+      imageUrl: 'https://m.media-amazon.com/images/I/81eAcV387dL._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/4aBUYVs',
+      stars: 4,
+    },
+    {
+      id: '4h-workweek',
+      title: 'Trabalhe 4 horas por semana',
+      author: 'Tim Ferriss',
+      imageUrl: 'https://m.media-amazon.com/images/I/818FxH52VaL._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/49kq7KS',
+      stars: 3.5,
+    },
   ]
 
   return (
