@@ -117,13 +117,8 @@
       "microservices-patterns": "Padrões essenciais para arquitetura de microsserviços.",
       "cormen": "Introduction to Algorithms. O guia definitivo e acadêmico sobre algoritmos.",
       "knuth": "The Art of Computer Programming. A obra magna da computação.",
-      "hobbit": "Uma aventura atemporal que inspirou todo o gênero de fantasia. Clássico da literatura.",
-      "meditations": "Reflexões de um dos maiores imperadores romanos. Filosofia estoica na prática.",
-      "sapiens": "Uma jornada fascinante pela história da humanidade. Muda como você vê o mundo.",
-      "thinking-fast-slow": "Como nossa mente funciona e toma decisões. Essencial para entender vieses cognitivos.",
-      "atomic-habits": "Como pequenas mudanças criam grandes resultados. Prático e aplicável.",
-      "zero-to-one": "Sobre inovação e criação de empresas que realmente mudam o mundo.",
-      "mans-search-meaning": "Um psiquiatra sobrevivente do holocausto sobre o sentido da vida. Profundo e transformador."
+      "hobbit": "O meu livro de ficção favorito.",
+      "a-arte-de-fazer-acontecer": "O único método de organização que funcionou para mim. O livro é chatinho de ler, mas o método é bom."
     }
   },
   "setup": {

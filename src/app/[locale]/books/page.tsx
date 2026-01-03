@@ -179,7 +179,7 @@ export default function BooksPage() {
       stars: 4.5,
     },
     {
-      id: 'art-de-fazer-acontecer',
+      id: 'a-arte-de-fazer-acontecer',
       title: 'A Arte de Fazer Acontecer',
       author: 'David Allen',
       imageUrl: 'https://m.media-amazon.com/images/I/51UPDrneytL._SY425_.jpg',
