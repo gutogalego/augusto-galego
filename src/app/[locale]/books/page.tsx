@@ -266,6 +266,38 @@ export default function BooksPage() {
       amazonUrl: 'https://amzn.to/49anz1y',
       stars: 4,
     },
+    {
+      id: 'trabalho-focado',
+      title: 'Trabalho Focado',
+      author: 'Cal Newport',
+      imageUrl: 'https://m.media-amazon.com/images/I/61XDczCKI0L._SY385_.jpg',
+      amazonUrl: 'https://amzn.to/4pssIbz',
+      stars: 4,
+    },
+    {
+      id: 'oceano-azul',
+      title: 'A estratégia do oceano azul',
+      author: 'W. Chan Kim, Renée Mauborgne',
+      imageUrl: 'https://m.media-amazon.com/images/I/71zvq8BIkmL._SY385_.jpg',
+      amazonUrl: 'https://amzn.to/3YiCT7z',
+      stars: 3.5,
+    },
+    {
+      id: 'pai-rico-pai-pobre',
+      title: 'O pai rico e o pai pobre',
+      author: 'Robert Kiyosaki',
+      imageUrl: 'https://m.media-amazon.com/images/I/71V4lNR2gKL._SY385_.jpg',
+      amazonUrl: 'https://amzn.to/3Lrs2Fq',
+      stars: 3,
+    },
+    {
+      id: 'one-up-on-wall-street',
+      title: 'One Up on Wall Street',
+      author: 'Peter Lynch',
+      imageUrl: 'https://m.media-amazon.com/images/I/71sNaCDncJL._SY466_.jpg',
+      amazonUrl: 'https://amzn.to/49jtTEd',
+      stars: 4.5,
+    },
   ]
 
   return (
