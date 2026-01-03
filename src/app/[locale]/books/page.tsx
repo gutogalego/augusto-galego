@@ -155,6 +155,14 @@ export default function BooksPage() {
       stars: 5,
     },
     {
+      id: 'gatsby',
+      title: 'O Grande Gatsby',
+      author: 'F. Scott Fitzgerald',
+      imageUrl: 'https://m.media-amazon.com/images/I/71Lwg0Bc3TL._SY466_.jpg',
+      amazonUrl: 'https://amzn.to/4qeBM51',
+      stars: 5,
+    },
+    {
       id: 'hitchhikers-guide-to-the-galaxy',
       title: 'O guia do mochileiro das galáxias',
       author: 'Douglas Adams',
@@ -240,6 +248,22 @@ export default function BooksPage() {
       author: 'Benjamin Graham',
       imageUrl: 'https://m.media-amazon.com/images/I/61Q2pK79yWL._SY425_.jpg',
       amazonUrl: 'https://amzn.to/4svt9ET',
+      stars: 4,
+    },
+    {
+      id: 'fahrenheit-451',
+      title: 'Fahrenheit 451',
+      author: 'Ray Bradbury',
+      imageUrl: 'https://m.media-amazon.com/images/I/51tAD6LyZ-L._SY466_.jpg',
+      amazonUrl: 'https://amzn.to/3N9HkPy',
+      stars: 4,
+    },
+    {
+      id: 'almanaque-naval-ravikant',
+      title: 'O Almanaque de Naval Ravikant',
+      author: 'Eric Jorgenson',
+      imageUrl: 'https://m.media-amazon.com/images/I/51BHDRSC0xL._SY522_.jpg',
+      amazonUrl: 'https://amzn.to/49anz1y',
       stars: 4,
     },
   ]
