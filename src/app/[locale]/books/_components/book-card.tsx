@@ -2,7 +2,7 @@
 
 import { Card } from '@/components/ui/card'
 import * as FancyButton from '@/components/ui/fancy-button'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, Star, StarHalf } from 'lucide-react'
 import Image from 'next/image'
 
 interface BookCardProps {
@@ -12,6 +12,8 @@ interface BookCardProps {
   imageUrl: string
   amazonUrl: string
   ctaText: string
+  stars?: number
+  recommendation?: string
 }
 
 export function BookCard({
@@ -21,6 +23,8 @@ export function BookCard({
   imageUrl,
   amazonUrl,
   ctaText,
+  stars,
+  recommendation,
 }: BookCardProps) {
   const handleOpenAmazon = () => window.open(amazonUrl, '_blank')
 
@@ -31,12 +35,47 @@ export function BookCard({
     }
   }
 
+  const renderStars = () => {
+    if (!stars) {
+      return null
+    }
+    return (
+      <div className="flex items-center gap-0.5">
+        {Array.from({ length: 5 }).map((_, index) => {
+          const starKey = `star-${index}`
+          const isFull = index < Math.floor(stars)
+          const isHalf = !isFull && index < stars
+
+          if (isHalf) {
+            return (
+              <StarHalf
+                key={starKey}
+                className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400"
+              />
+            )
+          }
+
+          return (
+            <Star
+              key={starKey}
+              className={`h-3.5 w-3.5 ${
+                isFull
+                  ? 'fill-yellow-400 text-yellow-400'
+                  : 'fill-muted text-muted'
+              }`}
+            />
+          )
+        })}
+      </div>
+    )
+  }
+
   return (
-    <Card className="flex flex-row overflow-hidden transition-all duration-300 hover:shadow-lg border-border/50 bg-card/50 backdrop-blur-sm group min-h-[10rem] md:h-44">
+    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg border-0 bg-transparent group h-full">
       {/* Image Section - Clickable */}
       <button
         type="button"
-        className="relative w-28 md:w-36 shrink-0 bg-muted cursor-pointer p-0 border-0 text-left"
+        className="relative w-32 h-48 mx-auto bg-muted cursor-pointer p-0 border-0 text-left rounded-md overflow-hidden shrink-0"
         onClick={handleOpenAmazon}
         onKeyDown={handleKeyDown}
       >
@@ -49,28 +88,29 @@ export function BookCard({
       </button>
 
       {/* Content Section */}
-      <div className="flex flex-1 flex-col p-3 md:p-4 min-w-0 justify-between">
-        <div className="space-y-1">
-          <div className="flex items-start justify-between gap-4">
-            <h3 className="font-bold text-lg md:text-xl leading-tight line-clamp-2">
+      <div className="flex flex-1 flex-col p-3 min-w-0">
+        <div className="space-y-2 mb-3">
+          <div className="space-y-1.5">
+            <h3 className="font-bold text-base leading-tight line-clamp-2">
               {title}
             </h3>
+            {renderStars()}
           </div>
-          <p className="text-xs md:text-sm text-muted-foreground font-medium">
-            {author}
-          </p>
-          <p className="hidden md:block text-xs md:text-sm text-muted-foreground leading-relaxed line-clamp-3 mt-1.5">
+          <p className="text-xs text-muted-foreground font-medium">{author}</p>
+          {recommendation && (
+            <p className="text-xs text-foreground leading-relaxed line-clamp-2 italic">
+              &quot;{recommendation}&quot;
+            </p>
+          )}
+          <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
             {description}
           </p>
         </div>
 
-        {/* Footer/Action Area */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-2 pt-1">
-          <p className="md:hidden text-xs text-muted-foreground line-clamp-2">
-            {description}
-          </p>
+        {/* Action Button */}
+        <div className="mt-auto">
           <FancyButton.Root
-            className="w-full sm:w-auto justify-center h-8 px-3 text-xs whitespace-nowrap shrink-0"
+            className="w-full justify-center h-9 px-3 text-xs"
             onClick={handleOpenAmazon}
           >
             {ctaText}

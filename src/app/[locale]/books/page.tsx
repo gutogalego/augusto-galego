@@ -15,13 +15,14 @@ export async function generateMetadata({
 export default function BooksPage() {
   const t = useTranslations('books')
 
-  const books = [
+  const techBooks = [
     {
       id: 'clean-code',
       title: 'Clean Code',
       author: 'Robert C. Martin',
       imageUrl: 'https://m.media-amazon.com/images/I/71dH97FwGbL._SY385_.jpg',
       amazonUrl: 'https://amzn.to/4q6i3Em',
+      stars: 4,
     },
     {
       id: 'refactoring',
@@ -29,6 +30,7 @@ export default function BooksPage() {
       author: 'Martin Fowler',
       imageUrl: 'https://m.media-amazon.com/images/I/81sTm5M7wjL._SL1500_.jpg',
       amazonUrl: 'https://amzn.to/3XJlCnI',
+      stars: 5,
     },
     {
       id: 'pragmatic-programmer',
@@ -36,6 +38,7 @@ export default function BooksPage() {
       author: 'David Thomas, Andrew Hunt',
       imageUrl: 'https://m.media-amazon.com/images/I/61hewOW+8zL._SL1500_.jpg',
       amazonUrl: 'https://amzn.to/3YkrKD3',
+      stars: 5,
     },
     {
       id: 'software-architecture',
@@ -43,6 +46,7 @@ export default function BooksPage() {
       author: 'Mark Richards, Neal Ford',
       imageUrl: 'https://m.media-amazon.com/images/I/718UG0KPHpL._SL1457_.jpg',
       amazonUrl: 'https://amzn.to/3MsoVgG',
+      stars: 4,
     },
     {
       id: 'grokking-algorithms',
@@ -50,6 +54,7 @@ export default function BooksPage() {
       author: 'Aditya Bhargava',
       imageUrl: 'https://m.media-amazon.com/images/I/71Vkg7GfPFL._SL1296_.jpg',
       amazonUrl: 'https://amzn.to/4aG9XNY',
+      stars: 3.5,
     },
     {
       id: 'cracking-code',
@@ -57,6 +62,7 @@ export default function BooksPage() {
       author: 'Gayle Laakmann McDowell',
       imageUrl: 'https://m.media-amazon.com/images/I/61mIq2iJUXL._SL1360_.jpg',
       amazonUrl: 'https://amzn.to/4iTmP5A',
+      stars: 4.5,
     },
     {
       id: 'system-design-interview',
@@ -64,6 +70,7 @@ export default function BooksPage() {
       author: 'Alex Xu',
       imageUrl: 'https://m.media-amazon.com/images/I/51vZ6t5W4gL._SL1499_.jpg',
       amazonUrl: 'https://amzn.to/4iPS41b',
+      stars: 4,
     },
     {
       id: 'mythical-man-month',
@@ -88,7 +95,7 @@ export default function BooksPage() {
     },
     {
       id: 'ddia',
-      title: 'Designing Dataf-Intensive Applications',
+      title: 'Designing Data-Intensive Applications',
       author: 'Martin Kleppmann',
       imageUrl: 'https://m.media-amazon.com/images/I/91YfNb49PLL._SL1500_.jpg',
       amazonUrl: 'https://amzn.to/4oQjnd7',
@@ -113,6 +120,7 @@ export default function BooksPage() {
       author: 'Eric Evans',
       imageUrl: 'https://m.media-amazon.com/images/I/61Y0IuO7XTL._SL1001_.jpg',
       amazonUrl: 'https://amzn.to/4oIA763',
+      stars: 5,
     },
     {
       id: 'microservices-patterns',
@@ -137,27 +145,173 @@ export default function BooksPage() {
     },
   ]
 
+  const nonTechBooks = [
+    {
+      id: 'hobbit',
+      title: 'O Hobbit',
+      author: 'J.R.R. Tolkien',
+      imageUrl: 'https://m.media-amazon.com/images/I/91M9xPIf10L._SY466_.jpg',
+      amazonUrl: 'https://amzn.to/4pmmGcA',
+      stars: 5,
+    },
+    {
+      id: 'hitchhikers-guide-to-the-galaxy',
+      title: 'O guia do mochileiro das galáxias',
+      author: 'Douglas Adams',
+      imageUrl: 'https://m.media-amazon.com/images/I/91NAJgaUlKL._SY466_.jpg',
+      amazonUrl: 'https://amzn.to/4sowGEP',
+      stars: 5,
+    },
+    {
+      id: 'ruido',
+      title: 'Ruído',
+      author: 'Daniel Kahneman',
+      imageUrl: 'https://m.media-amazon.com/images/I/81I6rfFOM-S._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/4pirnUN',
+      stars: 4.5,
+    },
+    {
+      id: 'habitos-atomicos',
+      title: 'Hábitos Atômicos',
+      author: 'James Clear',
+      imageUrl: 'https://m.media-amazon.com/images/I/81eT2pjx4jL._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/3YjeG0T',
+      stars: 4.5,
+    },
+    {
+      id: 'art-de-fazer-acontecer',
+      title: 'A Arte de Fazer Acontecer',
+      author: 'David Allen',
+      imageUrl: 'https://m.media-amazon.com/images/I/51UPDrneytL._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/45s0FBP',
+      stars: 5,
+    },
+    {
+      id: 'antifragil',
+      title: 'Antifrágil',
+      author: 'Nassim Nicholas Taleb',
+      imageUrl: 'https://m.media-amazon.com/images/I/8119xmkJ3IL._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/4qtjfBM',
+      stars: 5,
+    },
+    {
+      id: 'meditacoes',
+      title: 'Meditações',
+      author: 'Marcus Aurelius',
+      imageUrl: 'https://m.media-amazon.com/images/I/612B0id4gNL._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/3L8GHoV',
+      stars: 4,
+    },
+    {
+      id: 'estrangeiro',
+      title: 'O Estrangeiro',
+      author: 'Albert Camus',
+      imageUrl: 'https://m.media-amazon.com/images/I/91Sb5HdDL3L._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/4beusSa',
+      stars: 5,
+    },
+    {
+      id: 'bebado',
+      title: 'O Andar do Bebado',
+      author: 'Leonard Mlodinow',
+      imageUrl: 'https://m.media-amazon.com/images/I/81KdmY4M-7L._SY385_.jpg',
+      amazonUrl: 'https://amzn.to/49lHqem',
+      stars: 4.5,
+    },
+    {
+      id: '10-percent',
+      title: '10% Mais Feliz',
+      author: 'Dan Harris',
+      imageUrl: 'https://m.media-amazon.com/images/I/71USnLguEOL._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/4q2JmPY',
+      stars: 4.5,
+    },
+    {
+      id: 'wall-street-random-walk',
+      title: 'Um passeio aleatório por Wall Street',
+      author: 'Burton G. Malkiel',
+      imageUrl: 'https://m.media-amazon.com/images/I/812KSljPMbL._SY385_.jpg',
+      amazonUrl: 'https://amzn.to/4svt7Nh',
+      stars: 4.5,
+    },
+    {
+      id: 'intelligent-investor',
+      title: 'O investidor inteligente',
+      author: 'Benjamin Graham',
+      imageUrl: 'https://m.media-amazon.com/images/I/61Q2pK79yWL._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/4svt9ET',
+      stars: 4,
+    },
+  ]
+
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
-      <div className="max-w-4xl mx-auto text-center mb-10 space-y-3">
+      <div className="max-w-[1600px] mx-auto text-center mb-10 space-y-3">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
           {t('title')}
         </h1>
-        <p className="text-lg text-muted-foreground">{t('subtitle')}</p>
       </div>
 
-      <div className="max-w-4xl mx-auto space-y-3">
-        {books.map((book) => (
-          <BookCard
-            key={book.id}
-            title={book.title}
-            author={book.author}
-            description={t(`recommendations.${book.id}`)}
-            imageUrl={book.imageUrl}
-            amazonUrl={book.amazonUrl}
-            ctaText={t('buyOnAmazon')}
-          />
-        ))}
+      <div className="max-w-[1600px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <section>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center lg:text-left">
+              {t('techBooksTitle')}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {techBooks
+                .sort((a, b) => (b.stars || 0) - (a.stars || 0))
+                .map((book) => {
+                  const recommendationKey = `recommendations.${book.id}`
+                  const hasRecommendation = t.has(recommendationKey)
+
+                  return (
+                    <BookCard
+                      key={book.id}
+                      title={book.title}
+                      author={book.author}
+                      description={
+                        hasRecommendation ? t(recommendationKey) : ''
+                      }
+                      imageUrl={book.imageUrl}
+                      amazonUrl={book.amazonUrl}
+                      ctaText={t('buyOnAmazon')}
+                      stars={book.stars}
+                    />
+                  )
+                })}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center lg:text-left">
+              {t('nonTechBooksTitle')}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {nonTechBooks
+                .sort((a, b) => (b.stars || 0) - (a.stars || 0))
+                .map((book) => {
+                  const recommendationKey = `recommendations.${book.id}`
+                  const hasRecommendation = t.has(recommendationKey)
+
+                  return (
+                    <BookCard
+                      key={book.id}
+                      title={book.title}
+                      author={book.author}
+                      description={
+                        hasRecommendation ? t(recommendationKey) : ''
+                      }
+                      imageUrl={book.imageUrl}
+                      amazonUrl={book.amazonUrl}
+                      ctaText={t('buyOnAmazon')}
+                      stars={book.stars}
+                    />
+                  )
+                })}
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   )
