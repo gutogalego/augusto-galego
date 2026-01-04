@@ -314,6 +314,15 @@ export default function BooksPage() {
       amazonUrl: 'https://amzn.to/49kq7KS',
       stars: 3.5,
     },
+    {
+      id: 'diario-estoico',
+      title:
+        'Diário estoico: 366 lições sobre sabedoria, perseverança e a arte de viver',
+      author: 'Ryan Holiday',
+      imageUrl: 'https://m.media-amazon.com/images/I/71DMS2JCTXL._SY522_.jpg',
+      amazonUrl: 'https://amzn.to/4bhfxXm',
+      stars: 4.5,
+    },
   ]
 
   return (
