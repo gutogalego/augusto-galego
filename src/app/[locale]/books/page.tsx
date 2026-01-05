@@ -323,6 +323,14 @@ export default function BooksPage() {
       amazonUrl: 'https://amzn.to/4bhfxXm',
       stars: 4.5,
     },
+    {
+      id: 'magico-de-oz',
+      title: 'O Mágico de Oz',
+      author: 'L. Frank Baum',
+      imageUrl: 'https://m.media-amazon.com/images/I/71Qk54-xfIL._SY522_.jpg',
+      amazonUrl: 'https://amzn.to/49mcE5f',
+      stars: 5,
+    },
   ]
 
   return (
