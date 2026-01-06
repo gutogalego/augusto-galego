@@ -331,6 +331,14 @@ export default function BooksPage() {
       amazonUrl: 'https://amzn.to/49mcE5f',
       stars: 5,
     },
+    {
+      id: 'e-myth',
+      title: 'The E-Myth Revisited',
+      author: 'Michael E. Gerber',
+      imageUrl: 'https://m.media-amazon.com/images/I/81XHTPSeqAL._SY522_.jpg',
+      amazonUrl: 'https://amzn.to/49aAbat',
+      stars: 2.5,
+    },
   ]
 
   return (
