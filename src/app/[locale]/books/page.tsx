@@ -339,6 +339,14 @@ export default function BooksPage() {
       amazonUrl: 'https://amzn.to/49aAbat',
       stars: 2.5,
     },
+    {
+      id: 'rapido-e-devagar',
+      title: 'Rápido e Devagar',
+      author: 'Daniel Kahneman',
+      imageUrl: 'https://m.media-amazon.com/images/I/61pt9lG-PvL._SY522_.jpg',
+      amazonUrl: 'https://amzn.to/4jrbM3K',
+      stars: 4,
+    },
   ]
 
   return (
