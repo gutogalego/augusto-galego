@@ -347,6 +347,14 @@ export default function BooksPage() {
       amazonUrl: 'https://amzn.to/4jrbM3K',
       stars: 4,
     },
+    {
+      id: 'cisne-negro',
+      title: 'A Lógica do Cisne Negro',
+      author: 'Nassim Nicholas Taleb',
+      imageUrl: 'https://m.media-amazon.com/images/I/714RNYWLXIS._SY425_.jpg',
+      amazonUrl: 'https://amzn.to/3Z29TB7',
+      stars: 4.5,
+    },
   ]
 
   return (
