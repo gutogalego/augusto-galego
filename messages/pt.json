@@ -258,16 +258,28 @@
       ]
     },
     "privacy": {
-      "title": "Política de Privacidade e Termos de Uso",
-      "description": "Política de privacidade e termos de uso do site Augusto Galego. Informações sobre coleta de dados, cookies, direitos autorais e responsabilidades.",
+      "title": "Política de Privacidade",
+      "description": "Política de privacidade do site Augusto Galego. Informações sobre coleta de dados, cookies, uso de informações pessoais e compromissos com a privacidade do usuário.",
       "keywords": [
         "política de privacidade",
-        "termos de uso",
         "privacidade",
         "cookies",
         "lgpd",
+        "dados pessoais",
+        "google adsense",
+        "proteção de dados"
+      ]
+    },
+    "terms": {
+      "title": "Termos de Uso",
+      "description": "Termos e condições de uso do site Augusto Galego. Informações sobre licenças, limitações, responsabilidades e direitos autorais.",
+      "keywords": [
+        "termos de uso",
+        "termos e condições",
         "direitos autorais",
-        "termos e condições"
+        "licença de uso",
+        "responsabilidades",
+        "condições legais"
       ]
     }
   }
