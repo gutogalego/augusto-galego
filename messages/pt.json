@@ -256,6 +256,19 @@
         "eficiência",
         "trabalho remoto"
       ]
+    },
+    "privacy": {
+      "title": "Política de Privacidade e Termos de Uso",
+      "description": "Política de privacidade e termos de uso do site Augusto Galego. Informações sobre coleta de dados, cookies, direitos autorais e responsabilidades.",
+      "keywords": [
+        "política de privacidade",
+        "termos de uso",
+        "privacidade",
+        "cookies",
+        "lgpd",
+        "direitos autorais",
+        "termos e condições"
+      ]
     }
   }
 }
