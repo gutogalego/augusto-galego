@@ -49,7 +49,6 @@ const footerSections: FooterSection[] = [
         href: 'https://pay.hub.la/hrZKmxeXzeLN8AvObjVJ?coupon=SITEGALEGO',
         external: true,
       },
-      { name: 'Templates', href: '/resources/templates' },
       { name: 'Dicas de Produtividade', href: '/blog?category=Produtividade' },
     ],
   },

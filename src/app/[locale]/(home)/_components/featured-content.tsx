@@ -38,31 +38,31 @@ const featuredCourse = {
 
 const featuredPosts = [
   {
-    title: 'Como ser um EXCELENTE programador?',
+    title: 'Começar Te Dá o Framework Para Pensar em Como Começar',
     description:
-      'Dicas práticas para evoluir na carreira e se destacar no mercado de tecnologia.',
-    readTime: '8 min',
+      'Por que você precisa começar a fazer algo antes de pedir conselhos, e como experiência compartilhada cria conversas significativas.',
+    readTime: '5 min',
     views: '52K',
     category: 'Carreira',
-    href: '/blog/como-ser-excelente-programador',
+    href: '/blog/starting-things',
   },
   {
-    title: 'LeetCode vai te fazer melhorar como dev?',
+    title: 'Notação Big O',
     description:
-      'Análise crítica sobre o uso de LeetCode e quando realmente vale a pena estudar algoritmos.',
-    readTime: '12 min',
+      'Um guia completo para entender a notação Big O, complexidade de tempo e complexidade de espaço em algoritmos.',
+    readTime: '8 min',
     views: '108K',
     category: 'Algoritmos',
-    href: '/blog/leetcode-melhorar-dev',
+    href: '/blog/big-o',
   },
   {
-    title: 'De Júnior no Brasil a Senior na Europa',
+    title: 'Balanceadores de Carga',
     description:
-      'Minha jornada completa: estratégias, desafios e lições aprendidas na transição internacional.',
-    readTime: '15 min',
+      'Um guia completo sobre balanceadores de carga, seus algoritmos, tipos e como garantem escalabilidade em sistemas distribuídos.',
+    readTime: '7 min',
     views: '85K',
-    category: 'Carreira',
-    href: '/blog/junior-brasil-senior-europa',
+    category: 'System Design',
+    href: '/blog/load-balancer',
   },
 ]
 
@@ -75,7 +75,7 @@ const categoryColors: Record<string, { bg: string; text: string }> = {
     bg: 'bg-blue-100 dark:bg-blue-950',
     text: 'text-blue-700 dark:text-blue-300',
   },
-  systemDesign: {
+  systemdesign: {
     bg: 'bg-green-100 dark:bg-green-950',
     text: 'text-green-700 dark:text-green-300',
   },
