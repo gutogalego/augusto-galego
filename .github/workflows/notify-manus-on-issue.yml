@@ -30,7 +30,6 @@ jobs:
           event = json.loads(os.environ['EVENT_PAYLOAD'])
           issue = event.get('issue', {})
 
-          repo = os.environ.get('GITHUB_REPOSITORY', '').strip()
           number = str(issue.get('number', '')).strip()
           title = (issue.get('title') or '').strip()
           body = (issue.get('body') or '').strip()
@@ -40,14 +39,21 @@ jobs:
           target_repo_url = f'https://github.com/{target_repo}'
 
           api_key = os.environ.get('RESEND_API_KEY', '').strip()
-          from_email = (os.environ.get('RESEND_FROM') or os.environ.get('SMTP_FROM') or '').strip()
+          resend_from = os.environ.get('RESEND_FROM', '').strip()
+          smtp_from = os.environ.get('SMTP_FROM', '').strip()
           to_email = os.environ.get('MANUS_EMAIL', '').strip()
+
+          sender_candidates = []
+          if resend_from:
+              sender_candidates.append((resend_from, 'RESEND_FROM'))
+          if smtp_from:
+              sender_candidates.append((smtp_from, 'SMTP_FROM'))
 
           if not api_key:
               raise SystemExit('Missing required RESEND_API_KEY secret.')
 
-          if not from_email:
-              raise SystemExit('Missing required RESEND_FROM secret.')
+          if not sender_candidates:
+              raise SystemExit('Missing sender email. Set RESEND_FROM (preferred) or SMTP_FROM.')
 
           if not to_email:
               raise SystemExit('Missing required MANUS_EMAIL secret.')
@@ -60,7 +66,7 @@ jobs:
               f"Author: {author}\n"
               f"URL: {url}\n"
               f"Repository URL: {target_repo_url}\n"
-              f"Source repository in GitHub event: {repo}\n\n"
+              f"Source repository in GitHub event: {os.environ.get('GITHUB_REPOSITORY', '').strip()}\n\n"
               "Repository access context:\n"
               f"- Source repository: {target_repo_url}\n"
               "- Manus has access to this repository.\n"
@@ -69,33 +75,46 @@ jobs:
               f"{body}"
           ).strip()
 
-          payload = {
-              'from': from_email,
-              'to': to_email,
-              'subject': subject,
-              'text': text,
-              'html': f"<pre>{text}</pre>",
-          }
-
-          request = urllib.request.Request(
-              'https://api.resend.com/emails',
-              data=json.dumps(payload).encode('utf-8'),
-              headers={
-                  'Authorization': f'Bearer {api_key}',
-                  'Content-Type': 'application/json',
-              },
-              method='POST',
-          )
-
-          try:
+          def send_with(sender_email):
+              payload = {
+                  'from': sender_email,
+                  'to': to_email,
+                  'subject': subject,
+                  'text': text,
+                  'html': f"<pre>{text}</pre>",
+              }
+              request = urllib.request.Request(
+                  'https://api.resend.com/emails',
+                  data=json.dumps(payload).encode('utf-8'),
+                  headers={
+                      'Authorization': f'Bearer {api_key}',
+                      'Content-Type': 'application/json',
+                  },
+                  method='POST',
+              )
               with urllib.request.urlopen(request, context=ssl.create_default_context(), timeout=30) as response:
                   response.read()
-          except urllib.error.HTTPError as e:
-              body = e.read().decode('utf-8', errors='replace')
+
+          last_error = None
+          for sender_email, sender_source in sender_candidates:
+              try:
+                  send_with(sender_email)
+                  print(f'Sent via {sender_source}: {sender_email}')
+                  last_error = None
+                  break
+              except urllib.error.HTTPError as e:
+                  error_body = e.read().decode('utf-8', errors='replace')
+                  last_error = (
+                      f'Attempt with {sender_source}={sender_email} failed with HTTP {e.code} {e.reason}. '
+                      f'Response body: {error_body}'
+                  )
+                  continue
+              except urllib.error.URLError as e:
+                  raise SystemExit(f'Resend API network error: {e.reason}')
+
+          if last_error:
               raise SystemExit(
-                  f'Resend API call failed with HTTP {e.code} {e.reason}. '
-                  f'Response body: {body}'
+                  f'{last_error}. This usually means the sender address is not verified in Resend. '
+                  'Set RESEND_FROM to a verified sender (for example me@augustogalego.com).'
               )
-          except urllib.error.URLError as e:
-              raise SystemExit(f'Resend API network error: {e.reason}')
           PY
