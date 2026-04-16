@@ -24,6 +24,7 @@ jobs:
           import json
           import os
           import ssl
+          import urllib.error
           import urllib.request
 
           event = json.loads(os.environ['EVENT_PAYLOAD'])
@@ -85,6 +86,15 @@ jobs:
               method='POST',
           )
 
-          with urllib.request.urlopen(request, context=ssl.create_default_context(), timeout=30) as response:
-              response.read()
+          try:
+              with urllib.request.urlopen(request, context=ssl.create_default_context(), timeout=30) as response:
+                  response.read()
+          except urllib.error.HTTPError as e:
+              body = e.read().decode('utf-8', errors='replace')
+              raise SystemExit(
+                  f'Resend API call failed with HTTP {e.code} {e.reason}. '
+                  f'Response body: {body}'
+              )
+          except urllib.error.URLError as e:
+              raise SystemExit(f'Resend API network error: {e.reason}')
           PY
