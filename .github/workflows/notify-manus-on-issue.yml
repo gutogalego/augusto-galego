@@ -16,6 +16,7 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_FROM: ${{ secrets.RESEND_FROM }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
           MANUS_EMAIL: ${{ secrets.MANUS_EMAIL }}
           EVENT_PAYLOAD: ${{ toJson(github.event) }}
         run: |
@@ -38,7 +39,7 @@ jobs:
           target_repo_url = f'https://github.com/{target_repo}'
 
           api_key = os.environ.get('RESEND_API_KEY', '').strip()
-          from_email = os.environ.get('RESEND_FROM', '').strip()
+          from_email = (os.environ.get('RESEND_FROM') or os.environ.get('SMTP_FROM') or '').strip()
           to_email = os.environ.get('MANUS_EMAIL', '').strip()
 
           if not api_key:
