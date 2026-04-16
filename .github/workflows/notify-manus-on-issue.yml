@@ -1,0 +1,82 @@
+name: Notify Manus on New Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: read
+
+    steps:
+      - name: Send issue notification email
+        env:
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          MANUS_EMAIL: ${{ secrets.MANUS_EMAIL }}
+          EVENT_PAYLOAD: ${{ toJson(github.event) }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import smtplib
+          import ssl
+          from email.message import EmailMessage
+
+          event = json.loads(os.environ['EVENT_PAYLOAD'])
+          issue = event.get('issue', {})
+
+          repo = os.environ.get('GITHUB_REPOSITORY', '').strip()
+          number = str(issue.get('number', '')).strip()
+          title = (issue.get('title') or '').strip()
+          body = (issue.get('body') or '').strip()
+          author = (issue.get('user', {}).get('login') or '').strip()
+          url = (issue.get('html_url') or '').strip()
+
+          smtp_server = os.environ.get('SMTP_SERVER', '').strip()
+          smtp_port = int(str(os.environ.get('SMTP_PORT', '465')).strip() or 465)
+          smtp_username = os.environ.get('SMTP_USERNAME', '').strip()
+          smtp_password = os.environ.get('SMTP_PASSWORD', '').strip()
+          smtp_from = os.environ.get('SMTP_FROM', smtp_username).strip()
+          to_email = os.environ.get('MANUS_EMAIL', '').strip()
+
+          if not all([smtp_server, smtp_username, smtp_password, to_email]):
+              raise SystemExit('Missing required SMTP or recipient configuration.')
+
+          if not smtp_from:
+              raise SystemExit('Missing SMTP_FROM (or SMTP_USERNAME).')
+
+          subject = f"New GitHub Issue: #{number} - {title}".strip()
+          text = (
+              f"Repository: {repo}\n"
+              f"Issue: #{number}\n"
+              f"Title: {title}\n"
+              f"Author: {author}\n"
+              f"URL: {url}\n\n"
+              "---\n"
+              f"{body}"
+          ).strip()
+
+          msg = EmailMessage()
+          msg['Subject'] = subject
+          msg['From'] = smtp_from
+          msg['To'] = to_email
+          msg.set_content(text)
+
+          context = ssl.create_default_context()
+
+          if smtp_port == 465:
+              with smtplib.SMTP_SSL(smtp_server, smtp_port, context=context) as server:
+                  server.login(smtp_username, smtp_password)
+                  server.send_message(msg)
+          else:
+              with smtplib.SMTP(smtp_server, smtp_port) as server:
+                  server.starttls(context=context)
+                  server.login(smtp_username, smtp_password)
+                  server.send_message(msg)
