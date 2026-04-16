@@ -40,7 +40,7 @@ const quickFacts = [
 ]
 
 const achievements = [
-  '131K+ seguidores no YouTube',
+  '135K+ seguidores no YouTube',
   'Especialista reconhecido em LeetCode',
   'Transição internacional bem-sucedida',
   'Educador com milhares de alunos',

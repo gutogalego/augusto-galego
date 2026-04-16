@@ -24,7 +24,7 @@ export function HeroSection() {
   const t = useTranslations('hero')
 
   const stats = [
-    { label: t('stats.subscribers'), value: '131K+', icon: Users },
+    { label: t('stats.subscribers'), value: '135K+', icon: Users },
     { label: t('stats.experience'), value: '10+', icon: Briefcase },
     { label: t('stats.lessons'), value: '68', icon: GraduationCap },
     { label: t('stats.countries'), value: '3', icon: Globe },
@@ -116,7 +116,7 @@ export function HeroSection() {
                     rel="noopener noreferrer"
                   >
                     <Youtube className="mr-2 h-4 w-4 text-foreground" />
-                    @GutoGalego (131K+)
+                    @GutoGalego (135K+)
                   </Link>
                 </Button>
 

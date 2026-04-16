@@ -206,8 +206,8 @@ export function BlogPostLayout({
                   </h2>
                   <p className="text-muted-foreground">
                     {locale === 'pt'
-                      ? 'Junte-se a mais de 131K+ desenvolvedores que acompanham meu conteúdo sobre algoritmos, estruturas de dados e carreira internacional.'
-                      : 'Join 131K+ developers who follow my content about algorithms, data structures and international tech career.'}
+                      ? 'Junte-se a mais de 135K+ desenvolvedores que acompanham meu conteúdo sobre algoritmos, estruturas de dados e carreira internacional.'
+                      : 'Join 135K+ developers who follow my content about algorithms, data structures and international tech career.'}
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
