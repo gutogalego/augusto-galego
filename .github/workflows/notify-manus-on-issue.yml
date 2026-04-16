@@ -39,7 +39,7 @@ jobs:
           author = (issue.get('user', {}).get('login') or '').strip()
           url = (issue.get('html_url') or '').strip()
           target_repo = 'gutogalego/augusto-galego'
-          target_repo_url = 'https://github.com/gutogalego/augusto-galego'
+          target_repo_url = f'https://github.com/{target_repo}'
 
           smtp_server = os.environ.get('SMTP_SERVER', '').strip()
           smtp_port = int(str(os.environ.get('SMTP_PORT', '465')).strip() or 465)
@@ -62,7 +62,7 @@ jobs:
               f"Author: {author}\n"
               f"URL: {url}\n\n"
               "Repository access context:\n"
-              f"- Source repository: https://github.com/{target_repo}\n"
+              f"- Source repository: {target_repo_url}\n"
               "- Manus has access to this repository.\n"
               "- Please solve this issue directly in the repository and respond with the fix details.\n\n"
               "---\n"
