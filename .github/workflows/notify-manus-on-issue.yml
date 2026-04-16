@@ -71,9 +71,10 @@ jobs:
 
           payload = {
               'from': from_email,
-              'to': [to_email],
+              'to': to_email,
               'subject': subject,
               'text': text,
+              'html': f"<pre>{text}</pre>",
           }
 
           request = urllib.request.Request(
