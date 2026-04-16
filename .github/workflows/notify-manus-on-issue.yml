@@ -45,7 +45,7 @@ jobs:
           smtp_port = int(str(os.environ.get('SMTP_PORT', '465')).strip() or 465)
           smtp_username = os.environ.get('SMTP_USERNAME', '').strip()
           smtp_password = os.environ.get('SMTP_PASSWORD', '').strip()
-          smtp_from = os.environ.get('SMTP_FROM', smtp_username).strip()
+          smtp_from = (os.environ.get('SMTP_FROM') or smtp_username).strip()
           to_email = os.environ.get('MANUS_EMAIL', '').strip()
 
           if not all([smtp_server, smtp_username, smtp_password, to_email]):
