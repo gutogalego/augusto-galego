@@ -70,7 +70,9 @@ jobs:
               "Repository access context:\n"
               f"- Source repository: {target_repo_url}\n"
               "- Manus has access to this repository.\n"
-              "- Please solve this issue directly in the repository and respond with the fix details.\n\n"
+              "- Please solve this issue directly in the repository. "
+              "Create a new branch, commit your changes, push that branch, and create a pull request linked to this issue.\n"
+              "- Include a concise summary of what you changed and why in the PR description.\n\n"
               "---\n"
               f"{body}"
           ).strip()
