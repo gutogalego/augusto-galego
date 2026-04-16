@@ -237,17 +237,6 @@ export function NewsletterSection() {
             </Card>
           </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-12">
-            <p className="text-sm text-muted-foreground">
-              💡 <strong>Dica:</strong> Quem se inscreve agora recebe um guia
-              gratuito:
-              <br />
-              <span className="font-semibold">
-                "10 Algoritmos Essenciais para Entrevistas de Tech"
-              </span>
-            </p>
-          </div>
         </div>
       </div>
     </section>
