@@ -1,0 +1,59 @@
+name: Notify Manus on New Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify-manus:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email to Manus via Resend
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          MANUS_EMAIL: ${{ secrets.MANUS_EMAIL }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+        run: |
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+          ISSUE_BODY=$(cat <<'ISSUE_EOF'
+          ${{ github.event.issue.body }}
+          ISSUE_EOF
+          )
+          ISSUE_URL="${{ github.event.issue.html_url }}"
+          REPO_NAME="${{ github.repository }}"
+
+          EMAIL_SUBJECT="[${REPO_NAME}] New Issue #${ISSUE_NUMBER}: ${ISSUE_TITLE}"
+
+          EMAIL_BODY=$(cat <<EOF
+          <h2>New Issue Created in ${REPO_NAME}</h2>
+          <p><strong>Issue #${ISSUE_NUMBER}:</strong> ${ISSUE_TITLE}</p>
+          <p><strong>Repository:</strong> ${REPO_NAME}</p>
+          <p><strong>Issue URL:</strong> <a href="${ISSUE_URL}">${ISSUE_URL}</a></p>
+
+          <h3>Issue Content:</h3>
+          <blockquote>${ISSUE_BODY}</blockquote>
+
+          <hr>
+
+          <h3>Instructions:</h3>
+          <p>Please perform the following tasks for the repository <strong>${REPO_NAME}</strong>:</p>
+          <ol>
+            <li><strong>Create a new branch</strong> from <code>main</code> that addresses and resolves Issue #${ISSUE_NUMBER} ("${ISSUE_TITLE}").</li>
+            <li><strong>Open a Pull Request</strong> linked to Issue #${ISSUE_NUMBER} with the fix/implementation, so that merging the PR will automatically close the issue.</li>
+          </ol>
+          <p>Make sure the PR description references the issue using <code>Closes #${ISSUE_NUMBER}</code>.</p>
+          EOF
+          )
+
+          # Send email via Resend API
+          curl -s -X POST 'https://api.resend.com/emails' \
+            -H "Authorization: Bearer ${RESEND_API_KEY}" \
+            -H 'Content-Type: application/json' \
+            -d "$(jq -n \
+              --arg from "$RESEND_FROM_EMAIL" \
+              --arg to "$MANUS_EMAIL" \
+              --arg subject "$EMAIL_SUBJECT" \
+              --arg html "$EMAIL_BODY" \
+              '{from: $from, to: [$to], subject: $subject, html: $html}'
+            )"
